@@ -1,0 +1,53 @@
+<div *ngIf="!showAddBrand">
+  <app-table (onAnyAction)="onAnyAction($event)" (addClick)="addBrandClick($event)"
+    (deleteClick)="deleteBrandClicked($event)" (reloadData)="getDatFromServer($event)" [config]="TableConfig">
+  </app-table>
+</div>
+
+<mat-card *ngIf="showAddBrand">
+  <div class="mrgn-b-lg">
+    <h3>{{'Add Brands'|translate}}</h3>
+    <h6>Brands can be associated with products, allowing your customers to shop by browsing their favorite brands. Add
+      brands by typing them into the text box, one brand per line.</h6>
+    <mat-divider></mat-divider>
+  </div>
+  <div fxLayout="row wrap">
+    <div class="mrgn-r-md" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+      <app-textarea class="full-wid" floatLabel="never" [config]="brandsInfo"></app-textarea>
+    </div>
+    <div fxFlex.xs="100" fxFlex.sm="20" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="20" fxLayout="row"
+      fxLayoutAlign="center end">
+      <button mat-raised-button class="mrgn-b-md" color="primary" (click)="saveBrand()">Save</button>
+      <button mat-raised-button class="mrgn-b-md" color="warn" (click)="showAddBrand = false">Cancel</button>
+      <mat-icon class="mrgn-b-xl" matTooltipPosition="below"
+        matTooltip="Type the brand names you want to add into the text box. Enter one brand per line, such as: Nike, ADIDAS, Apple, Microsoft">
+        info
+      </mat-icon>
+    </div>
+  </div>
+</mat-card>
+
+<!-- <div *ngIf="showAddBrand" class="mat-card">
+  <div class="okhaz-card-title">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h4>{{'Add Brands'}}</h4>
+    </div>
+    <h6>Brands can be associated with products, allowing your customers to shop by browsing their favorite brands. Add
+      brands by typing them into the text box, one brand per line.</h6>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="okhaz-card-content">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div class="brandInfo">
+        <app-textarea [config]="brandsInfo" class="w-80"></app-textarea>
+        <mat-icon class="infoIcon"
+          matTooltip="Type the brand names you want to add into the text box. Enter one brand per line, such as: Nike, ADIDAS, Apple, Microsoft"
+          matTooltipPosition="below">info</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showAddBrand" class="fixed-footer">
+  <button mat-raised-button mat-button-sm class="btn-primary mr-2" (click)="saveBrand()">Save</button>
+  <button mat-raised-button mat-button-sm color="warn" (click)="showAddBrand =  false">Cancel</button>
+</div> -->

@@ -1,0 +1,302 @@
+<div class="mat-card">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between" class="listView_toolBar">
+        <div fxLayoutAlign="start center" fxFlex="100" style="background: white;">
+            <div fxLayoutAlign="start center" fxFlex="70">
+                <div fxLayoutAlign="center center" fxFlex="20" fxLayout="column">
+                    <div fxFlex="100" fxLayoutAlign="center center">
+                        <img class="user-image" src="{{row?.user?.image}}"
+                            onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" height="125"
+                            width="125">
+                    </div>
+                    <div fxFlex="100" fxLayoutAlign="center center" style="margin-top: 20px;">
+                        <img src="https://coindoo.com/wp-content/uploads/2019/01/facebook-icon.png" height="20"
+                            width="20">
+                        <img src="http://1.bp.blogspot.com/-iDRg-ul3_dA/VEyBcqECHFI/AAAAAAAAQQ0/q1q3RjbYBbw/s1600/twitter%2Bb%2Bp1%2Bv3.png"
+                            height="20" width="20" style="margin-left: 10px;">
+                        <img src="https://www.fsusd.org/cms/lib/CA01001943/Centricity/Shared/Social%20Media%20Icons/GooglePlus.png"
+                            height="20" width="20" style="margin-left: 10px;">
+                        <img src="https://www.silversands.co.uk/wp-content/uploads/LinkedIn-Icon.png" height="20"
+                            width="20" style="margin-left: 10px;">
+                    </div>
+                </div>
+                <div fxLayoutAlign="start start">
+                    <table style="margin-left: 10px;">
+                        <tr>
+                            <td colspan="2" style="font-weight: bold;font-size: large;">
+                                <span>{{row?.user?.displayName}}</span>
+                                <span>({{row?.user?.id}})</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <span style="font-weight: bold;">
+                                    <mat-icon fontSet="fontawesome" fontIcon="fa-envelope" style="color: midnightblue;">
+                                    </mat-icon>Email
+                                </span></td>
+                            <td>: {{row?.user?.email}}</td>
+                        </tr>
+                        <tr>
+                            <td> <span style="font-weight: bold;">
+                                    <mat-icon fontSet="fontawesome" fontIcon="fa-map" style="color: midnightblue;">
+                                    </mat-icon>City
+                                </span></td>
+                            <td>: {{row?.user?.city}}</td>
+                        </tr>
+                        <tr>
+                            <td> <span style="font-weight: bold;">
+                                    <mat-icon fontSet="fontawesome" fontIcon="fa-globe" style="color: midnightblue;">
+                                    </mat-icon>Country
+                                </span></td>
+                            <td>: {{row?.user?.country}}</td>
+                        </tr>
+                        <tr>
+                            <td> <span style="font-weight: bold;">
+                                    <mat-icon fontSet="fontawesome" fontIcon="fa-map-marker"
+                                        style="color: midnightblue;">
+                                    </mat-icon>Address
+                                </span></td>
+                            <td>: {{row?.user?.address}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div fxLayoutAlign="center center" class="f-10" fxFlex="30" fxLayout="column">
+                <div fxLayout="row">
+                    <div fxLayout="column" fxFlex="42">
+                        <div fxFlex="100">
+                            <div class="mat-card">
+                                <div><span>Order Number</span></div>
+                                <div><b>{{row.orderNumber}}</b></div>
+                            </div>
+                        </div>
+                        <div fxFlex="100">
+                            <div class="mat-card">
+                                <div><span>Device Used</span></div>
+                                <div><b>{{row.deviceUsed}}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="58">
+                        <div fxFlex="100">
+                            <div class="mat-card">
+                                <div><span>Order Creation</span></div>
+                                <div><b>{{row.dateCreated}}</b></div>
+                            </div>
+                        </div>
+                        <div fxFlex="100">
+                            <div class="mat-card">
+                                <div><span>Invoice</span></div>
+                                <div>
+                                    <span>
+                                        <mat-icon class="fa-md" fontSet="fontawesome" fontIcon="fa-download"></mat-icon>
+                                        <mat-icon class="fa-md" fontSet="fontawesome" fontIcon="fa-envelope"></mat-icon>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-between" class="listView_toolBar">
+    <div fxLayout="column" fxFlex="60%">
+        <div fxFlex="100">
+            <mat-accordion>
+                <mat-expansion-panel class="m-15 mrgn-t-md" [expanded]="step === 0" (opened)="setStep(0)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <svg class="cash" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                            </svg>
+                            <b>Order Item Details (3)</b>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-table [config]="OrderDetailsConfig"></app-table>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="m-15" [expanded]="step === 1" (opened)="setStep(1)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <svg class="cash" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                            </svg>
+                            <b>Shipping Address</b>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                        <mat-label>Country</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="m-15" [expanded]="step === 2" (opened)="setStep(2)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <svg class="cash" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                            </svg>
+                            <b>Payment</b>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-form-field>
+                        <mat-label>Date</mat-label>
+                        <input matInput type="number" min="1">
+                    </mat-form-field>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="m-15" [expanded]="step === 3" (opened)="setStep(3)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <svg class="cash" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                            </svg>
+                            <b>Transactio Detail</b>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="accountType">
+                            <th mat-header-cell *matHeaderCellDef> Payment Method </th>
+                            <td mat-cell *matCellDef="let element"> {{element.accountType}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="amount">
+                            <th mat-header-cell *matHeaderCellDef> Amount </th>
+                            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="dateCreated">
+                            <th mat-header-cell *matHeaderCellDef> Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.dateCreated | date}} </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <div fxLayout="column" fxFlex="40%">
+        <div fxFlex="100">
+            <div class="mat-card">
+                <div class="gene-card-title">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <svg class="cash" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                        </svg>
+                        <b>Order Status</b>
+                        <span fxFlex></span>
+                    </div>
+                    <mat-divider></mat-divider>
+                </div>
+                <div class="gene-card-content">
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <app-select [config]="orderFields[0]"></app-select>
+                        </div>
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <button mat-raised-button mat-button-sm color="primary">Update Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100">
+            <div class="mat-card">
+                <div class="gene-card-title">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <svg class="cash" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                        </svg>
+                        <b>Assign Delivery Men</b>
+                        <span fxFlex></span>
+                    </div>
+                    <mat-divider></mat-divider>
+                </div>
+                <div class="gene-card-content">
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <app-select [config]="orderFields[1]"></app-select>
+                        </div>
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <button mat-raised-button mat-button-sm color="primary">Assign Delivery Men</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100">
+            <div class="mat-card">
+                <div class="gene-card-title">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <svg class="cash" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                        </svg>
+                        <b>Summary</b>
+                        <span fxFlex></span>
+                    </div>
+                    <mat-divider></mat-divider>
+                </div>
+                <div class="gene-card-content">
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <b>SUB TOTAL</b>
+                        <b>AED 120</b>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <b>COUPON 5.00%</b>
+                        <b>-AED 7.98</b>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <b>TOTAL</b>
+                        <b>+AED 151.56</b>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <b>VAT 5.00%</b>
+                        <b>+AED 1.78</b>
+                    </div>
+                    <div fxLayout="row" class="mrgn-b-md" fxLayoutAlign="space-between">
+                        <b>SHIPPING CHARGES</b>
+                        <b>+AED 10.00</b>
+                    </div>
+                    <mat-divider class="dotted"></mat-divider>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <b>GRAND TOTAL</b>
+                        <b>AED 169.14</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="100">
+            <div class="mat-card">
+                <div class="gene-card-title">
+                    <div fxLayout="row" fxLayoutAlign="start start">
+                        <svg class="cash" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M3,6H21V18H3V6M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M7,8A2,2 0 0,1 5,10V14A2,2 0 0,1 7,16H17A2,2 0 0,1 19,14V10A2,2 0 0,1 17,8H7Z" />
+                        </svg>
+                        <b>Order Notes</b>
+                        <span fxFlex></span>
+                    </div>
+                    <mat-divider></mat-divider>
+                </div>
+                <div class="gene-card-content">
+                    <!-- <div fxLayout="row" fxLayoutAlign="start start">
+                        <app-select [config]="orderFields[1]"></app-select>
+                        <button class="cust_line_btn txt_blue mrgn-l-md mrgn-t-sm">Assign Delivery Men</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

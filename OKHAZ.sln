@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okhaz", "src\Okhaz\Okhaz.csproj", "{46C1A7C6-AFC8-4433-84A4-5C6C947CBAE4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "src\DataAccess\DataAccess.csproj", "{1D627624-0203-438B-94E4-E55D96CB3F34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94CE5D15-C56D-4DF5-A7A5-7199313430C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okhaz.Middleware", "src\Okhaz.Middleware\Okhaz.Middleware.csproj", "{1A4BE999-F494-4582-8E88-09D57AFA1A61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okhaz.Common", "src\Okhaz.Common\Okhaz.Common.csproj", "{CDBEFE36-BD67-48CB-9520-ECC85D6C2B12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Okhaz.Models", "src\Okhaz.Models\Okhaz.Models.csproj", "{C56398B2-C50C-4F03-92EE-68650759DDEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okhaz.AppInterfaces", "src\Okhaz.AppInterfaces\Okhaz.AppInterfaces.csproj", "{D7C04273-A7ED-4198-B636-C602878F924E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46C1A7C6-AFC8-4433-84A4-5C6C947CBAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C1A7C6-AFC8-4433-84A4-5C6C947CBAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C1A7C6-AFC8-4433-84A4-5C6C947CBAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C1A7C6-AFC8-4433-84A4-5C6C947CBAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D627624-0203-438B-94E4-E55D96CB3F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D627624-0203-438B-94E4-E55D96CB3F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D627624-0203-438B-94E4-E55D96CB3F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D627624-0203-438B-94E4-E55D96CB3F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A4BE999-F494-4582-8E88-09D57AFA1A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A4BE999-F494-4582-8E88-09D57AFA1A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A4BE999-F494-4582-8E88-09D57AFA1A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A4BE999-F494-4582-8E88-09D57AFA1A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBEFE36-BD67-48CB-9520-ECC85D6C2B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBEFE36-BD67-48CB-9520-ECC85D6C2B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBEFE36-BD67-48CB-9520-ECC85D6C2B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBEFE36-BD67-48CB-9520-ECC85D6C2B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56398B2-C50C-4F03-92EE-68650759DDEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56398B2-C50C-4F03-92EE-68650759DDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56398B2-C50C-4F03-92EE-68650759DDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56398B2-C50C-4F03-92EE-68650759DDEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7C04273-A7ED-4198-B636-C602878F924E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C04273-A7ED-4198-B636-C602878F924E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C04273-A7ED-4198-B636-C602878F924E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C04273-A7ED-4198-B636-C602878F924E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46C1A7C6-AFC8-4433-84A4-5C6C947CBAE4} = {94CE5D15-C56D-4DF5-A7A5-7199313430C6}
+		{1D627624-0203-438B-94E4-E55D96CB3F34} = {94CE5D15-C56D-4DF5-A7A5-7199313430C6}
+		{1A4BE999-F494-4582-8E88-09D57AFA1A61} = {94CE5D15-C56D-4DF5-A7A5-7199313430C6}
+		{CDBEFE36-BD67-48CB-9520-ECC85D6C2B12} = {94CE5D15-C56D-4DF5-A7A5-7199313430C6}
+		{C56398B2-C50C-4F03-92EE-68650759DDEE} = {94CE5D15-C56D-4DF5-A7A5-7199313430C6}
+		{D7C04273-A7ED-4198-B636-C602878F924E} = {94CE5D15-C56D-4DF5-A7A5-7199313430C6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19E4BD45-B54C-446B-98B3-94B62CCD19B5}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/hkmaryam
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = src\\Okhaz\\Okhaz.csproj
+		SccProjectTopLevelParentUniqueName1 = OKHAZ.sln
+		SccProjectName1 = src/Okhaz
+		SccLocalPath1 = src\\Okhaz
+		SccProjectUniqueName2 = src\\DataAccess\\DataAccess.csproj
+		SccProjectTopLevelParentUniqueName2 = OKHAZ.sln
+		SccProjectName2 = src/DataAccess
+		SccLocalPath2 = src\\DataAccess
+		SccProjectUniqueName3 = src\\Okhaz.Middleware\\Okhaz.Middleware.csproj
+		SccProjectTopLevelParentUniqueName3 = OKHAZ.sln
+		SccProjectName3 = src/Okhaz.Middleware
+		SccLocalPath3 = src\\Okhaz.Middleware
+		SccProjectUniqueName4 = src\\Okhaz.Common\\Okhaz.Common.csproj
+		SccProjectTopLevelParentUniqueName4 = OKHAZ.sln
+		SccProjectName4 = src/Okhaz.Common
+		SccLocalPath4 = src\\Okhaz.Common
+		SccProjectUniqueName5 = src\\Okhaz.Models\\Okhaz.Models.csproj
+		SccProjectTopLevelParentUniqueName5 = OKHAZ.sln
+		SccProjectName5 = src/Okhaz.Models
+		SccLocalPath5 = src\\Okhaz.Models
+		SccProjectUniqueName6 = src\\Okhaz.AppInterfaces\\Okhaz.AppInterfaces.csproj
+		SccProjectTopLevelParentUniqueName6 = OKHAZ.sln
+		SccProjectName6 = src/Okhaz.AppInterfaces
+		SccLocalPath6 = src\\Okhaz.AppInterfaces
+	EndGlobalSection
+EndGlobal

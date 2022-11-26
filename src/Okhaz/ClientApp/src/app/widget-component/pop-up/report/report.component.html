@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Confirmation Dialog</h2>
+
+<mat-dialog-content>
+    <div fxLayout="column" fxFlex="100">
+        <div fxFlex="100">
+            <p>{{data}}</p>
+        </div>
+        <div fxFlex="100">
+            <app-select [config]="reportFields[2]" (change)="onReportTypeChange($event)"></app-select>
+        </div>
+        <div fxLayout="row wrap" fxFlex="100">
+            <mat-form-field fxFlex>
+                <input ngDefaultControl [(ngModel)]="fromDate" type="date" matInput placeholder="From Date"
+                    [max]="todayDate">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input ngDefaultControl [(ngModel)]="toDate" type="date" matInput placeholder="End Date"
+                    [max]="todayDate">
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" *ngIf="selectedReportType === 2">
+            <app-select [config]="reportFields[0]" (change)="onSupplierChange($event)"></app-select>
+        </div>
+        <div fxFlex="100" *ngIf="selectedReportType === 3">
+            <app-select [config]="reportFields[1]" (change)="onDeliveryManChange($event)"></app-select>
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="right">
+    <button mat-raised-button (click)="onCancel()" color="primary">CANCEL</button>
+    <button mat-raised-button (click)="onConfirm()" color="warn">GENERATE REPORT</button>
+</mat-dialog-actions>

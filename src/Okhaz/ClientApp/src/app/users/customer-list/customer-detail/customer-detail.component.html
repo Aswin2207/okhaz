@@ -1,0 +1,972 @@
+<div class="user-profile-v2">
+     <!--Supplier Edit profile -->
+     <!-- <mat-card class="mat-pad-none edit-card">
+        <h4>Edit Profile</h4>
+        <div class="divider"></div>
+        <mat-tab-group class="tab-group">
+            <mat-tab label="Profile">
+              <ng-template matTabContent>
+                <div fxLayout="row wrap" style="justify-content:space-between">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Supplier ID</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>State</mat-label>
+                            <mat-select>
+                              <mat-option value="option">Abu Bhabi</mat-option>
+                              <mat-option value="option">Kuwait</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Supplier Owner Name</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                        
+                    </div>
+                </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Supplier Description">
+              <ng-template matTabContent>
+                <div fxLayout="row wrap" style="justify-content:space-between">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Trade Licence No</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Delivery Charges</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Payment Mode</mat-label>
+                            <mat-select>
+                              <mat-option value="option">Cash Payment</mat-option>
+                              <mat-option value="option">Electronic Transfer</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select>
+                              <mat-option value="option">Active</mat-option>
+                              <mat-option value="option">Inactive</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Cost Center</mat-label>
+                            <mat-select>
+                              <mat-option value="option">QTP Mart</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Vat Reg No</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                    </div>
+                </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Access Control">
+              <ng-template matTabContent>
+                <div fxLayout="row wrap" style="justify-content:space-between">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-checkbox class="access">Visible Payment Details Section For Online Order</mat-checkbox>
+                        <br>
+                        <mat-checkbox class="access">Report Trigger Time</mat-checkbox>
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-checkbox class="access">Visible Customer Details Section For Online Order</mat-checkbox>
+                        <mat-checkbox class="access">Visible Order Summary Section For Online Order</mat-checkbox>
+                    </div>
+                </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Secondary Profile">
+                <ng-template matTabContent>
+                    <div fxLayout="row wrap" style="justify-content:space-between">
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Does Supplier Has Baqala</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Yes</mat-option>
+                                  <mat-option value="option">No</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <div style="display:flex;align-items:center">
+                                <mat-checkbox>Is Customer?</mat-checkbox>
+                                <mat-form-field appearance="fill">
+                                    <input matInput>
+                                  </mat-form-field>
+                              </div>
+                            
+                           
+                            
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Supplier Type</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Internal Supplier</mat-option>
+                                  <mat-option value="option">External Supplier</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Customer Profile ID</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                            
+                        </div>
+                    </div>
+                </ng-template>
+              </mat-tab>
+            <mat-tab label="Subscription">
+                <ng-template matTabContent>
+                    <div fxLayout="row wrap" style="justify-content:space-between">
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Subscription ID</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Subscription Plan</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Gold</mat-option>
+                                  <mat-option value="option">Silver</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Subscription Date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                              
+                            
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Status</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Active</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Charges in AED</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Expiry Date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                              
+                            
+                        </div>
+                    </div>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Bank Detail">
+                <ng-template matTabContent>
+                    <div fxLayout="row wrap" style="justify-content:space-between">
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Bank Name</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">SBI</mat-option>
+                                  <mat-option value="option">HDFC</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>IBAN</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Branch Name</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Swift Code</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>SBAD Status</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Active</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Account Holder Name</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                          
+                              <mat-form-field appearance="fill">
+                                <mat-label>Account Number</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Branch Address</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>IFSC Code</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Country</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">UAE</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            
+                        </div>
+                    </div>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="File Upload">
+                <ng-template matTabContent>
+                    <div fxLayout="row wrap" style="justify-content:space-between">
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Document Type</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Passport</mat-option>
+                                  <mat-option value="option">PAN</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Expiry Date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                             
+                            
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Document Number</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </ng-template>
+              </mat-tab>
+          </mat-tab-group>
+          <mat-card-actions style="float:right">
+            <button mat-stroked-button color="primary">BACK</button>
+
+            <button mat-raised-button color="primary">NEXT</button>
+
+          </mat-card-actions>
+    </mat-card> -->
+    <!-- Edit profile -->
+    <!-- <mat-card class="mat-pad-none edit-card">
+        <h4>Edit Profile</h4>
+        <div class="divider"></div>
+        <mat-tab-group class="tab-group">
+            <mat-tab label="General">
+              <ng-template matTabContent>
+                <div fxLayout="row wrap" style="justify-content:space-between">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Customer ID</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Device</mat-label>
+                            <mat-select>
+                              <mat-option value="option">Android</mat-option>
+                              <mat-option value="option">IOS</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Customer Name</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                        
+                    </div>
+                </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Address">
+              <ng-template matTabContent>
+                <div fxLayout="row wrap" style="justify-content:space-between">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Customer ID</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Device</mat-label>
+                            <mat-select>
+                              <mat-option value="option">Android</mat-option>
+                              <mat-option value="option">IOS</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Customer Name</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                        
+                    </div>
+                </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Customer Account">
+              <ng-template matTabContent>
+                <div fxLayout="row wrap" style="justify-content:space-between">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Customer ID</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Device</mat-label>
+                            <mat-select>
+                              <mat-option value="option">Android</mat-option>
+                              <mat-option value="option">IOS</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        
+                    </div>
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Customer Name</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Mobile</mat-label>
+                            <input matInput>
+                          </mat-form-field>
+                        
+                    </div>
+                </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Social Media Links">
+                <ng-template matTabContent>
+                    <div fxLayout="row wrap" style="justify-content:space-between">
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Customer ID</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Device</mat-label>
+                                <mat-select>
+                                  <mat-option value="option">Android</mat-option>
+                                  <mat-option value="option">IOS</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            
+                        </div>
+                        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Customer Name</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Mobile</mat-label>
+                                <input matInput>
+                              </mat-form-field>
+                            
+                        </div>
+                    </div>
+                </ng-template>
+              </mat-tab>
+          </mat-tab-group>
+          <mat-card-actions style="float:right">
+            <button mat-stroked-button color="primary">BACK</button>
+
+            <button mat-raised-button color="primary">NEXT</button>
+
+          </mat-card-actions>
+    </mat-card> -->
+    <!-- Admin user -->
+    <!-- <div fxLayout="row wrap" style="justify-content:space-between">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" fxFlex.xl="40" >
+           <mat-card style="flex-direction:column">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100"
+            fxFlex.xl="100">
+            <div fxLayout="row wrap" style="align-items:baseline">
+               <div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+                  fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+                  <mat-form-field class="full-wid" floatLabel="never">
+                     <input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+                        (input)="searchInput()">
+                  </mat-form-field>
+               </div>
+               <div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100">
+                  <button  class="mrgn-r-sm" mat-raised-button color="primary">Search</button>
+               </div>
+            </div>
+         </div>
+         <app-table [showCard]="show" [config]="OrderDetailsConfig"></app-table>
+           </mat-card>
+            
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="60">
+            <mat-card class="mat-pad-none edit-card">
+                <mat-tab-group class="tab-group">
+                    <mat-tab label="Add User">
+                      <ng-template matTabContent>
+                        <div fxLayout="row wrap" style="justify-content:space-between">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>User Type</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Who is</mat-label>
+                                    <mat-select>
+                                      <mat-option value="option">Supplier</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row wrap" style="justify-content:space-between">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <div fxLayout="row wrap" style="align-items:baseline">
+                                    <div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+                                       fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+                                       <mat-form-field class="full-wid" floatLabel="never">
+                                          <input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+                                             (input)="searchInput()">
+                                       </mat-form-field>
+                                    </div>
+                                    <div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100">
+                                       <button  class="mrgn-r-sm" mat-raised-button color="primary">Search</button>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48"> </div>
+                        </div>
+                        <div fxLayout="row wrap" style="justify-content:space-between">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>User Name</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Full Name</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Telephone</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                      </ng-template>
+                    </mat-tab>
+                  
+                  </mat-tab-group>
+                  <mat-card-actions style="float:right">
+                    <button mat-stroked-button color="primary">CANCEL</button>
+        
+                    <button mat-raised-button color="primary">SAVE</button>
+        
+                  </mat-card-actions>
+            </mat-card>
+            
+        </div>
+    </div> -->
+
+    <!-- Admin user Management -->
+
+    <!-- <div fxLayout="row wrap" style="justify-content:space-between">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="40" fxFlex.lg="40" fxFlex.xl="40" >
+           <mat-card style="flex-direction:column">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100"
+            fxFlex.xl="100">
+            <div fxLayout="row wrap" style="align-items:baseline">
+               <div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+                  fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+                  <mat-form-field class="full-wid" floatLabel="never">
+                     <input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+                        (input)="searchInput()">
+                  </mat-form-field>
+               </div>
+               <div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100">
+                  <button  class="mrgn-r-sm" mat-raised-button color="primary">Search</button>
+               </div>
+            </div>
+         </div>
+         <app-table [showCard]="show" [config]="OrderDetailsConfig"></app-table>
+           </mat-card>
+            
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="60">
+            <mat-card class="mat-pad-none edit-card">
+                <mat-tab-group class="tab-group">
+                    <mat-tab label="General">
+                      <ng-template matTabContent>
+                        <div fxLayout="row wrap" style="justify-content:space-between">
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>User Name</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Full Name</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Telephone</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                            </div>
+                            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
+                                <div class="general">
+                                    <div class="general-group">Groups <span class="badge">198</span></div>
+                                    <div class="general-group">Menu <span class="badge">84</span></div>
+                                    <div class="general-group">Internal <mat-icon class="person-icon">person</mat-icon></div>
+                                </div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Mobile</mat-label>
+                                    <input matInput>
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                      
+                       
+                      </ng-template>
+                    </mat-tab>
+                    <mat-tab label="Group">
+                        <ng-template matTabContent>
+                          <div fxLayout="row wrap" style="justify-content:space-between;align-items: center;">
+                              <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="68" fxFlex.lg="68" fxFlex.xl="68">
+                                  <div fxLayout="row wrap" style="align-items:baseline">
+                                      <div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+                                         fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+                                         <mat-form-field class="full-wid" floatLabel="never">
+                                            <input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+                                               (input)="searchInput()">
+                                         </mat-form-field>
+                                      </div>
+                                      <div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100">
+                                         <button  class="mrgn-r-sm" mat-raised-button color="primary">Search</button>
+                                      </div>
+                                   </div>
+                              </div>
+                              <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="32" fxFlex.lg="32" fxFlex.xl="32"> 
+                                <button  class="mrgn-r-sm" style="float:right" mat-raised-button color="primary">Assign</button>
+
+                              </div>
+                          </div>
+                          <div fxLayout="row wrap" style="justify-content:space-between">
+                              <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+                                  
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>Group Code </th>
+      <td mat-cell *matCellDef="let element"> 234 </td>
+      <td mat-cell *matCellDef="let element"> 2345 </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Group Name </th>
+      <td mat-cell *matCellDef="let element"> Dashboard </td>
+      <td mat-cell *matCellDef="let element"> Supplier </td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Sub Menu </th>
+      <td mat-cell *matCellDef="let element"> Group </td>
+      <td mat-cell *matCellDef="let element"> Permissions </td>
+    </ng-container>
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div class="status">
+            <mat-icon class="tick">task_alt_outlined</mat-icon><span class="status-active">ACTIVE</span>
+        </div>
+    </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+                              </div>
+                             
+                          </div>
+                        </ng-template>
+                      </mat-tab>
+                      <mat-tab label="Permissions">
+                        <ng-template matTabContent>
+                          <div fxLayout="row wrap" style="justify-content:space-between;align-items: center;">
+                              <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="68" fxFlex.lg="68" fxFlex.xl="68">
+                                  <div fxLayout="row wrap" style="align-items:baseline">
+                                      <div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+                                         fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+                                         <mat-form-field class="full-wid" floatLabel="never">
+                                            <input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+                                               (input)="searchInput()">
+                                         </mat-form-field>
+                                      </div>
+                                      <div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100">
+                                         <button  class="mrgn-r-sm" mat-raised-button color="primary">Search</button>
+                                      </div>
+                                   </div>
+                              </div>
+                              <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="32" fxFlex.lg="32" fxFlex.xl="32"> 
+                                <button  class="mrgn-r-sm" style="float:right" mat-raised-button color="primary">Assign</button>
+
+                              </div>
+                          </div>
+                          <div fxLayout="row wrap" style="justify-content:space-between">
+                              <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+                                  
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> 234 </td>
+      <td mat-cell *matCellDef="let element"> 2345 </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Main Menu </th>
+      <td mat-cell *matCellDef="let element"> Dashboard </td>
+      <td mat-cell *matCellDef="let element"> Supplier </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Sub Menu </th>
+      <td mat-cell *matCellDef="let element"> Group </td>
+      <td mat-cell *matCellDef="let element"> Permissions </td>
+    </ng-container>
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div class="status">
+            <mat-slide-toggle></mat-slide-toggle>
+        </div>
+    </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+                              </div>
+                             
+                          </div>
+                        </ng-template>
+                      </mat-tab>
+                  </mat-tab-group>
+                  <mat-card-actions style="float:right">
+                    <button mat-stroked-button color="primary">CANCEL</button>
+        
+                    <button mat-raised-button color="primary">SAVE</button>
+        
+                  </mat-card-actions>
+            </mat-card>
+            
+        </div>
+    </div> -->
+
+     <mat-card class="mat-pad-none">
+        <div class="pad-all-md" fxLayout="row wrap">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="70" fxFlex.xl="70">
+                <div fxLayout="row wrap" class="profile-content">
+                    <div fxFlex.xl="200px" fxFlex.lg="200px" fxFlex.md="200px" fxFlex.sm="150px" fxFlex.xs="100" style="position:relative">
+                        <div class="profile-image mrgn-r-lg mrgn-b-md center">
+                            <img class="profile-image" alt="profile image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" width="200" height="200">
+                        </div>
+                        <div class="profile-edit">
+                            <mat-icon>edit</mat-icon>
+                        </div>
+                        
+                    </div>
+                    <div fxFlex.xl="calc(100% - 200px)" fxFlex.lg="calc(100% - 200px)" fxFlex.md="calc(100% - 200px)"
+                        fxFlex.sm="calc(100% - 150px)" fxFlex.xs="100" class="user-contact-info">
+                        <div class="mrgn-b-md">
+                            <ul>
+                                <li>
+                                    <h2 class="mrgn-b-md displayName">{{row?.user?.displayName}}({{row?.user?.id}})</h2>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-envelope primary-text"
+                                            aria-hidden="true"></i> <strong>E-mail</strong></div>
+                                    <a class="contact-list-output" [href]="row?.user?.email">: {{row?.user?.email}}</a>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-phone primary-text"
+                                            aria-hidden="true"></i> <strong>Phone</strong></div>
+                                    <a class="contact-list-output" [href]="row?.user?.email">: +{{row?.user?.id}}</a>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa fa-map primary-text"
+                                            aria-hidden="true"></i> <strong>City</strong></div>
+                                    <span class="contact-list-output">: {{row?.user?.city}}</span>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa fa-globe primary-text"
+                                            aria-hidden="true"></i> <strong>Country</strong></div>
+                                    <span class="contact-list-output">: {{row?.user?.country}}</span>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-map-marker primary-text"
+                                            aria-hidden="true"></i> <strong> Address</strong></div>
+                                    <span class="contact-list-output">: {{row?.user?.address}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="user-socail-stats">
+                            <ul>
+                                <li>
+                                    <a><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-google-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="publication" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="30">
+                <div class="content-block" fxLayout="row wrap" fxLayoutAlign="end center">
+                    <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="45">
+                        <mat-card class="margin-none pad-all-md joining-card">
+                            <div class="joining-card-part1">
+                                <span class="margin-none joining-card-part1-joining">Joining Date</span>
+                                <b class="okhaz-block mat-text-muted joining-card-part1-date">16-11-2022</b>
+                            </div>
+                            <div class="joining-card-icon">
+                                <mat-icon>date_range_outlined</mat-icon>
+                            </div>
+                           
+                        </mat-card>
+                    </div>
+                    <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card2">
+                            <div class="edit">
+                                <mat-icon class="edit-icon">open_in_new</mat-icon>
+                                <mat-icon class="edit-icon">edit</mat-icon>
+                            </div>
+                            <div class="row">
+                                <div class="joining-card2-part1">
+                                    <span class="margin-none joining-card-part1-joining">Is Supplier?</span>
+                                    <div class="status">
+                                        <mat-icon class="status-tick">task_alt_outlined</mat-icon><span class="status-active">ACTIVE</span>
+                                    </div>
+                                </div>
+                                <div class="joining-card2-icon2">
+                                    <mat-icon>view_in_ar</mat-icon>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card">
+                            <div class="joining-card-part1">
+                                <span class="okhaz-block mat-text-muted joining-card-part1-joining">Device Used</span>
+                                <b class="margin-none">{{row?.deviceUsed}}</b>
+                            </div>
+                            <div class="joining-card-icon">
+                                <mat-icon>devices_outlined</mat-icon>
+                            </div>
+                           
+                        </mat-card>
+                    </div>
+                    <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card2">
+                            <div class="edit">
+                                <mat-icon class="edit-icon">edit</mat-icon>
+                            </div>
+                            <div class="row">
+                                <div class="joining-card2-part1">
+                                    <span class="margin-none joining-card-part1-joining">Active/Not Active</span>
+                                    <mat-slide-toggle [(ngModel)]="customerStatus" (change)="customerStatusChanged()"  ></mat-slide-toggle>
+                                </div>
+                                <div class="joining-card2-icon">
+                                    <mat-icon>done</mat-icon>
+                                </div>
+                            </div>
+                           
+                          
+                        </mat-card>
+                    </div>
+                </div>
+                <div style="float:right;margin-top:10px">
+                    <button mat-raised-button color="primary" (click)="editProfile()">EDIT PROFILE</button>
+
+                </div>
+              
+            </div>
+        </div>
+    </mat-card>
+    <div fxLayout="row wrap">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="65" fxFlex.xl="65">
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch" class="crm-stats-cards" *ngIf="progress">
+                <div class="crm-stats" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                    <div fxLayout="row wrap" fxLayoutAlign="start start">
+                        <div fxFlex.gt-md="25" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100"
+                            *ngFor="let cards of progress">
+                            <!-- <mat-card class="{{cards.card_color}} mat-card">
+                                <div mat-card-widget fxLayout="row" fxLayoutAlign="center center">
+                                    <h3 class="inline-block">{{cards.values}}</h3>
+                                </div>
+                                <div class="chart-wrap center">
+                                    <div class="line-wrap">
+                                        {{cards.name}}
+                                    </div>
+                                </div>
+                                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                                    <span class="inline-block">
+                                        <i class="fa fa-user-plus mrgn-r-xs" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="inline-block reverse-icon">
+                                        <i class="fa fa-reply mrgn-r-xs" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </mat-card> -->
+                            <mat-card class="new-card">
+                                <div class="new-card-row1">
+                                    <div class="new-card-row1-accepted">
+                                        <span class="order">Accepted Order</span>
+                                        <b class="order-number">532</b>
+                                    </div>
+                                    <div class="new-card-row1-icon">
+                                        <mat-icon>check_circle</mat-icon>
+                                    </div>
+                                </div>
+                                <div class="new-card-row2">
+                                    <mat-icon>open_in_new</mat-icon> 
+                                </div>
+                               
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mrgn-all-md">
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="!step">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Order Details'|translate}} ({{OrderDetailsConfig.data.length}})
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-table [showCard]="show" [config]="OrderDetailsConfig"></app-table>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="35" fxFlex.xl="35">
+            <mat-card>
+                <div class="mrgn-b-sm">
+                    <div class="card-title mrgn-b-md" fxLayoutAlign="space-between center">
+                        <h4 class="warn-text">{{'Favourite Product'|translate}}</h4>
+                        <h4>{{'Purchased'|translate}}</h4>
+                    </div>
+                    <div class="mrgn-b-sm" fxLayoutAlign="space-between center" *ngFor="let item of team">
+                        <div fxLayoutAlign="start center">
+                            <div class="mrgn-r-md">
+                                <img alt="profile image" class="img-circle" src="{{item.photo}}" width="40" height="40">
+                            </div>
+                            <div>
+                                <h5 class="primary-text margin-none">{{item.name}}</h5>
+                                <span class="okhaz-text-md">{{item.post}}</span>
+                            </div>
+                        </div>
+                        <div fxLayoutAlign="start center">
+                            <span class="mrgn-r-sm">{{item.purchase}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!team ||team.length == 0" style="text-align:center;padding:10px">No Data Available
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div class="mrgn-b-sm">
+                    <div class="card-title mrgn-b-md" fxLayoutAlign="space-between center">
+                        <h4 class="warn-text">{{'Product Orders'|translate}}</h4>
+                        <h4>{{'Purchased'|translate}}</h4>
+                    </div>
+                    <div class="mrgn-b-sm" fxLayoutAlign="space-between center" *ngFor="let item of orders">
+                        <div fxLayoutAlign="start center">
+                            <div class="mrgn-r-md">
+                                <img alt="profile image" class="img-circle" src="{{item.photo}}" width="40" height="40">
+                            </div>
+                            <div>
+                                <h5 class="primary-text margin-none">{{item.name}}</h5>
+                                <span class="okhaz-text-md">{{item.post}}</span>
+                            </div>
+                        </div>
+                        <div fxLayoutAlign="start center">
+                            <span class="mrgn-r-sm">{{item.purchase}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!orders ||orders.length == 0" style="text-align:center;padding:10px">No Data Available
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div class="mrgn-b-sm">
+                    <div class="card-title mrgn-b-md" fxLayoutAlign="space-between center">
+                        <h4>{{'Total Spending'|translate}}</h4>
+                        <h3 class="price text-right">${{totalPurchaseAmt|translate}}</h3>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

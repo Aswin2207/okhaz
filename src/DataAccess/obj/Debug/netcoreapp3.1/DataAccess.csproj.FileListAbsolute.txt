@@ -1,0 +1,44 @@
+C:\Azure\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll.config
+C:\Azure\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+C:\Azure\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Azure\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Azure\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.AssemblyReference.cache
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll.config
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.AssemblyReference.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll.config
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll.config
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb

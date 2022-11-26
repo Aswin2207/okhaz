@@ -1,0 +1,380 @@
+<div fxLayout="row wrap" fxLayoutAlign=" start" class="okhaz-form-wizard">
+  <mat-card fxFlex="100%">
+    <div class="okhaz-card-title">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column">
+          <h4>{{'Add Order'|translate}}</h4>
+        </div>
+        <span fxFlex></span>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    <div class="okhaz-card-content">
+      <mat-tab-group [selectedIndex]="selectedIndex">
+        <mat-tab label="1. Customer Info">
+          <form #form="ngForm">
+            <div fxLayout="column">
+              <h4 class="mrgn-t-lg">{{'Customer Information'|translate}}</h4>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="49">
+                  <mat-radio-group class="full-wid" [(ngModel)]="customerInfoFields[0].fieldValue"
+                    [ngModelOptions]="{standalone: true}" #radioGroup="matRadioGroup">
+                    <mat-radio-button class="mrgn-r-sm" value="true">{{ customerInfoFields[0].label }}
+                    </mat-radio-button>
+                    <mat-radio-button value="false">{{ customerInfoFields[1].label }}</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center"
+                *ngIf="customerInfoFields[0].fieldValue == 'false'">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <mat-form-field class="full-wid">
+                    <input (change)="searchCustomer(customerInfoFields[2].fieldValue)"
+                      [(ngModel)]="customerInfoFields[2].fieldValue" matInput [ngModelOptions]="{standalone: true}"
+                      [placeholder]="customerInfoFields[2].label" [type]="customerInfoFields[2].type"
+                      [required]="customerInfoFields[2].required">
+                  </mat-form-field>
+                </div>
+                <div class="mrgn-t-lg" *ngIf="matchedCustomers && matchedCustomers.length > 0" fxFlex.gt-sm="49"
+                  fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-select (change)="customerSelectionChanged($event)" [config]="matchedCustomersList">
+                  </app-select>
+                </div>
+                <div class="mrgn-t-lg" *ngIf="!customerInfoFields[2].isValid" fxFlex.gt-sm="49" fxFlex.gt-xs="49"
+                  fxFlex="100" fxFlex.gt-md="49">
+                  <div class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle">{{
+                      customerInfoFields[2].errorMesg ?
+                      customerInfoFields[2].errorMesg : "Please enter " + customerInfoFields[2].label }}</i></div>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <p>Selected Customer : </p>{{CustomerEmail}}
+                </div>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center"
+                *ngIf="customerInfoFields[0].fieldValue == 'true'">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input class="full-wid" [config]="customerInfoFields[3]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input class="full-wid" [config]="customerInfoFields[4]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input class="full-wid" [config]="customerInfoFields[5]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <mat-checkbox class="full-wid" [(ngModel)]="customerInfoFields[6].fieldValue"
+                    [ngModelOptions]="{standalone: true}" class="mrgn-r-md"></mat-checkbox>
+                  {{customerInfoFields[6].label}}
+                </div>
+              </div>
+              <h4 class="mrgn-t-lg">{{'Billing Information'|translate}}</h4>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[7]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[8]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[9]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[10]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[11]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[12]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[13]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-select [config]="customerInfoFields[14]"></app-select>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[15]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="customerInfoFields[16]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <mat-checkbox [(ngModel)]="customerInfoFields[17].fieldValue" [ngModelOptions]="{standalone: true}"
+                    class="mrgn-r-md"></mat-checkbox>
+                  {{customerInfoFields[17].label}}
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start" class="mrgn-t-lg">
+                <button mat-button type="button" color="primary" disabled>Previous</button>
+                <button mat-button mat-raised-button [disabled]="!form.valid" (click)="nextStep()" type="button"
+                  color="primary">Next</button>
+                <button color="warn" mat-button mat-raised-button (click)="cancelClicked()"
+                  type="button">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+        <mat-tab label="2. Items" [disabled]="!form.valid">
+          <form #form2="ngForm">
+            <div fxLayout="column">
+              <div class="card-title mrgn-t-lg" fxLayoutAlign="space-between center">
+                <h4 class="mrgn-b-none" fxLayoutAlign="start center">
+                  {{'Add Products'|translate}}
+                </h4>
+                <div fxLayoutAlign="start center">
+                  <button class="mrgn-b-sm" (click)="custProductModel(addCustProd)" mat-raised-button
+                    color="primary">Add
+                    <mat-icon class="mrgn-l-sm">add</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="49">
+                  <mat-form-field class="full-wid">
+                    <input [(ngModel)]="searchVal" [ngModelOptions]="{standalone: true}" matInput
+                      placeholder="Search by product name, SKU etc">
+                  </mat-form-field>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="9" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="9">
+                  <label>Or</label>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="39" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="39">
+                  <div class="mat-browse">
+                    <button color="accent" (click)="searchProdModel(searchProd)" mat-button mat-raised-button>
+                      Browse Categories
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <app-table class="mrgn-t-lg" [showCard]=false (onAnyAction)="onAnyAction($event)"
+                [config]="addProdTableConfig"></app-table>
+              <div fxLayout="row" fxLayoutAlign="start" class="mrgn-t-lg">
+                <button mat-button mat-raised-button color="primary" type="button"
+                  (click)="previousStep()">Previous</button>
+                <button mat-button mat-raised-button color="primary" [disabled]="!form2.valid" (click)="nextStep()"
+                  type="button">Next</button>
+                <button color="warn" mat-button mat-raised-button (click)="cancelClicked()"
+                  type="button">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+        <mat-tab label="3. Shipping" [disabled]="!form.valid || !form2.valid">
+          <form #form3="ngForm">
+            <div fxLayout="column">
+              <h4 class="mrgn-t-lg">{{'Shipping Information'|translate}}</h4>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+                  <label class="mrgn-r-md">Destination : </label>
+                  <mat-radio-group [ngModelOptions]="{standalone: true}" [(ngModel)]="shippingFields[0].fieldValue"
+                    #radioGroup="matRadioGroup">
+                    <mat-radio-button class="mrgn-r-sm" [value]="shippingFields[0].options[0].value">
+                      {{ shippingFields[0].options[0].label }}</mat-radio-button>
+                    <mat-radio-button class="mrgn-r-sm" [value]="shippingFields[0].options[1].value">
+                      {{ shippingFields[0].options[1].label }}</mat-radio-button>
+                    <mat-radio-button class="mrgn-r-sm" [value]="shippingFields[0].options[2].value">
+                      {{ shippingFields[0].options[2].label }}</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <h4 class="mrgn-t-lg">{{'Shipping Address'|translate}}</h4>
+              <div *ngIf="shippingFields[0].fieldValue == 'billingaddress'" fxLayout="row wrap"
+                fxLayoutAlign="space-between center">
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[1]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[2]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[3]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[4]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[5]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[6]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[7]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-select [config]="shippingFields[8]"></app-select>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[9]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <app-input [config]="shippingFields[10]"></app-input>
+                </div>
+                <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <mat-checkbox [(ngModel)]="shippingFields[11].fieldValue" [ngModelOptions]="{standalone: true}"
+                    class="mrgn-r-md"></mat-checkbox>
+                  {{shippingFields[11].label}}
+                </div>
+              </div>
+              <div class="user-contact-info mrgn-t-lg text-nowrap" fxLayoutAlign="center"
+                *ngIf="shippingFields[0].fieldValue == 'singleaddress'">
+                <ul>
+                  <li>
+                    <div class="contact-list">
+                      <h5>Name</h5>
+                    </div>
+                    <span>: Test User</span>
+                  </li>
+                  <li>
+                    <div class="contact-list">
+                      <h5>E-mail</h5>
+                    </div>
+                    <span>: avcd@acv.com</span>
+                  </li>
+                  <li>
+                    <div class="contact-list">
+                      <h5>Phone</h5>
+                    </div>
+                    <span>: +1234567890</span>
+                  </li>
+                  <li>
+                    <div class="contact-list">
+                      <h5>City</h5>
+                    </div>
+                    <span>: New York</span>
+                  </li>
+                  <li>
+                    <div class="contact-list">
+                      <h5>Country</h5>
+                    </div>
+                    <span>: USA</span>
+                  </li>
+                  <li>
+                    <div class="contact-list">
+                      <h5> Address</h5>
+                    </div>
+                    <span class="okhaz-block">: E-112,Auston Street, New York ,USA</span>
+                  </li>
+                </ul>
+              </div>
+
+              <h4 class="mrgn-t-lg">{{'Shipping Method'|translate}}</h4>
+              <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <label>Choose a Provider</label>
+                </div>
+                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                  <label><a class="primary-text" href="javascript:void(0)">Fetch Shipping Quotes</a></label>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start" class="mrgn-t-lg">
+                <button mat-button mat-raised-button type="button" color="primary">Previous</button>
+                <button mat-button mat-raised-button [disabled]="!form3.valid" (click)="nextStep()" type="button"
+                  color="primary">Next</button>
+                <button color="warn" mat-button mat-raised-button (click)="cancelClicked()"
+                  type="button">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+        <mat-tab label="4. Finalize" [disabled]="!form.valid || !form2.valid || !form3.valid">
+          <div fxLayout="column">
+            <h4 class="mrgn-t-lg">{{'Comments and Notes'|translate}}</h4>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                <app-textarea [config]="finalizeFields[0]"></app-textarea>
+              </div>
+              <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                <app-textarea [config]="finalizeFields[1]"></app-textarea>
+              </div>
+            </div>
+
+            <h4 class="mrgn-t-lg">{{'Summary'|translate}}</h4>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                <app-input [config]="finalizeFields[2]"></app-input>
+              </div>
+              <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                <button mat-button mat-raised-button type="button" color="primary">Apply</button>
+              </div>
+              <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                <app-input [config]="finalizeFields[3]"></app-input>
+              </div>
+              <div class="mrgn-t-lg" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" fxFlex.gt-md="49">
+                <button mat-button mat-raised-button type="button" color="primary">Apply</button>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start" class="mrgn-t-lg">
+              <button mat-button mat-raised-button type="button" color="primary">Previous</button>
+              <button mat-button mat-raised-button [disabled]="!form3.valid" (click)="saveOrder()" type="button"
+                color="primary">Save</button>
+              <button color="warn" mat-button mat-raised-button (click)="cancelClicked()" type="button">Cancel</button>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-card>
+</div>
+
+<ng-template #addCustProd let-d="dismiss">
+  <div class="mrgn-b-xs">
+    <h2 mat-dialog-title>Customize</h2>
+    <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+  </div>
+  <mat-dialog-content>
+    <h4>{{'Basic Details'|translate}}</h4>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div class="mrgn-t-lg" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+        <app-input [config]="popupCustomProdFlds[0]"></app-input>
+      </div>
+      <div class="mrgn-t-lg" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+        <app-input [config]="popupCustomProdFlds[1]"></app-input>
+      </div>
+      <div class="mrgn-t-lg" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+        <label class="mrgn-r-md">{{popupCustomProdFlds[2].label}} : </label>
+        <mat-radio-group [(ngModel)]="popupCustomProdFlds[2].fieldValue" [ngModelOptions]="{standalone: true}"
+          #radioGroup="matRadioGroup">
+          <mat-radio-button class="mrgn-r-sm" [value]="popupCustomProdFlds[2].options[0].value">{{
+            popupCustomProdFlds[2].options[0].label }}</mat-radio-button>
+          <mat-radio-button class="mrgn-r-sm" [value]="popupCustomProdFlds[2].options[1].value">{{
+            popupCustomProdFlds[2].options[1].label }}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div *ngIf="popupCustomProdFlds[2].fieldValue == 'manualllySetPrice'" class="mrgn-t-lg" fxFlex.gt-sm="100"
+        fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+        <app-input [config]="popupCustomProdFlds[3]"></app-input>
+      </div>
+      <div class="mrgn-t-lg" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+        <app-input [config]="popupCustomProdFlds[4]"></app-input>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions class="mrgn-b-xs pad-b-none mrgn-t-md center">
+    <button mat-raised-button (click)="closeModel()" color="warn">Cancel</button>
+    <button mat-raised-button (click)="SaveClicked()" color="primary">Save</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #searchProd let-d="dismiss">
+  <div class="mrgn-b-xs">
+    <h2 mat-dialog-title>Select Product</h2>
+    <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+  </div>
+  <mat-dialog-content>
+    <h4>{{'Search by Category'|translate}}</h4>
+    <div>Tree View</div>
+    <h4 class="mrgn-t-lg">{{'Search by Product Name'|translate}}</h4>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+        <app-input [config]="popupSearchFlds[0]"></app-input>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions class="mrgn-b-xs pad-b-none mrgn-t-md center">
+    <button mat-raised-button (click)="selectSearch()" color="primary">Select</button>
+  </mat-dialog-actions>
+</ng-template>

@@ -1,0 +1,65 @@
+<div *ngIf="!http.detailPageData">
+    <app-table (onAnyAction)="onAnyAction($event, formModel)" (addClick)="addOrderClick($event, formModel)"
+        (deleteClick)="deleteOrderClicked($event)" (reloadData)="getDatFromServer($event)" [config]="OrdersTableConfig">
+    </app-table>
+</div>
+<router-outlet></router-outlet>
+
+<ng-template #formModel>
+    <div class="mrgn-b-xs cont" id="update">
+        <h2 mat-dialog-title>{{index == -1 ? 'New' : 'Edit'}} Wheel</h2>
+        <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+    </div>
+    <perfect-scrollbar>
+        <mat-dialog-content>
+            <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+                <mat-form-field class="full-wid">
+                    <label>Title</label>
+                    <input matInput formControlName="title" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="full-wid">
+                    <label>Wheel Property</label>
+                    <input matInput formControlName="wheelProperty" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="full-wid">
+                    <label>Wheel Winner</label>
+                    <input matInput formControlName="displayName" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="full-wid">
+                    <label>Last Used</label>
+                    <input matInput formControlName="deviceUsed" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="full-wid">
+                    <label>Created Date</label>
+                    <input matInput [matDatepicker]="cpicker" formControlName="dateCreated">
+                    <mat-datepicker-toggle matSuffix [for]="cpicker"></mat-datepicker-toggle>
+                    <mat-datepicker #cpicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="full-wid">
+                    <label>Schedule Date</label>
+                    <input matInput [matDatepicker]="spicker" formControlName="scheduleDate">
+                    <mat-datepicker-toggle matSuffix [for]="spicker"></mat-datepicker-toggle>
+                    <mat-datepicker #spicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="full-wid">
+                    <label>Status</label>
+                    <select matNativeControl formControlName="status">
+                        <option value="Platinum">Platinum</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                    </select>
+                </mat-form-field>
+            </form>
+        </mat-dialog-content>
+        <mat-dialog-actions class="mrgn-b-xs pad-b-none mrgn-t-md center">
+            <button mat-raised-button type="submit" color="primary">Save</button>
+            <button mat-raised-button (click)="closeModel()" color="warn">Cancel</button>
+        </mat-dialog-actions>
+    </perfect-scrollbar>
+</ng-template>

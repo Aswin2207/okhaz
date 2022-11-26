@@ -1,0 +1,272 @@
+<div class="user-profile-v2">
+    <mat-card class="mat-pad-none">
+        <div class="pad-all-md" fxLayout="row wrap">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="70" fxFlex.xl="70">
+                <div fxLayout="row wrap" class="profile-content">
+                    <div fxFlex.xl="200px" fxFlex.lg="200px" fxFlex.md="200px" fxFlex.sm="150px" fxFlex.xs="100">
+                        <div class="profile-image mrgn-r-lg mrgn-b-md center">
+                            <img alt="profile image" src="{{row?.user?.image}}" width="200" height="200">
+                        </div>
+                        <div class="user-socail-stats" fxLayoutAlign="center">
+                            <ul>
+                                <li>
+                                    <a><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-google-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div fxFlex.xl="calc(100% - 200px)" fxFlex.lg="calc(100% - 200px)" fxFlex.md="calc(100% - 200px)"
+                        fxFlex.sm="calc(100% - 150px)" fxFlex.xs="100" class="user-contact-info">
+                        <div class="mrgn-b-md">
+                            <ul>
+                                <li>
+                                    <h2 class="mrgn-b-md">{{row?.user?.displayName}}({{row?.user?.id}})</h2>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-envelope primary-text"
+                                            aria-hidden="true"></i> <strong>E-mail</strong></div>
+                                    <a class="okhaz-block" [href]="row?.user?.email">: {{row?.user?.email}}</a>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-phone primary-text"
+                                            aria-hidden="true"></i> <strong>Phone</strong></div>
+                                    <a class="okhaz-block" [href]="row?.user?.email">: +{{row?.user?.id}}</a>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa fa-map primary-text"
+                                            aria-hidden="true"></i> <strong>City</strong></div>
+                                    <span>: {{row?.user?.city}}</span>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa fa-globe primary-text"
+                                            aria-hidden="true"></i> <strong>Country</strong></div>
+                                    <span>: {{row?.user?.country}}</span>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-map-marker primary-text"
+                                            aria-hidden="true"></i> <strong> Address</strong></div>
+                                    <span class="okhaz-block">: {{row?.user?.address}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="publication" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="30">
+                <div class="content-block" fxLayout="row wrap" fxLayoutAlign="end center">
+                    <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md card-wrap">
+                            <h4 class="margin-none">Order</h4>
+                            <span class="okhaz-block mat-text-muted">{{row?.orderNumber}}</span>
+                        </mat-card>
+                    </div>
+                    <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md card-wrap">
+                            <h4 class="margin-none">Order Creation</h4>
+                            <span class="okhaz-block mat-text-muted">{{getDate(row?.dateCreated)}}</span>
+                        </mat-card>
+                    </div>
+                    <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md card-wrap">
+                            <h4 class="margin-none">Device Used</h4>
+                            <span class="okhaz-block mat-text-muted">{{row?.deviceUsed}}</span>
+                        </mat-card>
+                    </div>
+                    <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md card-wrap">
+                            <h4 class="margin-none">Invoice</h4>
+                            <span>
+                                <mat-icon (click)="openReportDialog();" style="cursor: pointer;">file_download</mat-icon>
+                                <mat-icon class="mrgn-l-sm">email</mat-icon>
+                            </span>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+    <div fxLayout="row wrap">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="65" fxFlex.xl="65">
+            <div class="mrgn-all-md">
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="!step" (opened)="setStep(0)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Order Details'|translate}} ({{OrderDetailsConfig.data.length}})
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-table [showCard]=false [config]="OrderDetailsConfig"></app-table>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="step == 1" (opened)="setStep(1)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Shipping Address'|translate}}
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <mat-label>Date</mat-label>
+                            <input matInput type="number" min="1">
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="step == 2" (opened)="setStep(2)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Payment'|translate}}
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <mat-label>Date</mat-label>
+                            <input matInput type="number" min="1">
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="step == 3" (opened)="setStep(3)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Transaction Detail'|translate}}
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="table-responsive okhaz-card-content">
+                            <table class="full-wid" mat-table [dataSource]="transactionsList">
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef class="text-nowrap"> Transaction ID </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.PostId}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="message">
+                                    <th mat-header-cell *matHeaderCellDef> Message </th>
+                                    <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.Message}}
+                                    </td>
+                                </ng-container>
+                                <!-- <ng-container matColumnDef="amount">
+                                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                                </ng-container> -->
+                                <ng-container matColumnDef="dateCreated">
+                                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                                    <td mat-cell *matCellDef="let element"> {{getDate(element.PostedDate)}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            <div *ngIf="!transactionsList || transactionsList.length == 0" style="text-align:center;padding:10px">No Data Available
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="35" fxFlex.xl="35">
+            <mat-card>
+                <div class="card-title">
+                    <h4 class="mrgn-b-none">
+                        <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                        {{'Order Status'|translate}}
+                    </h4>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="okhaz-card-content">
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <app-select [config]="orderFields[0]" (change)="onOrderStatusChange($event)"></app-select>
+                        </div>
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <button mat-raised-button mat-button-sm color="primary" (click)="openOrderStatusChangeConfirmDialog()">Update Status</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div class="card-title">
+                    <h4 class="mrgn-b-none">
+                        <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                        {{'Pick Up Date'|translate}}
+                    </h4>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="okhaz-card-content">
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        {{row.orderPickUpDate}}
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div class="card-title">
+                    <h4 class="mrgn-b-none">
+                        <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                        {{'Assign Delivery Men'|translate}}
+                    </h4>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="okhaz-card-content">
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <app-select [config]="orderFields[1]" (change)="onDeliveryManChange($event)"></app-select>
+                        </div>
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <button mat-raised-button mat-button-sm color="primary" (click)="openDeliveryManChangeConfirmDialog()">Assign Delivery Men</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div class="card-title">
+                    <h4 class="mrgn-b-none">
+                        <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                        {{'Summary'|translate}}
+                    </h4>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="okhaz-card-content">
+                    <div fxLayout="row" fxLayoutAlign="space-between" *ngIf="row.subTotal">
+                        <h5>SUB TOTAL</h5>
+                        <h5>AED {{row.subTotal}}</h5>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between" *ngIf="row.discount">
+                        <h5>COUPON 5.00%</h5>
+                        <h5>-AED {{row.discount}}</h5>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between" *ngIf="row.total">
+                        <h5>TOTAL</h5>
+                        <h5>+AED {{row.total}}</h5>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between" *ngIf="row.tax">
+                        <h5>VAT 5.00%</h5>
+                        <h5>+AED {{row.tax}}</h5>
+                    </div>
+                    <div fxLayout="row" class="mrgn-b-md" fxLayoutAlign="space-between" *ngIf="row.shipping">
+                        <h5>SHIPPING CHARGES</h5>
+                        <h5>+AED {{row.shipping}}</h5>
+                    </div>
+                    <mat-divider class="dotted"></mat-divider>
+                    <div fxLayout="row" fxLayoutAlign="space-between" *ngIf="row.grandtotal">
+                        <h5>GRAND TOTAL</h5>
+                        <h5>AED {{row.grandtotal}}</h5>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>

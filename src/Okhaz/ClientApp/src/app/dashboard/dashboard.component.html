@@ -1,0 +1,721 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" class="crm-stats-cards">
+    <div class="crm-stats" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <div fxFlex.gt-md="25" fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+                <mat-list class="instructor-list mat-pad-none">
+                    <mat-list-item>
+                        <h4 mat-line><b>Welcome back!</b></h4>
+                        <h4 mat-line><b>to your {{branchName}} Admin Panel</b></h4>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <div fxFlex.gt-md="75" fxFlex.gt-sm="75" fxFlex.gt-xs="100" fxFlex="100">
+                <mat-card>
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="20" fxFlex.gt-xs="20" fxFlex="100">
+                            <div class="trade-crypto crypto-input-prefix">
+                                <div class="pad-t-sm">
+                                    <mat-form-field class="full-wid" appearance="outline">
+                                        <mat-label>Track Order</mat-label>
+                                        <span matPrefix class="fa fa-map-marker" aria-hidden="true"></span>
+                                        <input matInput [(ngModel)]="orderTrackNumber">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxFlex.gt-sm="10" fxFlex.gt-xs="10" fxFlex="100">
+                            <button mat-raised-button color="primary" class="button-lg mrgn-r-md mrgn-l-sm mrgn-b-md"
+                                (click)="getTrackProgress()">
+                                {{'Track' | translate }}
+                            </button>
+                        </div>
+                        <div fxFlex.gt-sm="70" fxFlex.gt-xs="70" fxFlex="100">
+                            <mat-horizontal-stepper [selectedIndex]="currentOrderStatus" labelPosition="bottom"
+                                disableRipple=true linear=true #stepper>
+                                <mat-step label="Pending" state="pending" completed="{{currentOrderStatus>=1}}"
+                                    editable=false>
+                                </mat-step>
+                                <mat-step label="Processing" state="processing" completed="{{currentOrderStatus>=2}}"
+                                    editable=false>
+                                </mat-step>
+                                <mat-step label="On The Way" state="ontheway" completed="{{currentOrderStatus>=3}}"
+                                    editable=false>
+                                </mat-step>
+                                <mat-step label="Delivered" state="delivered" completed="{{currentOrderStatus>=4}}"
+                                    editable=false>
+                                </mat-step>
+                            </mat-horizontal-stepper>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" class="crm-stats-cards" *ngIf="statsCards">
+    <div class="crm-stats" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <div fxFlex.gt-md="25" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100"
+                *ngFor="let statCard of statsCards">
+                <mat-card class="{{statCard.card_color}} mat-card">
+                    <div mat-card-widget>
+                        <button mat-mini-fab class="inline-block okhaz-fab-flat-icon" mat-card-icon>
+                            <mat-icon>{{statCard.icon}}</mat-icon>
+                        </button>
+                        <div class="inline-block vertical-align-mid pad-wrap">
+                            <h5 mat-card-widget-title class="mrgn-b-none">{{statCard.title}}</h5>
+                            <h5>{{statCard.count}} <a [routerLink]="[statCard.link]" href="javascript:void(0)"
+                                    routerLinkActive="active-link">
+                                    <mat-icon class="pad-l-xl">reply</mat-icon>
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch">
+    <div fxFlex.gt-sm="50" fxFlex="100">
+        <mat-card class="card-full-height">
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div fxLayout="column">
+                        <h4>{{'Visits'|translate}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <ms-mixed-chart [mixedPointChartData]="visitsMixCharts" [mixedChartLabels]="mixedChartLabels"
+                [mixedChartOptions]="mixedChartOptions" [mixedChartColors]="mixedChartColors"
+                [mixedChartLegend]="mixedChartLegend" [barChartType]="barChartType"></ms-mixed-chart>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="50" fxFlex="100">
+        <mat-card class="card-full-height">
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div fxLayout="column">
+                        <h4>{{'Conversion'|translate}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <ms-mixed-chart [mixedPointChartData]="conversionMixCharts" [mixedChartLabels]="mixedChartLabels"
+                [mixedChartOptions]="mixedChartOptions" [mixedChartColors]="mixedChartColors"
+                [mixedChartLegend]="mixedChartLegend" [barChartType]="barChartType"></ms-mixed-chart>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="50" fxFlex="100">
+        <mat-card class="card-full-height">
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div fxLayout="column">
+                        <h4>{{'Orders'|translate}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <ms-mixed-chart [mixedPointChartData]="ordersMixCharts" [mixedChartLabels]="orderChartLabels"
+                [mixedChartOptions]="mixedChartOptions" [mixedChartColors]="mixedChartColors"
+                [mixedChartLegend]="mixedChartLegend" [barChartType]="barChartType"></ms-mixed-chart>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="50" fxFlex="100">
+        <mat-card class="card-full-height">
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div fxLayout="column">
+                        <h4>{{'Revenue'|translate}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <ms-mixed-chart [mixedPointChartData]="revenueMixCharts" [mixedChartLabels]="revenueChartLabels"
+                [mixedChartOptions]="mixedChartOptions" [mixedChartColors]="mixedChartColors"
+                [mixedChartLegend]="mixedChartLegend" [barChartType]="barChartType"></ms-mixed-chart>
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="start stretch">
+    <div fxFlex.gt-md="33.33" fxFlex.gt-sm="33.33" fxFlex="100">
+        <mat-card>
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Purchase Trending'}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button (click)="getTopPurchaseItems()">
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="okhaz-card-content">
+                <div class="quick-pay-wrap">
+                    <mat-tab-group>
+                        <mat-tab label="Buy">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">shopping_cart</mat-icon>
+                                Products
+                            </ng-template>
+                            <div class="ookhaz-card-content msg-wrapper">
+                                <mat-vertical-stepper [linear]=false [selectedIndex]=4>
+                                    <mat-step *ngFor=" let item of topPurchaseItems">
+                                        <ng-template matStepLabel>
+                                            <div class="border-rad-base">
+                                                <p mat-line class="meta-post mrgn-b-none">Qty:{{item.Total_Quantity}}
+                                                </p>
+                                                <span class="font-bold">{{item.Item_Name}}</span>
+                                            </div>
+                                        </ng-template>
+                                    </mat-step>
+                                </mat-vertical-stepper>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-md="33.33" fxFlex.gt-sm="33.33" fxFlex="100">
+        <mat-card>
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Product Trending'}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button (click)="getRevenueItems()">
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="okhaz-card-content">
+                <div class="quick-pay-wrap">
+                    <mat-tab-group>
+                        <mat-tab label="Buy">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">shopping_cart</mat-icon>
+                                Top 20
+                            </ng-template>
+                            <div class="okhaz-card-content msg-wrapper">
+                                <div *ngFor=" let item of topRevenueItems">
+                                    <div fxLayout="row" fxLayoutAlign="start start"
+                                        class="mrgn-b-md okhaz-relative msg-wrap-list">
+                                        <div class="pad-wrap dash-content" fxFlex.gt-sm="calc(100% - 50px)"
+                                            fxFlex.gt-xs="calc(100% - 50px)" fxFlex="100">
+                                            <div class="border-rad-base">
+                                                <span class="font-bold primary-text">{{item.Item_Name}}</span>
+                                                <p class="margin-none">Qty: {{item.Total_Quantity}}</p>
+                                            </div>
+                                            <a class="okhaz-absolute black-text">
+                                              <span class="font-bold">{{branchInfo.Currency}} {{getRoundOff(item.Revenue)}}</span>
+                                            </a>
+                                        </div>
+                                        <span fxFlex></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Sell">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">attach_money</mat-icon>
+                                Low Selling 20 Products
+                            </ng-template>
+                            <div class="okhaz-card-content msg-wrapper">
+                                <div *ngFor=" let item of lowRevenueItems">
+                                    <div fxLayout="row" fxLayoutAlign="start start"
+                                        class="mrgn-b-md okhaz-relative msg-wrap-list">
+                                        <div class="pad-wrap dash-content" fxFlex.gt-sm="calc(100% - 50px)"
+                                            fxFlex.gt-xs="calc(100% - 50px)" fxFlex="100">
+                                            <div class="border-rad-base">
+                                                <span class="font-bold primary-text">{{item.Item_Name}}</span>
+                                                <p class="margin-none">Qty: {{item.Total_Quantity}}</p>
+                                            </div>
+                                            <a class="okhaz-absolute black-text">
+                                              <span class="font-bold">{{branchInfo.Currency}} {{getRoundOff(item.Revenue)}}</span>
+                                            </a>
+                                        </div>
+                                        <span fxFlex></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex.gt-md="33.33%" fxFlex="100">
+        <mat-card class="card-full-height card-full-width">
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Start Accepting Orders'}}</h4>
+                    </div> <span fxFlex></span>
+                    <!-- <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button> -->
+                    <!-- <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="okhaz-card-content crm-progress-wrap">
+                <mat-vertical-stepper linear=true #stepper>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">1.Add Products</span>
+                                <p mat-line class="meta-post mrgn-b-none">Add products</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button mat-raised-button color="primary" class="button-lg mrgn-r-md" matStepperNext>
+                                {{'Add Products' | translate }}
+                            </button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">2.Get Set to Ship</span>
+                                <p mat-line class="meta-post mrgn-b-none">Accept Shipping</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button mat-raised-button color="primary" class="button-lg mrgn-r-md" matStepperNext>
+                                {{'Set Shipping' | translate }}
+                            </button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">3.Accept Cash on Delivery</span>
+                                <p mat-line class="meta-post mrgn-b-none">Accept Cash on Delivery</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button mat-raised-button color="primary" class="button-lg mrgn-r-md" matStepperNext>
+                                {{'Accept Payment' | translate }}
+                            </button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">4.Set-up Your Tax Rate</span>
+                                <p mat-line class="meta-post mrgn-b-none">Set-up Your Tax Rate</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button mat-raised-button color="primary" class="button-lg mrgn-r-md"
+                                (click)="stepper.reset()">
+                                {{'Set Taxes' | translate }}
+                            </button>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start">
+    <div fxFlex.gt-sm="100" fxFlex="100">
+        <div class="trade-list table-list-wrap coins-list-table">
+            <mat-card>
+                <mat-tab-group class="table-tab-list" color="accent">
+                    <mat-tab label="{{'RECENT'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="transactiion-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.ordersPlacedList">
+                                        <!-- <ng-container matColumnDef="orderNumber">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Order No
+                                            </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.orderNumber}}</div>
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="user">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>User</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <img class="img-circle" src="{{element.user.image}}"
+                                                        onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                        height="50" width="50">
+                                                </div>
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <span
+                                                        style="font-weight: bold;font-size: medium;">{{element.user.displayName}}</span><br />
+                                                    <span style="font-weight: bold;">({{element.user.id}})</span><span
+                                                        *ngIf="element.user.isNew"
+                                                        style="padding: 2px 10px 2px 10px;background: royalblue;color: white;border-radius: 6px;margin-left: 5px;">New</span>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="reference">
+                                            <th mat-header-cell *matHeaderCellDef>Reference</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.reference}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="total">
+                                            <th mat-header-cell *matHeaderCellDef>Total</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.total}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="qty">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Qty</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.qty}} </td>
+                                        </ng-container>
+                                        <!-- <ng-container matColumnDef="status">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Status</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <img class="img-circle" src="{{element.status.statusIcon}}"
+                                                    onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                    height="30" width="30">
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="accountType">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Account Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.accountType}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="dateCreated">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Created Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.dateCreated}} </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedTransactionColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedTransactionColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{'PENDING'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="invoice-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.ordersPendingList">
+                                        <!-- <ng-container matColumnDef="orderNumber">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Order No
+                                            </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.orderNumber}}</div>
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="user">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>User</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <img class="img-circle" src="{{element.user.image}}"
+                                                        onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                        height="50" width="50">
+                                                </div>
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <span
+                                                        style="font-weight: bold;font-size: medium;">{{element.user.displayName}}</span><br />
+                                                    <span style="font-weight: bold;">({{element.user.id}})</span><span
+                                                        *ngIf="element.user.isNew"
+                                                        style="padding: 2px 10px 2px 10px;background: royalblue;color: white;border-radius: 6px;margin-left: 5px;">New</span>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="reference">
+                                            <th mat-header-cell *matHeaderCellDef>Reference</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.reference}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="total">
+                                            <th mat-header-cell *matHeaderCellDef>Total</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.total}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="qty">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Qty</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.qty}} </td>
+                                        </ng-container>
+                                        <!-- <ng-container matColumnDef="status">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Status</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <img class="img-circle" src="{{element.status.statusIcon}}"
+                                                    onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                    height="30" width="30">
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="accountType">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Account Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.accountType}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="dateCreated">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Created Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.dateCreated}} </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedTransactionColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedTransactionColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{'DELIVERED'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="Expense-category-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.ordersDeliveredList">
+                                        <!-- <ng-container matColumnDef="orderNumber">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Order No
+                                            </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.orderNumber}}</div>
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="user">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>User</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <img class="img-circle" src="{{element.user.image}}"
+                                                        onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                        height="50" width="50">
+                                                </div>
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <span
+                                                        style="font-weight: bold;font-size: medium;">{{element.user.displayName}}</span><br />
+                                                    <span style="font-weight: bold;">({{element.user.id}})</span><span
+                                                        *ngIf="element.user.isNew"
+                                                        style="padding: 2px 10px 2px 10px;background: royalblue;color: white;border-radius: 6px;margin-left: 5px;">New</span>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="reference">
+                                            <th mat-header-cell *matHeaderCellDef>Reference</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.reference}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="total">
+                                            <th mat-header-cell *matHeaderCellDef>Total</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.total}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="qty">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Qty</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.qty}} </td>
+                                        </ng-container>
+                                        <!-- <ng-container matColumnDef="status">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Status</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <img class="img-circle" src="{{element.status.statusIcon}}"
+                                                    onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                    height="30" width="30">
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="accountType">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Account Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.accountType}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="dateCreated">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Created Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.dateCreated}} </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedTransactionColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedTransactionColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{'CANCELLED'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="Expense-category-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.ordersCancelledList">
+                                        <!-- <ng-container matColumnDef="orderNumber">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Order No
+                                            </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.orderNumber}}</div>
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="user">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>User</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <img class="img-circle" src="{{element.user.image}}"
+                                                        onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                        height="50" width="50">
+                                                </div>
+                                                <div style="float: left;margin-left: 5px;">
+                                                    <span
+                                                        style="font-weight: bold;font-size: medium;">{{element.user.displayName}}</span><br />
+                                                    <span style="font-weight: bold;">({{element.user.id}})</span><span
+                                                        *ngIf="element.user.isNew"
+                                                        style="padding: 2px 10px 2px 10px;background: royalblue;color: white;border-radius: 6px;margin-left: 5px;">New</span>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="reference">
+                                            <th mat-header-cell *matHeaderCellDef>Reference</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.reference}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="total">
+                                            <th mat-header-cell *matHeaderCellDef>Total</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.total}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="qty">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Qty</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.qty}} </td>
+                                        </ng-container>
+                                        <!-- <ng-container matColumnDef="status">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Status</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <img class="img-circle" src="{{element.status.statusIcon}}"
+                                                    onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                                                    height="30" width="30">
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="accountType">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Account Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.accountType}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="dateCreated">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Created Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.dateCreated}} </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedTransactionColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedTransactionColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch">
+    <div fxFlex.gt-sm="100%" fxFlex="100">
+        <mat-card class="card-full-height live-chat-card">
+            <div class="okhaz-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Customer Review'}}</h4>
+                    </div> <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="okhaz-card-content" *ngIf="customerFeedback.length>0">
+                <perfect-scrollbar class="chat-content-wrap">
+                    <div fxLayout="row" fxLayoutAlign="start start" class="{{livechat.classSendBy}} chat-list pad-y-sm"
+                        *ngFor="let livechat of customerFeedback">
+                        <div class="chat-thumbnail" fxFlex.gt-md="65px" fxFlex.gt-xs="70px" fxFlex="70px">
+                            <img class="img-responsive img-circle" src="{{livechat.image}}" alt="User Image" width="64"
+                                height="64">
+                        </div>
+                        <div class="pad-wrap chat-content" fxFlex.gt-md="calc(80% - 75px)" fxFlex.gt-xs="80"
+                            fxFlex.sm="100">
+                            <div fxLayout="row wrap" class="title-wrap">
+                                <span class="chat-text font-bold inline-block">{{livechat.name}}</span>
+                                <p>
+                                    <bar-rating [rate]="livechat.rating" [max]="5" [readOnly]="true"
+                                        [theme]="'default'"></bar-rating>
+                                </p>
+                            </div>
+                            <div class="okhaz-chat-content">
+                                <p class="mrgn-b-none okhaz-msg-block">{{livechat.chat}}</p>
+                                <p class="mrgn-t-sm">
+                                    <mat-slide-toggle></mat-slide-toggle> ACTIVE
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+                <div class="okhaz-chat-form primary-text under-line" fxLayoutAlign="center">
+                    <a href="javascript:void(0)">View All Review</a>
+                </div>
+            </div>
+            <div class="okhaz-chat-form primary-text" style="padding: 20px;" fxLayoutAlign="center"
+                *ngIf="customerFeedback.length<=0">
+                <span>No Customer Reviews</span>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<mat-menu #options="matMenu" x-position="before">
+    <button mat-menu-item>
+        <mat-icon>settings</mat-icon> Settings
+    </button>
+    <button mat-menu-item>
+        <mat-icon>more</mat-icon> View More
+    </button>
+    <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon> Disable notifications
+    </button>
+    <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon> Remove Panel
+    </button>
+</mat-menu>

@@ -1,0 +1,14 @@
+<div class="st_category_supplier">
+  <div class="mat-card left_table">
+    <app-product-categories [showActionButtons]="false" (onRowClick)="rowClicked($event)"></app-product-categories>
+  </div>
+  <div class="mat-card right_cont">
+    <span *ngIf="!catSelected">Select Category</span>
+    <div *ngIf="catSelected">
+      <h5>Suppliers</h5>
+      <app-table  [config]="supplierData"></app-table>
+    </div>
+  </div>
+</div>
+
+

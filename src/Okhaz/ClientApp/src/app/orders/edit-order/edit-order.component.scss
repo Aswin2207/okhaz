@@ -1,0 +1,34 @@
+.top-40{
+    top: 40% !important;
+}
+.minus-top-30 {
+    margin-top: -30px;
+}
+.right{
+    float: right;
+}
+.corner {
+    margin-right: -25px;
+    margin-bottom: -15px!important;
+}
+.schedule{
+    color: orange;
+    transform: scaleX(-1);
+    height: 3.5rem;
+    width: 7.5rem;
+    font-size: 100px;
+}
+.mat-mini-fab {
+    height: 7.125rem;
+    width: 7.125rem;
+}
+.mat-step-icon {
+	height: 50px !important;
+	width: 50px !important;
+    top:-11px!important
+}
+.mat-step-icon .mat-icon{
+    font-size: 25px!important;
+    height: 25px!important;
+    width: 25px!important;
+}

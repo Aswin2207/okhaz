@@ -1,0 +1,354 @@
+<div class="user-profile-v2" *ngIf="http.detailPageData">
+  <mat-card class="mat-pad-none">
+    <div class="pad-all-md" fxLayout="row wrap">
+      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="70" fxFlex.xl="70">
+        <div fxLayout="row wrap" class="profile-content">
+          <div fxFlex.xl="200px" fxFlex.lg="200px" fxFlex.md="200px" fxFlex.sm="150px" fxFlex.xs="100">
+            <div class="profile-image mrgn-r-lg mrgn-b-md center">
+              <div *ngIf="!isMaximize" fxFlex="100" fxLayoutAlign="center center">
+                <app-wheel class="m-10" [segmentData]="dataSource" [width]="wheelConfig.width"
+                           [height]="wheelConfig.height" [textSize]="wheelConfig.textSize"
+                           [repeat]="wheelConfig.repeat" [action]="action" [numSegments]="dataSource.length"
+                           [spinTime]="wheelConfig.spinTime" [fairMode]="wheelConfig.fairMode"
+                           [segment]="wheelConfig.segment" (result)="wheelResult($event)"></app-wheel>
+                <span class="material-icons maxi" (click)="openWheel(wheelBox)"
+                      title="Maximize">fullscreen</span>
+              </div>
+            </div>
+          </div>
+          <div fxFlex.xl="calc(100% - 200px)" fxFlex.lg="calc(100% - 200px)" fxFlex.md="calc(100% - 200px)"
+               fxFlex.sm="calc(100% - 150px)" fxFlex.xs="100" class="user-contact-info">
+            <div class="mrgn-b-md">
+              <ul>
+                <li>
+                  <h2 class="mrgn-b-md">{{row?.WGTitle}}</h2>
+                </li>
+                <li>
+                  <div class="contact-list">
+                    <strong>
+                      Text Size
+                      ({{row?.WGTextSize}})
+                    </strong>
+                  </div>
+                  <span class="custom-slider">
+                    <mat-slider [(ngModel)]="row.WGTextSize" thumbLabel tickInterval="1"
+                                min="7" max="50"></mat-slider>
+                  </span>
+                </li>
+                <li>
+                  <div class="contact-list">
+                    <strong>
+                      Slice Repeat
+                      ({{row?.SliceRepeat}})
+                    </strong>
+                  </div>
+                  <span class="custom-slider">
+                    <mat-slider [(ngModel)]="row.SliceRepeat" thumbLabel tickInterval="1" min="1"
+                                [max]="getMaxRepeat()"></mat-slider>
+                  </span>
+                </li>
+                <li>
+                  <div class="contact-list">
+                    <strong>
+                      Spin Time
+                      ({{row?.SpinTime}}x)
+                    </strong>
+                  </div>
+                  <span class="custom-slider">
+                    <mat-slider [(ngModel)]="row.SpinTime" thumbLabel tickInterval="1"
+                                min="1" max="7"></mat-slider>
+                  </span>
+                </li>
+                <li>
+                  <div class="contact-list"><strong>Fair Mode</strong></div>
+                  <span class="custom-slider">
+                    <mat-slide-toggle [(ngModel)]="row.FairMode"></mat-slide-toggle>
+                    <mat-form-field class="mrgn-l-sm" *ngIf="!row.FairMode">
+                      <mat-label>Select Segment</mat-label>
+                      <mat-select [(ngModel)]="wheelConfig.segment">
+                        <mat-option *ngFor="let data of dataSource" [value]="data.name">
+                          {{data.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="publication" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="30">
+        <div class="content-block" fxLayout="row wrap" fxLayoutAlign="end center">
+          <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+               fxFlex.xl="40">
+            <mat-card class="margin-none pad-all-md card-wrap">
+              <h4 class="margin-none">{{row?.CreateDate | date: 'M/dd/yyyy'}}</h4>
+              <span class="okhaz-block mat-text-muted">Joining Date</span>
+            </mat-card>
+          </div>
+          <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+               fxFlex.xl="40">
+            <mat-card class="margin-none pad-all-md card-wrap">
+              <h4 class="margin-none">{{row?.dateCreated | date: 'M/dd/yyyy'}}</h4>
+              <span class="okhaz-block mat-text-muted">Schedule Date</span>
+            </mat-card>
+          </div>
+          <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+               fxFlex.xl="40">
+            <mat-card class="margin-none pad-all-md card-wrap">
+              <span>
+                <mat-icon style="cursor: pointer;" (click)="cloneWheel(row.WGlID)">content_copy</mat-icon>
+                <mat-icon class="mrgn-l-sm">email</mat-icon>
+              </span>
+              <span class="okhaz-block mat-text-muted">Choice</span>
+            </mat-card>
+          </div>
+          <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+               fxFlex.xl="40">
+            <mat-card class="margin-none pad-all-md card-wrap">
+              <mat-slide-toggle [(ngModel)]="triggerAll.value" (change)="toggle($event,true)">
+              </mat-slide-toggle>
+              <span class="okhaz-block mat-text-muted">Active</span>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <div fxLayout="row wrap">
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="65" fxFlex.xl="65">
+      <mat-card>
+        <div class="card-title" fxLayoutAlign="space-between center">
+          <h4 class="mrgn-b-none" fxLayoutAlign="start center">
+            <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+            {{'Slices ('+dataSource.length+')'|translate}}
+          </h4>
+          <div fxLayoutAlign="start center">
+            <button class="mrgn-b-sm" (click)="openModel(null,colorPicker,false)" mat-raised-button
+                    color="primary">
+              Add
+              <mat-icon class="mrgn-l-sm">add</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="table-responsive okhaz-card-content">
+          <table class="full-wid" mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.WGSID}} </td>
+            </ng-container>
+            <ng-container matColumnDef="button">
+              <th mat-header-cell *matHeaderCellDef> Preview </th>
+              <td mat-cell *matCellDef="let element">
+                <button class="left-border" [ngClass]="{ 'img-Btn': element.ImagePath }"
+                        [style.background-image]="'url(' + element.ImagePath  + ')'"
+                        [style.border-left-color]="lightenColor(element.WGSBackGroudColorCode, 20)"
+                        [style.color]="element.WGSTextColorCode" [style.background-color]="element.WGSBackGroudColorCode"
+                        mat-raised-button mat-button-sm>
+                  {{element.WGSText}}
+                </button>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name </th>
+              <td mat-cell *matCellDef="let element" class="text-nowrap">
+                <div>
+                  <h6 class="mrgn-b-none">{{element.WGSText}}</h6>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="textColor">
+              <th mat-header-cell *matHeaderCellDef> Text Colour </th>
+              <td mat-cell *matCellDef="let element"> {{element.WGSTextColorCode}} </td>
+            </ng-container>
+            <ng-container matColumnDef="bgColor">
+              <th mat-header-cell *matHeaderCellDef> BG Colour </th>
+              <td mat-cell *matCellDef="let element"> {{element.WGSBackGroudColorCode}} </td>
+            </ng-container>
+            <ng-container matColumnDef="image">
+              <th mat-header-cell *matHeaderCellDef> Image </th>
+              <td mat-cell *matCellDef="let element">
+                <img class="img-circle" src="{{element.ImagePath}}"
+                     onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';"
+                     height="50" width="50">
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-slide-toggle [(ngModel)]="element.WGSstatus"></mat-slide-toggle>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element" class="text-nowrap">
+                <mat-icon class="mat-icon-grey okhaz-text-lg pointer" title="Edit"
+                          (click)="openModel(element,colorPicker, true)">
+                  edit
+                </mat-icon>
+                <mat-icon class="mat-icon-grey okhaz-text-lg pointer" title="Delete"
+                          (click)="formData = element;onDelete(confirmationModel)">
+                  delete
+                </mat-icon>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="35" fxFlex.xl="35">
+      <mat-card>
+        <div class="card-title">
+          <h4 class="mrgn-b-none">
+            <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+            {{'Devices'|translate}}
+          </h4>
+        </div>
+        <mat-divider class="mrgn-b-md"></mat-divider>
+        <div fxLayoutAlign="space-between" class="okhaz-card-content" *ngFor="let device of deviceList">
+          <h5>{{device.code}}</h5>
+          <span>
+            Active <mat-slide-toggle (change)="toggle($event,false,device)" [(ngModel)]="device.value">
+            </mat-slide-toggle>
+          </span>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <input #fileToUpload (change)="onFileUploaded($event)" type="file" accept="image/*" style="display:none;" />
+  <ng-template #colorPicker let-d="dismiss">
+    <div class="mrgn-b-xs">
+      <h2 mat-dialog-title>{{isEdit ? 'Edit Slice' : 'New Slice' }}</h2>
+      <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+    </div>
+    <mat-dialog-content>
+      <h5 class="center">
+        <button mat-raised-button mat-button-sm class="left-border" [ngClass]="{ 'img-Btn': formData.ImagePath }"
+                [style.background-image]="'url(' + formData.ImagePath  + ')'"
+                [style.border-left-color]="lightenColor(formData.WGSBackGroudColorCode, 20)" [style.color]="formData.WGSTextColorCode"
+                [style.background-color]="formData.WGSBackGroudColorCode">
+          {{formData.WGSText}}
+        </button>
+      </h5>
+      <mat-form-field class="full-wid">
+        <mat-label>Slice Text</mat-label>
+        <input class="mrgn-t-none" name="sliceText{{isEdit}}" matInput [(ngModel)]="formData.WGSText" required
+               #sliceText>
+      </mat-form-field>
+      <mat-error *ngIf="!formData.WGSText">
+        Slice Text is <strong>required</strong>
+      </mat-error>
+      <div>Text Colour</div>
+      <div class="opened">
+        <div class="colors">
+          <ng-container *ngFor="let color of textColors">
+            <div *ngIf="color.code == 'paint'" class="round-color" style="background: green">
+              <mat-icon class="mat-icon selected-Icon">palette </mat-icon>
+            </div>
+            <div *ngIf="color.code == 'time'" class="round-color" style="background: #92998e">
+              <mat-icon class="mat-icon selected-Icon">schedule </mat-icon>
+            </div>
+            <div *ngIf="color.code == 'brush'" class="round-color" style="background: #92998e"
+                 [(colorPicker)]="formData.WGSTextColorCode">
+              <mat-icon class="mat-icon selected-Icon">auto_fix_high </mat-icon>
+            </div>
+            <div *ngIf="color.code !== 'paint' && color.code !== 'time' && color.code !== 'brush'"
+                 class="round-color" [style.background-color]="color.code"
+                 (click)="formData.WGSTextColorCode = color.code">
+              <mat-icon *ngIf="color.code == formData.WGSTextColorCode" class="mat-icon selected-Icon">
+                done
+              </mat-icon>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <mat-divider class="mrgn-b-md"></mat-divider>
+      <div>Background Colour</div>
+      <div class="opened">
+        <div class="colors">
+          <ng-container *ngFor="let color of bgColors">
+            <div *ngIf="color.code == 'paint'" class="round-color" style="background: green">
+              <mat-icon class="mat-icon selected-Icon">palette </mat-icon>
+            </div>
+            <div *ngIf="color.code == 'time'" class="round-color" style="background: #92998e">
+              <mat-icon class="mat-icon selected-Icon">schedule </mat-icon>
+            </div>
+            <div *ngIf="color.code == 'brush'" class="round-color" style="background: #92998e"
+                 [(colorPicker)]="formData.WGSBackGroudColorCode">
+              <mat-icon class="mat-icon selected-Icon">auto_fix_high </mat-icon>
+            </div>
+            <div *ngIf="color.code !== 'paint' && color.code !== 'time' && color.code !== 'brush'"
+                 class="round-color" [style.background-color]="color.code"
+                 (click)="formData.WGSBackGroudColorCode = color.code">
+              <mat-icon *ngIf="color.code == formData.WGSBackGroudColorCode" class="mat-icon selected-Icon">
+                done
+              </mat-icon>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <mat-divider class="mrgn-b-md"></mat-divider>
+      <div>
+        Image
+        <div class="product-image-gallery-item add-icon">
+          <a id="img{{isEdit}}" class="p-link border-active" href="javascript:void(0)">
+            <img [src]="formData.ImagePath" alt="" width="500" height="200">
+          </a>
+          <button *ngIf="!formData.ImagePath" (click)="triggerFileClick()"
+                  class="add-btn pointer-cursor hover-focus" md-mini-fab type="button">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button *ngIf="formData.ImagePath" (click)="triggerDeleteImgClick()"
+                  class="delete-btn add-btn pointer-cursor hover-focus" md-mini-fab type="button">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <button *ngIf="formData.ImagePath" (click)="previewImage(formData.ImagePath)"
+                  class="eye-btn add-btn pointer-cursor hover-focus" md-mini-fab type="button">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-divider class="mrgn-b-md"></mat-divider>
+    </mat-dialog-content>
+    <mat-dialog-actions class="mrgn-b-xs pad-b-none mrgn-t-md center">
+      <button *ngIf="isEdit" mat-raised-button (click)="onDelete(confirmationModel)"
+              color="accent">
+        Delete
+      </button>
+      <button mat-raised-button (click)="closeModel()" color="warn">Cancel</button>
+      <button mat-raised-button [disabled]="!formData.WGSText" (click)="apply()" color="primary">Ok</button>
+    </mat-dialog-actions>
+  </ng-template>
+
+  <ng-template #confirmationModel let-d="dismiss">
+    <div class="mrgn-b-xs cont" id="wheel">
+      <h2 mat-dialog-title>Confirmation</h2>
+      <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+    </div>
+    <mat-dialog-content>
+      <h4>Are you sure you want to delete this list permanently?</h4>
+    </mat-dialog-content>
+    <mat-dialog-actions class="mrgn-b-xs pad-b-none mrgn-t-md center">
+      <button mat-raised-button (click)="delete(formData.id)" color="primary">Ok</button>
+      <button mat-raised-button (click)="closeModel()" color="warn">Cancel</button>
+    </mat-dialog-actions>
+  </ng-template>
+
+  <ng-template #wheelBox let-d="dismiss">
+    <div class="mrgn-b-xs cont" id="wheel">
+      <h2 mat-dialog-title>Wheel Spinner</h2>
+      <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+    </div>
+    <perfect-scrollbar>
+      <mat-dialog-content>
+        <app-wheel class="center-wheel" *ngIf="isMaximize" [segmentData]="dataSource" width="300" height="300"
+                   [segment]="wheelConfig.segment" [textSize]="wheelConfig.textSize" [repeat]="wheelConfig.repeat"
+                   [action]="action" [numSegments]="dataSource.length" [spinTime]="wheelConfig.spinTime"
+                   [fairMode]="wheelConfig.fairMode" (result)="wheelResult($event)"></app-wheel>
+      </mat-dialog-content>
+    </perfect-scrollbar>
+  </ng-template>

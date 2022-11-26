@@ -1,0 +1,10 @@
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\bin\Release\netcoreapp3.1\Okhaz.Middleware.deps.json
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\bin\Release\netcoreapp3.1\Okhaz.Middleware.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\bin\Release\netcoreapp3.1\Okhaz.Middleware.pdb
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.AssemblyInfo.cs
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Middleware\obj\Release\netcoreapp3.1\Okhaz.Middleware.pdb

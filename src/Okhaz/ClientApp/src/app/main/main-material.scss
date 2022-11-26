@@ -1,0 +1,42 @@
+
+.example-sidenav-content {
+   display: flex;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+ }
+ .cart-item{
+    .content-wrap{
+       font-size: 0.85rem;
+    }
+ }
+ .menu-mat-icon {
+   position: absolute;
+   top: 25px;
+   right: -20px;
+   background-color: #1565c0;
+   height: 2rem !important;
+   width: 2rem !important;
+   border-radius: 50%;
+   display: flex !important;
+   align-items: center;
+   justify-content: center;
+}
+
+.mat-button-wrapper .mat-icon {
+   color: #aeadb3;
+   font-size: 1.5rem;
+}
+
+.mat-button-wrapper .mat-icon:hover {
+   color: #fff;
+   font-size: 1.5rem;
+}
+
+.pad-left-10 {
+   padding-left: 10px;
+}
+
+.m-5 {
+   margin: -5px;
+}

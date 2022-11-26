@@ -1,0 +1,45 @@
+<div id="identifiers" class="mat-card">
+  <div class="gene-card-title">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h4>Variant Options (0 options , 0 variants )</h4>
+    </div>
+    <mat-divider></mat-divider>
+    <h6 class="mrgn-t-md">Use Variant Options to generate Variants, each with a unique SKU that can be used to track inventory. Assign attributes such as Image, Default Price, and Weight on the Variant level.</h6>
+  </div>
+  <div class="gene-card-content">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between flex-start" class="variants_blk" *ngFor="let  opt of variantDetails;let j=index;">
+        <div fxFlex.gt-sm="30" fxFlex.gt-xs="30" fxFlex="100">
+          <app-input [config]="opt.variant[0]"></app-input>
+        </div>
+        <div fxFlex.gt-sm="30" fxFlex.gt-xs="30" fxFlex="100">
+          <app-select [config]="opt.variant[1]"></app-select>
+        </div>
+        <div fxFlex.gt-sm="40" fxFlex.gt-xs="40" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="space-around">
+          <div fxLayout="column wrap" fxLayoutAlign="center">
+            <app-input *ngFor="let input of opt.valuesOpt" [config]="input"></app-input>
+            <a (click)="AddValue(opt)">+ Add value</a>
+          </div>
+          <mat-radio-group [(ngModel)]="opt.variant[2].fieldValue" #radioGroup="matRadioGroup" fxLayout="column wrap" fxLayoutAlign="space-around center">
+            <mat-radio-button *ngFor="let input of opt.defaultOptions;" [value]="input.value"> {{input.label}}   </mat-radio-button>
+          </mat-radio-group>
+          <span fxLayout="column wrap" fxLayoutAlign="space-around center" *ngIf="opt.defaultOptions.length > 1">
+            <a *ngFor="let input of opt.defaultOptions; let i=index" (click)="DeleteValue(i,opt)"><mat-icon>remove_circle</mat-icon></a>
+          </span>
+        </div>
+        <div>
+          <a *ngIf="variantDetails.length > 1" (click)="DeleteVariant(j)" class="txt_red"> - Delete Variant</a>
+        </div>
+    </div>
+    <div class="mrgn-t-md">
+      <a (click)="AddVariant()" class="cust_line_btn txt_blue">+ Add Variant</a>
+    </div>
+  </div>
+
+  <div class="gene-card-footer">
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button mat-button-sm class="btn-primary" (click)="SaveClicked()">Save</button>
+      <button mat-raised-button mat-button-sm color="warn" (click)="CancelClicked()">Cancel</button>
+    </div>
+  </div>
+</div>

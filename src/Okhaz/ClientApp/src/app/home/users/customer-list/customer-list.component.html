@@ -1,0 +1,7 @@
+<app-table *ngIf="selectedOrderIndex == -1" (onAnyAction)="onAnyAction($event)" (addClick)="addOrderClick($event)"
+    (deleteClick)="deleteOrderClicked($event)" (reloadData)="getDatFromServer($event)" [config]="OrdersTableConfig"
+    showBackgroundImage=true></app-table>
+<div *ngIf="selectedOrderIndex != -1">
+    <span><a (click)="selectedOrderIndex = -1" class="navigationHome">Customer</a> > Customer Detail</span>
+    <app-customer-detail [currentOrder]="currentOrder"></app-customer-detail>
+</div>

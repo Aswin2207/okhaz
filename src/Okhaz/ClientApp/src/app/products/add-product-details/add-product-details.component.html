@@ -1,0 +1,462 @@
+<div class="width-100 display-flex" [class.d-none]="showVariantsOption">
+   <div class="left_menu" #stickyMenu>
+      <perfect-scrollbar>
+         <ul>
+            <li *ngFor="let tab of ProductDetailsTab">
+               <h5>{{tab.title}}</h5>
+               <ul>
+                  <li *ngFor="let subTab of tab.subTabs" class="st_prodList"  [class.selected]="selectedTab == subTab.link">
+                     <a [routerLink]='"."' [fragment]="subTab.link" (click)="navigateToSection(subTab.link)">
+                        <span>{{subTab.title}}</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </perfect-scrollbar>
+   </div>
+   <div class="right_cont">
+      <div fxLayout="column" fxLayoutAlign="center center">
+         <h4>{{'Product Information'}}</h4>
+         <span>Information to help define a product.</span>
+      </div>
+      <div id="basicInfo" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Basic Information'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div class="add-check mrgn-b-md" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <mat-checkbox class="mrgn-r-md"></mat-checkbox> {{'Visible on Storefront'}}
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <app-input [config]="productDetails[0]"></app-input>
+                  <app-select [config]="productDetails[2]"></app-select>
+                  <app-select [config]="productDetails[4]"></app-select>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <app-input [config]="productDetails[1]"></app-input>
+                  <app-input [config]="productDetails[3]"></app-input>
+                  <app-input [config]="productDetails[5]"></app-input>
+               </div>
+            </div>
+         </div>
+         <div fxLayout="row" fxLayoutAlign="start center">
+            <h5>Category</h5>
+         </div>
+         <perfect-scrollbar>
+            <div class="okhaz-card-content" style="max-height: 25rem;">
+               <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                     <app-product-categories [showCard]=false [showTreeView]="true"></app-product-categories>
+                  </div>
+               </div>
+            </div>
+         </perfect-scrollbar>
+      </div>
+      <div id="description" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Description'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                <quill-editor (onContentChanged)="descrptionChanged($event)" ></quill-editor>
+              </div>
+            </div>
+         </div>
+      </div>
+      <div id="images-videos" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Images & Videos'}}</h4>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+               <button mat-raised-button mat-button-sm class="btn-primary"
+                  (click)="AddFromUrlClicked(content)">Add from Url</button>
+               <button mat-raised-button mat-button-sm class="btn-primary"
+                  (click)="UploadImageClicked()">Upload Images</button>
+               <input #fileToUpload type="file" accept="img/*" style="display:none"
+                  (change)="imageFileSelected($event)" />
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content" style="max-height: 15rem;">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <app-table (onAnyAction)="onAnyAction($event)" [config]="ImageTableConfig"></app-table>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="identifiers" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Product Identifiers'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <app-input [config]="productDetails[7]"></app-input>
+                  <app-input [config]="productDetails[8]"></app-input>
+                  <app-input [config]="productDetails[9]"></app-input>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <app-input [config]="productDetails[10]"></app-input>
+                  <app-input [config]="productDetails[11]"></app-input>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="pricing" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Pricing'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <app-input [config]="productDetails[12]"></app-input>
+                  <app-input [config]="productDetails[14]"></app-input>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                  <app-select [config]="productDetails[13]"></app-select>
+               </div>
+               <h5>{{'Advanced Pricing'}}</h5>
+               <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                     <app-input [config]="productDetails[15]"></app-input>
+                     <app-input [config]="productDetails[16]"></app-input>
+                  </div>
+                  <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                     <app-input [config]="productDetails[17]"></app-input>
+                  </div>
+               </div>
+               <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="49">
+                  <app-select [config]="productDetails[18]" (change)="bulkDiscountChanged($event)"></app-select>
+               </div>
+               <div *ngIf="productDetails[18].fieldValue" style="max-height: 15rem;width: 100%;">
+                  <button type="button" class="button button--no-border" (click)="addTireEmptyRow()"><span>+ Add
+                        tier</span></button>
+                  <app-table (onAnyAction)="onAnyActionOnTire($event)" [config]="discountTireTableConfig">
+                  </app-table>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="inventory" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Inventory'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="0rem" fxLayoutGap.gt-sm="1.5rem">
+               <div class="add-check mrgn-b-md" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <mat-checkbox [(ngModel)]="productDetails[19].fieldValue" class="mrgn-r-md"></mat-checkbox>
+                  {{productDetails[19].label}}
+               </div>
+               <div *ngIf="productDetails[19].fieldValue" class="add-check mrgn-b-md" fxFlex.gt-sm="100"
+                  fxFlex.gt-xs="100" fxFlex="100">
+                  <mat-radio-group  [(ngModel)]="productDetails[20].fieldValue" #radioGroup="matRadioGroup">
+                     <mat-radio-button [value]="productDetails[20].options[0].value"> {{productDetails[20].options[0].label}} </mat-radio-button>
+                     <mat-radio-button [value]="productDetails[20].options[1].value"> {{productDetails[20].options[1].label}} </mat-radio-button>
+                   </mat-radio-group>
+               </div>
+               <div *ngIf="productDetails[20].fieldValue == 'Stock' && productDetails[19].fieldValue">
+                  <app-input [config]="productDetails[22]"></app-input>
+                  <app-input [config]="productDetails[23]"></app-input>
+               </div>
+            </div>
+         </div>
+        
+         <div>
+         </div>
+      </div>
+      <div id="variations" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Variations'}}</h4>
+            </div>
+            <h5>Add variant options like size and color to create variants for this product.</h5>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+           <div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="0rem" fxLayoutGap.gt-sm="1.5rem">
+             <div class="variants-table">
+               <span (click)="addVariants()" *ngIf="VariantsList.length > 0">
+                 <icon glyph="ic-settings" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65A.488.488 0 0 0 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"></path></svg></icon>
+                 Configure Options
+               </span>
+               <div style="max-width:100%">
+                 <app-table [height]="'10rem'" *ngIf="VariantsList.length > 0" [config]="VariantTable"></app-table>
+               </div>
+               <div style="max-width:100%;overflow:scroll">
+                 <app-table [height]="'10rem'" *ngIf="VariantsList.length > 0" [config]="ProductVariantTable"></app-table>
+               </div>
+             </div>
+             <a *ngIf="VariantsList.length == 0" (click)="addVariants()"><span>+ Add Variants</span></a>
+           </div>
+         </div>
+      </div>
+      <!--<div id="customizations" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Customizations'}}</h4>
+            </div>
+            <h5>Add modifier options like a text box, checkbox, or file upload to enable further product
+               customization.</h5>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="0rem" fxLayoutGap.gt-sm="1.5rem">
+
+            </div>
+         </div>
+      </div>-->
+      <div id="storefront" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Storefront Details'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <mat-checkbox [(ngModel)]="productDetails[55].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[55].label}}
+            <app-input [config]="productDetails[24]"></app-input>
+            <app-input [config]="productDetails[25]"></app-input>
+            <app-input [config]="productDetails[27]"></app-input>
+            <app-select [config]="productDetails[26]"></app-select>
+            <app-textarea [config]="productDetails[27]"></app-textarea>
+            <app-input [config]="productDetails[28]"></app-input>
+            <app-select [config]="productDetails[29]"></app-select>
+            <mat-checkbox [(ngModel)]="productDetails[30].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[30].label}}
+         </div>
+      </div>
+
+      <div id="customFields" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Custom Fields'}}</h4>
+            </div>
+            <h5>Custom fields allow you to specify additional information that will appear on the products page.
+               Custom fields appear automatically in the product's details if they are defined on the product. If you
+               don't want to show any custom fields, simply remove them from the product.</h5>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content" *ngFor="let field of customFields;let i=index">
+            <app-input [config]="field"></app-input><span (click)="removeField(i)">- Delete</span>
+         </div>
+         <a (click)="addCustomField()"><span>+ Add Custom Fields</span></a>
+      </div>
+
+      <div id="relatedProducts" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Related Products'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <mat-checkbox [(ngModel)]="productDetails[31].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            Automatically show related products on my storefront
+            <!-- <div class="okhaz-card-content" style="max-height: 25rem;">
+               <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                     <app-product-categories [showTreeView]="true"></app-product-categories>
+                  </div>
+               </div>
+            </div> -->
+         </div>
+      </div>
+
+      <div id="fulfillment" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Dimensions & Weight'}}</h4>
+            </div>
+            <h5>Enter the dimensions and weight of this product to help calculate shipping rate. These measurements
+               are for the product's shipping container. They are used to help calculate shipping price and do not
+               show up on your storefront.</h5>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <app-input [config]="productDetails[31]"></app-input>
+            <app-input [config]="productDetails[32]"></app-input>
+            <app-input [config]="productDetails[33]"></app-input>
+            <app-input [config]="productDetails[34]"></app-input>
+         </div>
+      </div>
+
+      <div id="shippingDetails" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Shipping Details'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <app-input [config]="productDetails[35]"></app-input>
+            <mat-checkbox [(ngModel)]="productDetails[36].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[36].label}}
+         </div>
+      </div>
+
+      <div id="purchasability" class="mat-card">
+
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Purchasability'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+
+         <div class="okhaz-card-content">
+
+            <mat-radio-group  [(ngModel)]="productDetails[37].fieldValue" #radioGroup="matRadioGroup">
+               <mat-radio-button [value]="productDetails[37].options[0].value"> {{productDetails[37].options[0].label}} </mat-radio-button>
+               <mat-radio-button [value]="productDetails[37].options[1].value"> {{productDetails[37].options[1].label}} </mat-radio-button>
+               <mat-radio-button [value]="productDetails[37].options[2].value"> {{productDetails[37].options[2].label}} </mat-radio-button>
+             </mat-radio-group>
+
+            <app-input *ngIf="productDetails[37].fieldValue == productDetails[37].options[1].value" [config]="productDetails[40]"></app-input>
+            <app-input *ngIf="productDetails[37].fieldValue == productDetails[37].options[1].value" [config]="productDetails[41]"></app-input>
+         
+            <mat-checkbox  *ngIf="productDetails[37].fieldValue == productDetails[37].options[1].value" [(ngModel)]="productDetails[42].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[42].label}}
+            
+            <app-input *ngIf="productDetails[37].fieldValue == productDetails[37].options[2].value" [config]="productDetails[43]"></app-input>
+           
+            <app-input [config]="productDetails[38]"></app-input>
+            <app-input [config]="productDetails[39]"></app-input>
+
+         </div>
+      </div>
+
+      <div id="giftWrapping" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Gift Wrapping'}}</h4>
+            </div>
+            <h5>Select the gift wrapping option you want to apply to this product.</h5>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <h4>Gift Wrapping options</h4>
+            <mat-radio-group  [(ngModel)]="productDetails[44].fieldValue" #radioGroup="matRadioGroup">
+               <mat-radio-button [value]="productDetails[44].options[0].value" >{{productDetails[44].options[0].label}}
+               </mat-radio-button>
+               <mat-radio-button [value]="productDetails[44].options[1].value">{{productDetails[44].options[1].label}}
+               </mat-radio-button>
+             </mat-radio-group>
+         </div>
+      </div>
+      
+      <div id="customInfo" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Customs Information'}}</h4>
+            </div>
+            <h5>Provide customs information for this product to assist border officers to calculate customs duties
+               and fees when shipping internationally. Will be used by installed apps that require this information.
+            </h5>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <mat-checkbox [(ngModel)]="productDetails[45].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[45].label}}
+         </div>
+      </div>
+
+      <div id="searchOpt" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Search Engine Optimization'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <app-input [config]="productDetails[46]"></app-input>
+            <app-input [config]="productDetails[47]"></app-input>
+            <app-input [config]="productDetails[48]"></app-input>
+         </div>
+      </div>
+
+      <div id="openGraphSharing" class="mat-card">
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <h4>{{'Open Graph Sharing'}}</h4>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+
+            <app-select [config]="productDetails[49]"></app-select>
+
+            <mat-checkbox [(ngModel)]="productDetails[50].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[50].label}}
+            <app-input *ngIf="!productDetails[50].fieldValue" [config]="productDetails[51]"></app-input>
+
+            <mat-checkbox [(ngModel)]="productDetails[52].fieldValue" class="mrgn-r-md"></mat-checkbox>
+            {{productDetails[52].label}}
+            <app-input *ngIf="!productDetails[52].fieldValue" [config]="productDetails[53]"></app-input>
+
+            <mat-radio-group [(ngModel)]="productDetails[54].fieldValue" #radioGroup="matRadioGroup">
+               <mat-radio-button [value]="productDetails[54].options[0].value">{{productDetails[54].options[0].label}}
+               </mat-radio-button>
+               <mat-radio-button [value]="productDetails[54].options[1].value">{{productDetails[54].options[1].label}}
+               </mat-radio-button>
+             </mat-radio-group>
+         </div>
+      </div>
+   </div>
+   <div class="fixed-footer detail-btns">
+      <button mat-raised-button mat-button-sm class="btn-primary mr-2" (click)="CreateClicked()">Save</button>  
+      <button mat-raised-button mat-button-sm color="warn" (click)="CancelClicked()">Cancel</button> 
+   </div>
+</div>
+<ng-template #content let-d="dismiss">
+   <div class="modal-header">
+      <h4 class="modal-title">Add Image/YouTube Video from URL</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModel()">x
+      </button>
+   </div>
+   <div class="modal-body">
+      <div class="mat-form-field-infix ng-tns-c120-29">
+         <a class="uploadImageVideo-link" href="https://www.youtube.com/t/terms" rel="noopener" target="_blank">
+            YouTube Terms of Service
+         </a>
+         <a class="uploadImageVideo-link" href="https://policies.google.com/privacy" rel="noopener" target="_blank">
+            Google Privacy Policy
+         </a>
+      </div>
+      <app-input [config]="productImageUrl"></app-input>
+      <div class="image-preview">
+         <img class="width-100 height-100" *ngIf="productImageUrl.fieldValue" [src]="productImageUrl.fieldValue" />
+         <img class="width-100 height-100" *ngIf="!productImageUrl.fieldValue"
+            src="http://via.placeholder.com/625x800" />
+      </div>
+   </div>
+   <div class="modal-footer">
+      <button mat-raised-button mat-button-sm class="btn-gray"
+         (click)="closeModel()">Cancel</button>
+         <button mat-raised-button mat-button-sm class="btn-primary"
+         (click)="SaveImagesClicked(productImageUrl.fieldValue)">Save</button>
+   </div>
+</ng-template>
+
+
+<app-product-variants [config]="VariantsList" (cancel)="showVariantsOption = false;" [class.d-none]="!showVariantsOption" (save)="savedVariants($event)"></app-product-variants>

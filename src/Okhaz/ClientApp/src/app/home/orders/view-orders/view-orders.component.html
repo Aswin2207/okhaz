@@ -1,0 +1,22 @@
+<app-table *ngIf="selectedOrderIndex == -1" (onAnyAction)="onAnyAction($event, editOrder)"
+    (addClick)="addOrderClick($event)" (deleteClick)="deleteOrderClicked($event)"
+    (reloadData)="getDatFromServer($event)" [config]="OrdersTableConfig">
+</app-table>
+<div *ngIf="selectedOrderIndex != -1">
+    <span><span (click)="selectedOrderIndex = -1" class="navigationHome">Order</span> > Order Detail</span>
+    <app-order-detail [currentOrder]="currentOrder"></app-order-detail>
+</div>
+
+<ng-template #editOrder let-d="dismiss">
+    <div class="mrgn-b-xs cont" id="editOrder">
+        <h2 mat-dialog-title>Edit Order</h2>
+        <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+    </div>
+    <mat-dialog-content>
+        <app-edit-order [currentOrder]="currentOrder"></app-edit-order>
+    </mat-dialog-content>
+    <mat-dialog-actions class="mrgn-b-xs pad-b-none mrgn-t-md center">
+        <button class="cust_line_btn txt_blue mrgn-l-sm" (click)="closeModel()">OK</button>
+        <button class="cust_line_btn txt_blue mrgn-l-sm" (click)="closeModel()">Cancel</button>
+    </mat-dialog-actions>
+</ng-template>

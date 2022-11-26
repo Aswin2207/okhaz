@@ -1,0 +1,738 @@
+<div *ngIf="config && config.tableToolbar==true">
+  <mat-card class="pad-all-lg mrgn-b-lg">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
+        <div class="pad-r-md">
+          <mat-card-actions class="mat-pad-none margin-none">
+            <button mat-raised-button color="primary" (click)="addNewRow()">ADD</button>
+            <button mat-raised-button color="warn" (click)="onDeleteClick()">DELETE</button>
+          </mat-card-actions>
+        </div>
+      </div>
+      <div *ngIf="config.EnableSearch == true" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="70"
+        fxFlex.xl="70">
+        <div fxLayout="row wrap" style="align-items:baseline">
+          <div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+            fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+            <mat-form-field class="full-wid" floatLabel="never">
+              <input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+                (input)="searchInput()">
+            </mat-form-field>
+          </div>
+          <div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="230px"
+            fxFlex.lg="230px" fxFlex.xl="230px">
+            <button (click)="searchColumn()" class="mrgn-r-sm" mat-raised-button color="primary">Search</button>
+            <div class="product-icon">
+              <mat-card class="switcher-wrap pad-x-xs pad-y-xs" fxLayoutAlign="space-between stretch">
+                <i class="material-icons inline-block grid-icon" id="grid" (click)="productShowType('grid')"
+                  [class.active]="showType=='grid'" title="Card View">apps</i>
+                <mat-divider [vertical]="true"></mat-divider>
+                <i class="material-icons inline-block mrgn-r-none mrgn-l-xs list-icon active" id="list"
+                  (click)="productShowType('list')" [class.active]="showType=='list'" title="List View">list</i>
+              </mat-card>
+            </div>
+            <mat-icon class="mat-icon-grey cursor-pointer" (click)="tableRefresh()">loop</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<div class="mat-card" *ngIf="showDateFilter">
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex>
+    <mat-radio-group fxFlex.xs="100" fxFlex.sm="100" fxFlex="50" style="padding: 10px 0;"
+      [(ngModel)]="selectedDateValue">
+      <mat-radio-button *ngFor="let dateOption of dateFilterOptions" value="{{dateOption.id}}" fxFlex>
+        {{dateOption.label}}</mat-radio-button>
+    </mat-radio-group>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="40" fxFlex.xs="100" fxFlex.sm="100">
+      <mat-form-field fxFlex *ngIf="selectedDateValue=='range'">
+        <input ngDefaultControl [(ngModel)]="startDate" type="date" matInput placeholder="Start Date" [max]="todayDate">
+      </mat-form-field>
+      <mat-form-field fxFlex *ngIf="selectedDateValue=='range'">
+        <input ngDefaultControl [(ngModel)]="endDate" type="date" matInput placeholder="End Date" [max]="todayDate">
+      </mat-form-field>
+    </div>
+    <mat-card-actions class="mat-pad-none margin-none" fxFlex="10" fxFlex.xs="100" fxFlex.sm="100">
+      <button mat-raised-button color="primary" style="margin: auto;
+         width: 100px;" (click)="dateFilter()">Filter</button>
+    </mat-card-actions>
+  </div>
+</div>
+<div *ngIf="showType == 'grid'">
+  <div fxLayout="row wrap table_view" fxLayoutAlign="start stretch" class="grid_view" *ngIf="!showBackgroundImage">
+    <div class="table-responsive" [style.height]="height" style="background: white;">
+      <div class="user-grid" fxLayout="row wrap" fxLayoutGap="5px">
+        <div *ngFor="let row of config.data | slice: a:b;let i=index">
+          <mat-card class="mat-elevation-z1" style="width:250px"
+            *ngIf="i>=(page*config.currentPageSize)&&i<((page*config.currentPageSize)+config.currentPageSize)">
+            <mat-card-content (mouseenter)="row.isHover=!row.isHover" (mouseleave)="row.isHover=!row.isHover">
+              <div style="display: inline-block;width: 60%;">
+                <div style="display: inline-block;">
+                  <img class="img-circle user-image" src="{{row.ImagePath}}"
+                    onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" height="50" width="50"
+                    style="height:50px">
+                  <div style="display: inline-block;">
+                    <span
+                      style="font-weight: bold;font-size: medium;margin-top:10px;">{{row.user.item_subCatName}}</span><br />
+                    <span style="font-weight: bold;">({{row.user.id}})</span><span *ngIf="row.user.isNew"
+                      style="padding: 2px 10px 2px 10px;background: royalblue;color: white;border-radius: 6px;margin-left: 5px;">New</span>
+                  </div>
+                </div>
+                <div>Order No#: {{row.orderNumber}}</div>
+                <div>Total: {{row.total}}</div>
+                <div style="font-weight: bold;">QTY: {{row.qty}}</div>
+                <div>Account Type: {{row.accountType}}</div>
+              </div>
+              <div style="display: inline-block;text-align: right;width: 40%;vertical-align: top;">
+                <span>Status</span>
+                <div class="progress">
+                  <img class="img-circle" src="{{row.status.statusIcon}}"
+                    onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" height="30" width="30">
+                  <span
+                    style="padding: 2px 10px 2px 10px;background: royalblue;color: white;border-radius: 6px;margin-left: 5px;">{{row.status.type}}</span>
+                </div>
+                <div style="font-weight: bold;">Order Date</div>
+                <div>{{row.dateCreated}}</div>
+                <div class="actionDiv" *ngIf="row.isHover">
+                  <mat-icon class="mat-icon okhaz-text-xl pointer" (click)="setActionRow(row,columnHeader,i,'edit')">
+                    edit
+                  </mat-icon>
+                  <mat-icon class="mat-icon okhaz-text-xl pointer" (click)="setActionRow(row,columnHeader,i,'print')">
+                    print
+                  </mat-icon>
+                  <mat-icon class="mat-icon okhaz-text-xl pointer" (click)="setActionRow(row,columnHeader,i,'print')">
+                    eye
+                  </mat-icon>
+                  <mat-icon class="mat-icon okhaz-text-xl pointer" (click)="setActionRow(row,columnHeader,i,'delete')">
+                    delete
+                  </mat-icon>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div *ngIf="!config.data || config.data.length == 0" style="text-align:center;padding:10px">
+        No Data Available
+      </div>
+    </div>
+    <div class="pagination" *ngIf="config.enablePagination">
+      <mat-paginator (page)="onPageChange($event)" [length]="config.totalRows" [pageSize]="config.currentPageSize"
+        [pageSizeOptions]="[20, 50, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap table_view" fxLayoutAlign="start stretch" class="grid_view" *ngIf="showBackgroundImage">
+    <div class="table-responsive" [style.height]="height">
+      <!-- <div class="table-responsive" [style.height]="height" style="background: white;"> -->
+      <div style="display:flex;flex-wrap:wrap;padding:0 10px">
+        <div *ngFor="let row of config.data | slice: a:b;let i=index" style="flex:0 0 24.5%">
+          <div>
+            <div class="status_grid">
+              <img class="card-img-circle" src="{{row.statusIcon}}" width="30" height="30"
+                onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
+              <!-- <span style="background-color:{{ row.statusColor }};color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{row.status}}</span> -->
+            </div>
+
+            <mat-card class="mat-elevation-z1 example-card" (mouseenter)="row.isHover=!row.isHover"
+              (mouseleave)="row.isHover=!row.isHover"
+              *ngIf="i>=(page*config.currentPageSize)&&i<((page*config.currentPageSize)+config.currentPageSize)">
+              <ng-container *ngIf="cardType == 'user'">
+
+                <mat-card-header style="display:flex;padding-top:16px">
+                  <!-- <div mat-card-avatar class="example-header-image" style="background-image: url({{row.user.image}}), url('.assets/img/noImg_placeholder.jpeg');"></div> -->
+                  <mat-card-title class="mat-card-title">{{row.user.displayName}}</mat-card-title>
+                  <!-- <mat-card-subtitle>({{row.phone}})</mat-card-subtitle> -->
+
+                </mat-card-header>
+                <div class="row-one">
+                  <div class="row-one-sub">
+                    <b class="row-one-sub-id">(0033)</b><span class="row-one-sub-status-new">NEW</span>
+                  </div>
+                  <div class="row-one-sub">
+                    <mat-icon class="row-one-sub-pause">pause_circle_outlined</mat-icon><span
+                      class="row-one-sub-status-hold">HOLD</span>
+                  </div>
+                </div>
+                <mat-card-content class="card-content">
+                  <div class="card-content-row">
+                    <div class="card-content-row-col1">
+                      <span class="card-content-row-col1-email">Email</span>
+                      <p class="card-content-row-col1-text">{{row.email}}</p>
+                    </div>
+                    <div class="card-content-row-col1">
+                      <span class="card-content-row-col1-email">Mobile</span>
+                      <p class="card-content-row-col1-text">8797657654</p>
+                    </div>
+                  </div>
+                  <div class="card-content-row">
+                    <div class="card-content-row-col1">
+                      <span class="card-content-row-col1-email">Device Used</span>
+                      <p class="card-content-row-col1-text">Android</p>
+                    </div>
+                    <div class="card-content-row-col1">
+                      <span class="card-content-row-col1-email">Is Supplier</span>
+                      <div class="row-one-sub">
+                        <mat-icon class="row-one-sub-tick">task_alt_outlined</mat-icon><span
+                          class="row-one-sub-status-active">ACTIVE</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="with-icon">
+          <mat-icon aria-hidden="false" aria-label="mail home icon">mail</mat-icon>
+          <span class="email-content">{{row.email}}</span>
+        </div>
+        <div class="bottom_container">
+          <div class="left-content box">
+            <label>Validity From</label>
+            <span class="content"> {{row.from}} </span>
+          </div>
+          <div class="right-content box">
+            <label>Validity To</label>
+            <span class="content"> {{row.to}}</span>
+          </div>
+        </div> -->
+                </mat-card-content>
+              </ng-container>
+
+              <div *ngIf="cardType == 'category'">
+                <img mat-card-image src="{{row.ImagePath}}" height="200px" style="max-height:190px"
+                  onerror="this.src='https://material.angular.io/assets/img/examples/shiba2.jpg';this.onerror='';"
+                  alt="Photo of a Shiba Inu" class="image-header" />
+                <mat-card-header>
+                  <mat-card-title class="mat-card-title">{{row.CategoryName}}</mat-card-title>
+                  <mat-card-subtitle>({{row.CategoryDesc}})</mat-card-subtitle>
+                  <div class="status_grid">
+                    <img class="img-circle" src="{{row.statusIcon}}" width="30" height="30"
+                      onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
+                    <span
+                      style="background-color:{{ row.statusColor }};color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{row.status}}</span>
+                  </div>
+                </mat-card-header>
+                <mat-card-content class="card-content">
+                  <div class="bottom_container">
+                    <div class="left-content box">
+                      <label>Supplier Count</label>
+                      <span class="content"> {{row.SupplierCount}} </span>
+                    </div>
+                    <div class="left-content box">
+                      <label>Delivery Charges</label>
+                      <span class="content"> 0.00 </span>
+                    </div>
+                    <div class="right-content box">
+                      <label>Product Count</label>
+                      <span class="content"> {{row.ProductsCount}} </span>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </div>
+
+              <div *ngIf="cardType == ''">
+                <pre>{{row | json }} </pre>
+              </div>
+              <!-- 
+    <mat-card-actions>
+      <div class="actionDiv" *ngIf="row.isHover">
+        <mat-icon class="mat-icon okhaz-text-xl pointer"
+                  (click)="setActionRow(row,columnHeader,i,'edit')">
+          edit
+        </mat-icon>
+
+        <mat-icon class="mat-icon-grey okhaz-text-lg pointer" *ngIf="cardType == 'category'" (click)="setActionRow(row,columnHeader,i,'change_status')">
+          remove_red_eye
+        </mat-icon>
+
+        <mat-icon class="mat-icon okhaz-text-xl pointer" style="color:red"
+                  (click)="setActionRow(row,columnHeader,i,'delete')">
+          delete
+        </mat-icon>
+        <mat-icon class="mat-icon okhaz-text-xl pointer" *ngIf="cardType == 'user'"
+                  (click)="setActionRow(row,columnHeader,i,'print')">
+          print
+        </mat-icon>
+      </div>
+    </mat-card-actions> -->
+            </mat-card>
+          </div>
+
+        </div>
+      </div>
+      <div *ngIf="!config.data || config.data.length == 0" style="text-align:center;padding:10px">
+        No Data Available
+      </div>
+    </div>
+    <div class="pagination card-pagination" *ngIf="config.enablePagination">
+      <mat-paginator (page)="onPageChange($event)" [length]="config.totalRows" [pageSize]="config.currentPageSize"
+        [pageSizeOptions]="[20, 50, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+
+</div>
+<div class="user-manage-list" *ngIf="showType == 'list'">
+  <div [ngClass]="{'mat-card': showCard}">
+    <div class="table-responsive">
+      <table class="full-wid" mat-table [dataSource]="config.data | slice: c:d">
+        <ng-container matColumnDef="checkbox">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox ngDefaultControl [(ngModel)]="allCheck" (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="custName">
+          <th mat-header-cell *matHeaderCellDef>User Name</th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayoutAlign="start center">
+              <div class="mrgn-r-sm user-list-image">
+                <img class="img-circle" src="{{element?.user?.image}}" height="50" width="50"
+                  onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+              </div>
+              <div>
+                <h5 class="mrgn-b-xs displayName">{{element?.user?.displayName}}</h5>
+                <mat-chip-list>
+                  <div class="mat-text-muted" *ngIf="element?.user?.id">
+                    ({{element?.user?.id}})
+                  </div>
+                  <span class="table-new">NEW</span>
+                  <!-- <mat-chip color="primary" *ngIf="element?.user?.isNew" selected>
+                      New
+                    </mat-chip> -->
+                </mat-chip-list>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="user">
+          <th width="20%" mat-header-cell *matHeaderCellDef>{{ columnNames.user }}</th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayoutAlign="start center">
+              <div class="mrgn-r-sm user-list-image">
+                <img class="img-circle" src="{{element?.user?.image}}" height="50" width="50"
+                  onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+              </div>
+              <div>
+                <h5 class="mrgn-b-xs displayName">{{element?.user?.displayName}}</h5>
+                <mat-chip-list>
+                  <div class="mat-text-muted" *ngIf="element?.user?.id">
+                    ({{element?.user?.id}})
+                  </div>
+                  <mat-chip color="primary" *ngIf="element?.user?.isNew" selected>
+                    New
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="plan">
+          <th mat-header-cell *matHeaderCellDef>Subscription Plan</th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayoutAlign="start center">
+              <div class="mrgn-r-sm user-list-image">
+                <img class="img-circle" src="{{element?.user?.image}}" height="50" width="50"
+                  onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+              </div>
+              <div>
+                <h5 class="mrgn-b-xs displayName">{{element?.user?.displayName}}</h5>
+                <mat-chip-list>
+                  <div class="mat-text-muted" *ngIf="element?.user?.id">
+                    ({{element?.user?.id}})
+                  </div>
+                  <mat-chip color="primary" *ngIf="element?.user?.isNew" selected>
+                    New
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="WGTitle">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let element"> {{element.WGTitle}} </td>
+        </ng-container>
+        <ng-container matColumnDef="WGDescription">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let element"> {{element.WGDescription}} </td>
+        </ng-container>
+        <ng-container matColumnDef="WinnerID">
+          <th mat-header-cell *matHeaderCellDef>Winner</th>
+          <td mat-cell *matCellDef="let element"> {{element.WinnerID}} </td>
+        </ng-container>
+        <ng-container matColumnDef="reference">
+          <th mat-header-cell *matHeaderCellDef>Order No#</th>
+          <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+        </ng-container>
+        <ng-container matColumnDef="SubscriptionDate">
+          <th mat-header-cell *matHeaderCellDef>Subscribe Date</th>
+          <td mat-cell *matCellDef="let element"> {{getDate(element.SubscriptionDate)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ExpiryDate">
+          <th mat-header-cell *matHeaderCellDef>Expiry Date</th>
+          <td mat-cell *matCellDef="let element"> {{getDate(element.ExpiryDate)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nationality">
+          <th mat-header-cell *matHeaderCellDef>Nationality</th>
+          <td mat-cell *matCellDef="let element"> {{element.nationality}} </td>
+        </ng-container>
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef>Nationality</th>
+          <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+        </ng-container>
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Role</th>
+          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="isSupplier">
+          <th mat-header-cell *matHeaderCellDef>Is Supplier</th>
+          <!-- <td mat-cell *matCellDef="let element"> {{element.isSupplier?'Yes':'No'}} </td> -->
+          <td mat-cell *matCellDef="let element">
+            <div class="row-one-sub">
+              <mat-icon class="row-one-sub-tick">task_alt_outlined</mat-icon><span
+                class="row-one-sub-status-active">ACTIVE</span>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container width="15%" matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="subCatExist">
+          <th mat-header-cell *matHeaderCellDef>Sub Category Exists</th>
+          <td mat-cell *matCellDef="let element"> {{element.subCatExist?'Yes':'No'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="CategoryName">
+          <th mat-header-cell *matHeaderCellDef>Category Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.CategoryName}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="item_name">
+          <th width="20%" mat-header-cell *matHeaderCellDef>{{ columnNames.item_name }}</th>
+          <td mat-cell *matCellDef="let element">
+            <div fxLayoutAlign="start center">
+              <div class="mrgn-r-sm user-list-image">
+                <img class="img-circle" src="{{element.ImagePath}}" height="50" width="50"
+                  onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+              </div>
+              <div>
+                <h5 class="mrgn-b-xs">{{element.item_name}}</h5>
+                <mat-chip-list>
+                  <div class="mat-text-muted" *ngIf="element?.itemId">
+                    ({{element?.itemId}})
+                  </div>
+                  <mat-chip color="primary" *ngIf="element?.isNew" selected>
+                    New
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="prodCount">
+          <th mat-header-cell *matHeaderCellDef>Product Count</th>
+          <td mat-cell *matCellDef="let element"> {{element.prodCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="catProductCount">
+          <th mat-header-cell *matHeaderCellDef>Product Count</th>
+          <td mat-cell *matCellDef="let element"> {{element.ProductsCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ProductCount">
+          <th mat-header-cell *matHeaderCellDef>Products</th>
+          <td mat-cell *matCellDef="let element"> {{element.ProductCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="subProdCount">
+          <th mat-header-cell *matHeaderCellDef>Sub Product Count</th>
+          <td mat-cell *matCellDef="let element"> {{element.subProdCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="SupplierCount">
+          <th mat-header-cell *matHeaderCellDef>Suppliers Count</th>
+          <td mat-cell *matCellDef="let element"> {{element.SupplierCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Visbile">
+          <th mat-header-cell *matHeaderCellDef>Visbile</th>
+          <td mat-cell *matCellDef="let element"> {{element.Visbile}} </td>
+        </ng-container>
+        <ng-container matColumnDef="suppName">
+          <th mat-header-cell *matHeaderCellDef>Supplier Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.suppName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="suppMob">
+          <th mat-header-cell *matHeaderCellDef>Supplier Mobile</th>
+          <td mat-cell *matCellDef="let element"> {{element.suppMob}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="itemID">
+          <th mat-header-cell *matHeaderCellDef>Product SKU</th>
+          <td mat-cell *matCellDef="let element"> {{element.itemID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Stock">
+          <th mat-header-cell *matHeaderCellDef>Stock Level</th>
+          <td mat-cell *matCellDef="let element"> {{element.productStock}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="itemName">
+          <th mat-header-cell *matHeaderCellDef>Product Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="itemSellingprice">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let element"> {{element.itemSellingprice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Featured">
+          <th mat-header-cell *matHeaderCellDef>Featured</th>
+          <td mat-cell *matCellDef="let element"> {{element.IsFeaturedItem == 0 ? 'No' : 'Yes'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef>Image</th>
+          <td mat-cell *matCellDef="let element">
+            <img class="img-circle" src="{{element.image}}" height="50" width="50"
+              onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="image_url">
+          <th mat-header-cell *matHeaderCellDef>Image</th>
+          <td mat-cell *matCellDef="let element">
+            <img class="img-circle" src="{{element.image_url}}" height="50" width="50"
+              onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="deviceUsed">
+          <th mat-header-cell *matHeaderCellDef>Device Used</th>
+          <td mat-cell *matCellDef="let element"> {{element.deviceUsed}} </td>
+        </ng-container>
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+        <ng-container matColumnDef="uom">
+          <th mat-header-cell *matHeaderCellDef>UOM</th>
+          <td mat-cell *matCellDef="let element"> {{element.uom}} </td>
+        </ng-container>
+        <ng-container matColumnDef="orderNumber">
+          <th mat-header-cell *matHeaderCellDef>Order#</th>
+          <td mat-cell *matCellDef="let element"> {{element.orderNumber}}({{element.primaryOrderNumber===''?'M':'S'}})
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="subOrderNumber">
+          <th mat-header-cell *matHeaderCellDef>Sub Order#</th>
+          <td mat-cell *matCellDef="let element"> {{element.orderNumber}} </td>
+        </ng-container>
+        <ng-container matColumnDef="custID">
+          <th mat-header-cell *matHeaderCellDef>Customer Id</th>
+          <td mat-cell *matCellDef="let element"> {{element.user.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="displayName">
+          <th mat-header-cell *matHeaderCellDef>Item Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.displayName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="supplierName">
+          <th mat-header-cell *matHeaderCellDef>Supplier Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.supplierName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="qty">
+          <th mat-header-cell *matHeaderCellDef>Qty</th>
+          <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
+        </ng-container>
+        <ng-container matColumnDef="accountType">
+          <th mat-header-cell *matHeaderCellDef>Account Type</th>
+          <td mat-cell *matCellDef="let element"> {{element.accountType}} </td>
+        </ng-container>
+        <ng-container matColumnDef="dateCreated">
+          <th mat-header-cell *matHeaderCellDef>{{ columnNames.dateCreated }}</th>
+          <td mat-cell *matCellDef="let element"> {{getDate(element.dateCreated)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="CreateDate">
+          <th mat-header-cell *matHeaderCellDef>Date Created</th>
+          <td mat-cell *matCellDef="let element"> {{getDate(element.CreateDate)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="WGScheduleTime">
+          <th mat-header-cell *matHeaderCellDef>Scheduled Time</th>
+          <td mat-cell *matCellDef="let element"> {{element.WGScheduleTime}} </td>
+        </ng-container>
+        <ng-container matColumnDef="WGStatus">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element"> {{element.WGStatus}} </td>
+        </ng-container>
+        <ng-container matColumnDef="from">
+          <th mat-header-cell *matHeaderCellDef>{{ columnNames.from }}</th>
+          <td mat-cell *matCellDef="let element"> {{element.from}} </td>
+        </ng-container>
+        <ng-container matColumnDef="to">
+          <th mat-header-cell *matHeaderCellDef>{{ columnNames.to }}</th>
+          <td mat-cell *matCellDef="let element"> {{element.to}} </td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <th width="5%" mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="reply">
+          <th mat-header-cell *matHeaderCellDef>Reply</th>
+          <td mat-cell *matCellDef="let element"> {{element.reply}} </td>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Phone</th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+        <ng-container matColumnDef="stringStatus">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="BrandName">
+          <th mat-header-cell *matHeaderCellDef>Brand Title</th>
+          <td mat-cell *matCellDef="let element"> {{element.BrandName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status </th>
+          <td mat-cell *matCellDef="let element">
+            <img class="img-circle" src="{{element.status.statusIcon}}" width="30" height="30"
+              onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="statusText">
+          <th mat-header-cell *matHeaderCellDef>Status </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="status_grid">
+              <img class="img-circle" src="{{element.statusIcon}}" width="30" height="30"
+                onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
+              <span
+                style="background-color:{{ element.statusColor }};color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{element.status}}</span>
+            </div>
+            <div class="action_grid">
+              <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'edit')">
+                <mat-icon class="mat-icon-grey okhaz-text-lg">edit</mat-icon>
+              </button>
+              <button mat-icon-button *ngIf="cardType == ''">
+                <mat-icon class="mat-icon-grey okhaz-text-lg" (click)="setActionRow(element,columnHeader,i,'print')">
+                  print
+                </mat-icon>
+              </button>
+
+              <button mat-icon-button *ngIf="cardType == 'category'">
+                <mat-icon class="mat-icon-grey okhaz-text-lg"
+                  (click)="setActionRow(element,columnHeader,i,'change_status')">
+                  remove_red_eye
+                </mat-icon>
+              </button>
+
+              <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'delete')">
+                <mat-icon style="color:red" class="mat-icon-grey okhaz-text-lg">delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="SubStatus">
+          <th mat-header-cell *matHeaderCellDef>Status </th>
+          <td mat-cell *matCellDef="let element">
+            <img class="img-circle" src="{{element.status.statusIcon}}" width="30" height="30"
+              onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'edit')">
+              <mat-icon class="mat-icon-grey okhaz-text-lg">edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="mat-icon-grey okhaz-text-lg" (click)="setActionRow(element,columnHeader,i,'print')">
+                print
+              </mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="mat-icon-grey okhaz-text-lg"
+                (click)="setActionRow(element,columnHeader,i,'change_status')">
+                remove_red_eye
+              </mat-icon>
+            </button>
+            <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'delete')">
+              <mat-icon style="color:red" class="mat-icon-grey okhaz-text-lg">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="categoryAction">
+          <th mat-header-cell *matHeaderCellDef>categoryAction</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'edit')">
+              <mat-icon class="mat-icon-grey okhaz-text-lg">edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="mat-icon-grey okhaz-text-lg"
+                (click)="setActionRow(element,columnHeader,i,'change_status')">
+                remove_red_eye
+              </mat-icon>
+            </button>
+            <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'delete')">
+              <mat-icon class="mat-icon-grey okhaz-text-lg">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="replyAction">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="setActionRow(row,columnHeader,i,'edit')">
+              <mat-icon class="mat-icon-grey okhaz-text-lg">edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="mat-icon-grey okhaz-text-lg" (click)="setActionRow(row,columnHeader,i,'mail')">
+                mail
+              </mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index" (click)="selectRow(i,row)"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data available</td>
+        </tr>
+      </table>
+    </div>
+    <div class="pagination" *ngIf="config.enablePagination">
+      <mat-paginator (page)="onPageChange($event)" [length]="config.totalRows" [pageSize]="config.currentPageSize"
+        [pageSizeOptions]="[20, 50, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+<mat-menu #menu="matMenu" x-position="before">
+  <button (click)="actionBtnClick('viewDetails')" mat-menu-item>
+    <mat-icon>more</mat-icon>
+    View
+  </button>
+  <button (click)="actionBtnClick('editRow')" mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    Edit
+  </button>
+  <button (click)="actionBtnClick('deleteRow')" mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+</mat-menu>

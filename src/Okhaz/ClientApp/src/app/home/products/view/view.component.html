@@ -1,0 +1,42 @@
+<mat-tab-group (selectedTabChange)="onTabSelected($event.index)" mat-align-tabs="start">
+  <mat-tab class="active" (click)="onTabSelected(1)" label="All Products">
+    <app-table (onAnyAction)="onAnyAction($event)" (addClick)="addProductClick($event)"
+      (deleteClick)="deleteProductClicked($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(2)" label="Featured">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(3)" label="Free Shipping">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(4)" label="Last Import">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(5)" label="Out Of Stock">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(6)" label="Not Visible">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(7)" label="Visible">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+  <mat-tab (click)="onTabSelected(8)" label="Custom Views">
+    <app-table (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteProductClicked($event)"
+      (addClick)="addProductClick($event)" (reloadData)="getDatFromServer($event)" [config]="ItemsTableConfig">
+    </app-table>
+  </mat-tab>
+</mat-tab-group>

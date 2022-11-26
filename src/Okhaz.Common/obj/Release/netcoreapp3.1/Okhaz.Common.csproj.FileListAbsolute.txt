@@ -1,0 +1,15 @@
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.Common.deps.json
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.Common.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.Common.pdb
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.AppInterfaces.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.Models.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.AppInterfaces.pdb
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\bin\Release\netcoreapp3.1\Okhaz.Models.pdb
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.AssemblyInfo.cs
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.csproj.CopyComplete
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Common\obj\Release\netcoreapp3.1\Okhaz.Common.pdb

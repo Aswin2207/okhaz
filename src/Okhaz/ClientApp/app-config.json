@@ -1,0 +1,7 @@
+{
+  "apiBaseUrl": "http://localhost:54342/api",
+  "authApiUrl": "http://localhost:54342/api",
+  "notificationHub": "okhazNotificationHub",
+  "supportedLanguages": ["en", "ta", "te", "ml", "kn", "hi"],
+  "defaultLanguage": "en"
+}

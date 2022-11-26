@@ -1,0 +1,99 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" *ngIf="showTreeView && !showAddView">
+    <mat-tree-node *matTreeNodeDef="let node;"  matTreeNodeToggle matTreeNodePadding (mouseover)="onMouseHover(node)" (mouseout)="onMouseOut(node)">
+      <div class="chkbox_block">
+      <mat-checkbox class="checklist-leaf-node"
+      [checked]="checklistSelection.isSelected(node)"
+      (change)="todoLeafItemSelectionToggle(node)">{{node.name}}</mat-checkbox>
+      <button (click)="addNewCategoryPressed(node)" *ngIf="!node.showInput" class="add-icon-btn"><mat-icon>add</mat-icon></button>
+      </div>
+      <div class="input_block"  *ngIf="node.showInput">
+        <mat-form-field class="full-wid" >
+          <input class="mrgn-t-none" [(ngModel)]="node.newChildVal" matInput placeholder="Name" type="text"  required="true">
+        </mat-form-field>
+        <button mat-raised-button mat-button-sm color="primary" class="mat-button btn-sm mat-button-base mat-primary" [disabled]="!node.newChildVal" (click)="SaveCategoryName(node)">Save</button>
+        <button mat-raised-button mat-button-sm color="danger" class="mat-button mat-button-base mat-warn" (click)="CancelCategoryAdd(node)">Cancel</button> 
+      </div>
+    </mat-tree-node>
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding (mouseover)="onMouseHover(node)" (mouseout)="onMouseOut(node)">
+      <div class="chkbox_block">
+        <mat-icon  matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </mat-icon>
+        <mat-checkbox class="checklist-leaf-node"
+        [checked]="checklistSelection.isSelected(node)"
+        (change)="todoLeafItemSelectionToggle(node)">{{node.name}}</mat-checkbox>
+        <button (click)="addNewCategoryPressed(node)" *ngIf="!node.showInput" class="add-icon-btn"><mat-icon>add</mat-icon></button>
+      </div>
+    
+      <div class="input_block" *ngIf="node.showInput">
+        <mat-form-field class="full-wid" >
+          <input class="mrgn-t-none" [(ngModel)]="node.newChildVal" matInput placeholder="Name" type="text"  required="true">
+        </mat-form-field>
+        <button mat-raised-button mat-button-sm color="primary" class="mat-button btn-sm mat-button-base mat-primary" [disabled]="!node.newChildVal" (click)="SaveCategoryName(node)">Save</button>
+        <button mat-raised-button mat-button-sm color="danger" class="mat-button mat-button-base mat-warn" (click)="CancelCategoryAdd(node)">Cancel</button>
+      </div>
+    </mat-tree-node>
+</mat-tree>
+
+<app-table *ngIf="!showTreeView && !showAddView" showBackgroundImage="true" 
+           (filterData)="filterData($event)"  cardType="category" 
+           [config]="tableData" (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteCategoryClicked($event)" (addClick)="addCategoryClick($event)" (reloadData)="getCategoryDetails($event)"></app-table>
+
+<div class="mat-card" *ngIf="showAddView">
+  <div class="gene-card-title">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h4>{{ (isEdit ? 'Edit Category ' : 'Add New Category') |translate}}</h4>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="gene-card-content"  style="margin-top:20px">
+    <div fxLayout="row">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="65" fxFlex.xl="65">
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+          <app-input [config]="catInputDetails1[0]"></app-input>
+        </div>
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+          <app-select [config]="statusField"></app-select>
+        </div>
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+          <app-input [config]="catInputDetails1[1]"></app-input>
+        </div>
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+          <app-input [config]="catInputDetails1[2]"></app-input>
+        </div>
+
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+          <app-input [config]="catInputDetails2[0]"></app-input>
+        </div>
+
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+          <app-select [config]="departmentField"></app-select>
+        </div>
+
+        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100" style="margin-left:20px">
+          <input name="Category Image" (change)="onFileUploaded($event)" type="file" accept="image/*" />
+        </div>
+
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="35" fxFlex.xl="35">
+        <div *ngIf="isEdit" style="padding-left:70px">
+          <label><b>Category Image:</b></label><br />
+          <img src="{{this.editData.ImagePath}}" width="200" />
+          <br /><br />
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxLayout="row wrap" fxLayoutAlign="center start" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button mat-raised-button color="primary" (click)="SaveCategoryDetails()">Save</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

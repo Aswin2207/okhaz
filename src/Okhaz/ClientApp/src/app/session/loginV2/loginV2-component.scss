@@ -1,0 +1,17 @@
+@media(max-width:599px){
+   .set-resp-space{
+      padding-top: 0.8rem !important;
+      padding-bottom: 0.8rem !important;
+   }
+}
+.error-message{
+   color:red;
+   width: 100%;
+   text-align: center;
+}
+input:-internal-autofill-selected {
+   appearance: menulist-button;
+   background-color: rgb(232, 240, 254) !important;
+   background-image: none !important;
+   color: red !important;
+}

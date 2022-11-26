@@ -1,0 +1,23 @@
+.mat-select {
+    height: 17px;
+}
+.variants_blk{
+    background-color: #f9fafb;
+    border:1px solid #fff;
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.5rem;
+    &:hover{
+        background-color: #f0f2f7;
+        border:1px solid #efefef;
+    }
+    .mat-icon{
+        color: #e01a76;
+        top: 5px;
+        position: relative;
+        opacity: 0.7;
+        cursor: pointer;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,286 @@
+<ng-container *ngIf="!isAdd;else elseBlock">
+	<mat-card class="pad-all-lg mrgn-b-lg">
+		<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+			<div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
+				<div class="pad-r-md">
+					<mat-card-actions class="mat-pad-none margin-none">
+						<button mat-raised-button color="primary" (click)="isAdd = true">Add</button>
+						<button mat-raised-button color="warn">Delete</button>
+						<button mat-raised-button>Clone</button>
+					</mat-card-actions>
+				</div>
+			</div>
+			<div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="70" fxFlex.xl="70">
+				<div fxLayout="row wrap">
+					<div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 230px)"
+						fxFlex.lg="calc(100% - 230px)" fxFlex.xl="calc(100% - 230px)">
+						<mat-form-field class="full-wid" floatLabel="never">
+							<input ngDefaultControl [(ngModel)]="searchVal" matInput placeholder="Search Here"
+								(input)="searchInput()">
+						</mat-form-field>
+					</div>
+					<div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100"
+						fxFlex.md="230px" fxFlex.lg="230px" fxFlex.xl="230px">
+						<button (click)="searchColumn()" class="mrgn-r-sm" mat-raised-button
+							color="primary">Search</button>
+						<div class="product-icon">
+							<mat-card class="switcher-wrap pad-x-xs pad-y-xs" fxLayoutAlign="space-between stretch">
+								<i class="material-icons inline-block grid-icon" id="grid"
+									(click)="productShowType('grid')" [class.active]="showType=='grid'"
+									title="Card View">apps</i>
+								<mat-divider [vertical]="true"></mat-divider>
+								<i class="material-icons inline-block mrgn-r-none mrgn-l-xs list-icon active" id="list"
+									(click)="productShowType('list')" [class.active]="showType=='list'"
+									title="List View">list</i>
+							</mat-card>
+						</div>
+						<mat-icon class="mat-icon-grey cursor-pointer">loop</mat-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</mat-card>
+	<div class="user-manage-list" *ngIf="showType == 'list' && usermanagelist && usermanagelist.length>0">
+		<mat-card>
+			<div class="table-responsive">
+				<table class="full-wid" mat-table [dataSource]="dataSource">
+					<ng-container matColumnDef="select">
+						<th mat-header-cell *matHeaderCellDef>
+							<mat-checkbox (change)="$event ? masterToggle() : null"
+								[checked]="selection.hasValue() && isAllSelected()"
+								[indeterminate]="selection.hasValue() && !isAllSelected()">
+							</mat-checkbox>
+						</th>
+						<td mat-cell *matCellDef="let row">
+							<mat-checkbox (click)="$event.stopPropagation()"
+								(change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+							</mat-checkbox>
+						</td>
+					</ng-container>
+					<ng-container matColumnDef="title">
+						<th mat-header-cell *matHeaderCellDef>Reel Title</th>
+						<td mat-cell *matCellDef="let element">
+							<div fxLayoutAlign="start center">
+								<div class="mrgn-r-sm user-list-image">
+									<img class="img-circle" src="{{element.filePath}}" height="50" width="50"
+											 onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" style="height:50px">
+								</div>
+								<div>
+									<h5 class="mrgn-b-xs">{{element.title}}</h5>
+									<mat-chip-list>
+										<div class="mat-text-muted">
+											({{element.ReelViewCount}})
+										</div>
+									</mat-chip-list>
+								</div>
+							</div>
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="id">
+						<th mat-header-cell *matHeaderCellDef>ID</th>
+						<td mat-cell *matCellDef="let element">
+							<div class="make-ellipse">{{element.id}} </div>
+						</td>
+					</ng-container>
+
+					<ng-container matColumnDef="dateCreated">
+						<th mat-header-cell *matHeaderCellDef>Created Date</th>
+						<td mat-cell *matCellDef="let element"> {{element.dateCreated}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="from">
+						<th mat-header-cell *matHeaderCellDef>Validity From</th>
+						<td mat-cell *matCellDef="let element"> {{element.from}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="to">
+						<th mat-header-cell *matHeaderCellDef>Validity To</th>
+						<td mat-cell *matCellDef="let element"> {{element.to}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="user">
+						<th mat-header-cell *matHeaderCellDef>Created By</th>
+						<td mat-cell *matCellDef="let element">{{element.user}} </td>
+					</ng-container>
+
+					<!-- <ng-container matColumnDef="accountType">
+						<th mat-header-cell *matHeaderCellDef>Account Type</th>
+						<td mat-cell *matCellDef="let element" class="flx">
+							<img *ngIf="element.accountTypeColor == 'primary'" class="img-circle mrgn-r-sm"
+								src="./assets/img/orderStatus/processing.png" width="30" height="30">
+							<img *ngIf="element.accountTypeColor == 'warn'" class="img-circle mrgn-r-sm"
+								src="./assets/img/orderStatus/rejected.png" width="30" height="30">
+							<img *ngIf="element.accountTypeColor == 'accent'" class="img-circle mrgn-r-sm"
+								src="./assets/img/orderStatus/ordered.png" width="30" height="30">
+							<mat-chip-list>
+								<mat-chip color="{{element.accountTypeColor}}" selected> {{element.accountType}}
+								</mat-chip>
+							</mat-chip-list>
+						</td>
+					</ng-container> -->
+
+					<ng-container matColumnDef="action">
+						<th mat-header-cell *matHeaderCellDef>Status</th>
+						<td mat-cell *matCellDef="let element;let i = index;">
+
+							<div class="status_grid">
+								<img class="img-circle" src="{{element.statusIcon}}" width="30" height="30"
+										 onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
+								<span style="background-color:{{ element.statusColor }};color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{element.status}}</span>
+							</div>
+							<div class="action_grid">
+								<button mat-icon-button>
+									<mat-icon class="mat-icon-grey okhaz-text-lg" (click)="onEdit(element, i)">
+										edit
+									</mat-icon>
+								</button>
+								<button mat-icon-button>
+									<mat-icon class="mat-icon-grey okhaz-text-lg">remove_red_eye</mat-icon>
+								</button>
+								<button mat-icon-button (click)="onDelete(i)">
+									<mat-icon class="mat-icon-grey okhaz-text-lg">delete</mat-icon>
+								</button>
+							</div>
+						</td>
+					</ng-container>
+
+					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+					<tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index" (click)="onEdit(row, i)"></tr>
+				</table>
+			</div>
+			<div class="pagination">
+				<mat-paginator [length]="usermanagelist.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+				</mat-paginator>
+			</div>
+		</mat-card>
+	</div>
+	<div class="course-list-wrap" *ngIf="showType == 'grid' && usermanagelist && usermanagelist.length>0">
+		<div fxLayout="row wrap" fxLayoutAlign="center stretch" class="height-full">
+			<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+				<div class="courses-grid col-4-resp">
+					<div fxLayout="row wrap" fxLayoutAlign="start start" class="height-full">
+						<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+							<div class="overflow-show tab-wrap mat-pad-none">
+								<div animationDuration="0ms" class="pad-t-md" fxLayout="row wrap" fxLayoutAlign="start">
+									<div class="course-item-wrap" fxFlex.gt-md="25" fxFlex.gt-sm="33" fxFlex.gt-xs="50"
+										fxFlex="100" *ngFor="let element of usermanagelist; let i = index">
+										<mat-card class="course-item">
+											<div class="okhaz-card-content-wrap">
+												<div class="image-wrap">
+													<ng-container *ngIf="element.isVideo=='1'">
+														<img src="assets/img/course2.jpg" alt="image">
+														<a class="video-icon" (click)="onVideoPlayer(element.filePath)">
+															<i class="material-icons">play_circle_filled</i>
+														</a>
+													</ng-container>
+													<ng-container *ngIf="element.isVideo=='2'">
+														<img src="{{element.filePath}}" alt="image" style="height:160px">
+													</ng-container>
+													<ng-container *ngIf="element.isVideo=='0'">
+														<img src="assets/img/course2.jpg" alt="image">
+													</ng-container>
+												</div>
+												<mat-card-content class="mrgn-b-none"
+													(mouseenter)="element.isHover=!element.isHover"
+													(mouseleave)="element.isHover=!element.isHover">
+													<div class="card-header">
+														<h4>{{element?.id}}.{{element?.title}}</h4>
+													</div>
+													<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+														<div class="meta-info">
+															<span>Validity From</span>
+															<p class="rating-text">{{element?.from}}
+															</p>
+														</div>
+														<div class="meta-info">
+															<span>Validity To</span>
+															<p class="rating-text">{{element?.to}}
+															</p>
+														</div>
+													</div>
+													<p> <span>Created By : </span>
+														<span class="name font-bold">{{element.user}}</span>
+													</p>
+													<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+														<!-- <div fxLayoutAlign="start start">
+															<img *ngIf="element.accountTypeColor == 'primary'"
+																class="img-circle mrgn-r-sm"
+																src="./assets/img/orderStatus/processing.png" width="30"
+																height="30">
+															<img *ngIf="element.accountTypeColor == 'warn'"
+																class="img-circle mrgn-r-sm"
+																src="./assets/img/orderStatus/rejected.png" width="30"
+																height="30">
+															<img *ngIf="element.accountTypeColor == 'accent'"
+																class="img-circle mrgn-r-sm"
+																src="./assets/img/orderStatus/ordered.png" width="30"
+																height="30">
+															<mat-chip-list>
+																<mat-chip color="{{element.accountTypeColor}}" selected>
+																	{{element.accountType}}</mat-chip>
+															</mat-chip-list>
+														</div> -->
+														<div class="actionIcon" fxLayoutAlign="end end"
+															*ngIf="element.isHover">
+															<mat-icon class="mat-icon okhaz-text-xl pointer"
+																(click)="onEdit(element, i)">edit
+															</mat-icon>
+															<mat-icon class="mat-icon okhaz-text-xl pointer">
+																remove_red_eye
+															</mat-icon>
+															<mat-icon class="mat-icon okhaz-text-xl pointer"
+																(click)="onDelete(i)">delete
+															</mat-icon>
+														</div>
+													</div>
+												</mat-card-content>
+											</div>
+										</mat-card>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-container>
+<ng-template #elseBlock>
+	<add-reel  #child (onCancel)="isAdd = false"  (onAnyAction)="onAnyAction($event)"></add-reel>
+</ng-template>
+
+<style type="text/css">
+  tr.selected {
+    background-color: #e3e2e2;
+  }
+
+  .rowDiv:hover {
+    background-color: #fff;
+  }
+
+  tr.mat-row:hover {
+    background: #f5f5f5;
+  }
+
+  tr.mat-row:active {
+    background: #efefef;
+  }
+
+  tr.mat-row .status_grid {
+    display: block;
+  }
+
+  tr.mat-row:hover .status_grid {
+    display: none;
+  }
+
+  tr.mat-row .action_grid {
+    display: none;
+  }
+
+  tr.mat-row:hover .action_grid {
+    display: block;
+  }
+</style>

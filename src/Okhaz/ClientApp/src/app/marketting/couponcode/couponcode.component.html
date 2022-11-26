@@ -1,0 +1,74 @@
+<div id="basicInfo" class="mat-card" *ngIf="ShowAddCoupon">
+  <div class="okhaz-card-title">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h4>{{'Basic Information'}}</h4>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="okhaz-card-content">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[0]"></app-input>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[1]"></app-input>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[7]"></app-input>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <mat-radio-group [(ngModel)]="productDetails[2].fieldValue" #radioGroup="matRadioGroup">
+          <mat-radio-button *ngFor="let b of productDetails[2].options" [value]="b.value"> {{b.label}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[3]"></app-input>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[4]"></app-input>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[5]"></app-input>
+      </div>
+      <div class="add-check mrgn-b-md" fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <mat-checkbox [(ngModel)]="productDetails[6].fieldValue" class="mrgn-r-md"></mat-checkbox>
+        {{productDetails[6].label}} <br>
+        <mat-checkbox [(ngModel)]="productDetails[7].fieldValue" class="mrgn-r-md"></mat-checkbox>
+        {{productDetails[7].label}} <br>
+        <mat-checkbox [(ngModel)]="productDetails[8].fieldValue" class="mrgn-r-md"></mat-checkbox>
+        {{productDetails[8].label}} <br>
+        <mat-checkbox [(ngModel)]="productDetails[9].fieldValue" class="mrgn-r-md"></mat-checkbox>
+        {{productDetails[9].label}} <br>
+      </div>
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[10]"></app-input>
+      </div>
+      <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxLayoutAlign="center">
+        <button mat-raised-button color="primary" class="button-lg mrgn-r-md">
+          {{'Add' | translate }}
+        </button>
+        <button mat-raised-button color="warn" class="button-lg mrgn-r-md">
+          {{'Cancel' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div fxLayout="row" fxLayoutAlign="start center">
+    <h5>Category</h5>
+  </div>
+  <perfect-scrollbar>
+    <div class="okhaz-card-content" style="max-height: 25rem;">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <app-product-categories [showCard]=false [showCard]=false [showTreeView]="true"></app-product-categories>
+        </div>
+      </div>
+    </div>
+  </perfect-scrollbar>
+</div>
+
+<div class="mat-card" *ngIf="!ShowAddCoupon">
+  <app-table [config]="CouponsList" (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteCouponClicked($event)" (addClick)="addCouponClick($event)" (reloadData)="getCouponList($event)"></app-table>
+</div> -->

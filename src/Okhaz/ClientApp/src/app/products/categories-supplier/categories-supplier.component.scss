@@ -1,0 +1,14 @@
+.st_category_supplier{
+    display: flex;
+    flex-direction: row;
+    .left_table{
+        width: 60%;
+       // height: calc(100% - 170px);
+        overflow: auto;
+    }
+    .right_cont{
+        width: 35%;
+      //  height: calc(100% - 170px);
+        overflow: auto;
+    }
+}

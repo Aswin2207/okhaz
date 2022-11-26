@@ -1,0 +1,18 @@
+<div *ngIf="selectedOrderIndex == -1">
+    <mat-tab-group (selectedTabChange)="onTabSelected($event.index)" mat-align-tabs="start">
+        <mat-tab class="active" (click)="onTabSelected(1)" label="Supplier">
+            <app-table (onAnyAction)="onAnyAction($event)" (addClick)="addOrderClick($event)"
+                (deleteClick)="deleteOrderClicked($event)" (reloadData)="getDatFromServer($event)"
+                [config]="OrdersTableConfig"></app-table>
+        </mat-tab>
+        <mat-tab (click)="onTabSelected(2)" label="All Kind">
+            <app-table (onAnyAction)="onAnyAction($event)" (addClick)="addOrderClick($event)"
+                (deleteClick)="deleteOrderClicked($event)" (reloadData)="getDatFromServer($event)"
+                [config]="OrdersTableConfig"></app-table>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div *ngIf="selectedOrderIndex != -1">
+    <span><a (click)="selectedOrderIndex = -1" class="navigationHome">Wheel Game Setup</a> > Wheel Detail</span>
+    <app-wheel-game-detail [currentOrder]="currentOrder"></app-wheel-game-detail>
+</div>

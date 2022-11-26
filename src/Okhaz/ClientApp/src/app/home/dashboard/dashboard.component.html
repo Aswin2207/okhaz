@@ -1,0 +1,613 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" class="crm-stats-cards">
+    <div class="crm-stats" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <div fxFlex.gt-md="25" fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+                <mat-list class="instructor-list mat-pad-none">
+                    <mat-list-item>
+                        <h4 mat-line>Lorem ipsum dolor sit amet sit</h4>
+                        <h4 mat-line>You QTP Mart Admin Panel</h4>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <div fxFlex.gt-md="75" fxFlex.gt-sm="75" fxFlex.gt-xs="100" fxFlex="100">
+                <mat-card>
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="20" fxFlex.gt-xs="20" fxFlex="100">
+                            <div class="trade-crypto crypto-input-prefix">
+                                <div class="pad-t-sm">
+                                    <mat-form-field class="full-wid" appearance="outline">
+                                        <mat-label>Track Order</mat-label>
+                                        <span matPrefix class="fa fa-map-marker" aria-hidden="true"></span>
+                                        <mat-select value="Bitcoin">
+                                            <mat-option value="Bitcoin">Bitcoin</mat-option>
+                                            <mat-option value="Ethereum">Ethereum</mat-option>
+                                            <mat-option value="EOS">EOS</mat-option>
+                                            <mat-option value="Litecoin">Litecoin</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxFlex.gt-sm="10" fxFlex.gt-xs="10" fxFlex="100">
+                            <button mat-raised-button mat-button-sm color="primary"
+                                class="mrgn-b-md mrgn-l-md">Track</button>
+                        </div>
+                        <div fxFlex.gt-sm="70" fxFlex.gt-xs="70" fxFlex="100">
+                            <mat-horizontal-stepper selectedIndex=2 labelPosition="bottom" disableRipple=true
+                                linear=true #stepper>
+                                <mat-step label="Pending" state="pending" completed=true editable=false>
+                                </mat-step>
+                                <mat-step label="Processing" state="processing" completed=true editable=false>
+                                </mat-step>
+                                <mat-step label="On The Way" state="ontheway" editable=false>
+                                </mat-step>
+                                <mat-step label="Delivered" state="delivered" editable=false>
+                                </mat-step>
+                            </mat-horizontal-stepper>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" class="crm-stats-cards" *ngIf="statsCards">
+    <div class="crm-stats" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <div fxFlex.gt-md="25" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" *ngFor="let cards of statsCards">
+                <mat-card class="{{cards.card_color}} mat-card">
+                    <div class="mrgn-b-xs" mat-card-widget fxLayout="row" fxLayoutAlign="start center">
+                        <span class="inline-block lead">
+                            <i class="fa {{cards.icon}} mrgn-r-xs" aria-hidden="true"></i>
+                        </span>
+                        <span class="lead inline-block">{{cards.title}}</span>
+                    </div>
+
+                    <div class="chart-wrap">
+                        <div class="stats-line-chart-wrap" *ngIf="showChart">
+                            <canvas baseChart [datasets]="cards.chartData" [labels]="cards.chartLabel"
+                                [options]="lineChartOptions" [colors]="cards.chartColors" chartType="line">
+                            </canvas>
+                        </div>
+                    </div>
+                    <div class="mrgn-b-md" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <span>{{cards.viewer}}</span>
+                        <span>Trade : {{cards.trade}}%</span>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start">
+    <div fxFlex.gt-sm="100" fxFlex="100">
+        <mat-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">Store Performance</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div echarts [options]="chartOptions"></div>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch">
+    <div fxFlex.gt-md="33.33" fxFlex.gt-sm="33.33" fxFlex="100">
+        <!-- <mat-card class="{{statsCards[1].card_color}} mat-card">
+            <div class="mrgn-b-xs" mat-card-widget fxLayout="row" fxLayoutAlign="start center">
+                <span class="inline-block lead">
+                    <i class="fa {{statsCards[1].icon}} mrgn-r-xs" aria-hidden="true"></i>
+                </span>
+                <span class="lead inline-block">{{statsCards[1].title}}</span>
+            </div>
+            <div class="chart-wrap">
+                <div class="stats-line-chart-wrap" *ngIf="showChart">
+                    <canvas baseChart [datasets]="statsCards[1].chartData" [labels]="statsCards[1].chartLabel"
+                        [options]="lineChartOptions" [colors]="statsCards[1].chartColors" chartType="line">
+                    </canvas>
+                </div>
+            </div>
+            <div class="mrgn-b-md" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <span>{{statsCards[1].viewer}}</span>
+                <span>Trade : {{statsCards[1].trade}}%</span>
+            </div>
+        </mat-card> -->
+        <mat-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Quick Trade'}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="gene-card-content">
+                <div class="quick-pay-wrap">
+                    <mat-tab-group>
+                        <mat-tab label="Buy">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">shopping_cart</mat-icon>
+                                Timeline
+                            </ng-template>
+                            <div class="gene-card-content msg-wrapper">
+                                <perfect-scrollbar class=" set-list-scroll">
+                                    <div *ngFor=" let item of team">
+                                        <div fxLayout="row" fxLayoutAlign="start start"
+                                            class="mrgn-b-md gene-relative msg-wrap-list">
+                                            <div class="dash-thumb gene-relative" fxFlex.gt-sm="50px"
+                                                fxFlex.gt-xs="50px" fxFlex="50px">
+                                                <img class="img-circle" src="{{item.photo}}" alt="User Image" width="50"
+                                                    height="50">
+                                            </div>
+                                            <div class="pad-wrap dash-content" fxFlex.gt-sm="calc(100% - 50px)"
+                                                fxFlex.gt-xs="calc(100% - 50px)" fxFlex="100">
+                                                <div class="border-rad-base">
+                                                    <span class="font-bold">{{item.name}}</span>
+                                                    <p class="margin-none">{{item.post}}</p>
+                                                </div>
+                                                <a class="gene-absolute black-text">
+                                                    <span class="font-bold">{{item.purchase}}</span>
+                                                </a>
+                                            </div>
+                                            <span fxFlex></span>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Sell">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">attach_money</mat-icon>
+                                Top 20 Sender
+                            </ng-template>
+                            <div class="gene-card-content msg-wrapper">
+                                <perfect-scrollbar class=" set-list-scroll">
+                                    <div *ngFor=" let item of team">
+                                        <div fxLayout="row" fxLayoutAlign="start start"
+                                            class="mrgn-b-md gene-relative msg-wrap-list">
+                                            <div class="dash-thumb gene-relative" fxFlex.gt-sm="50px"
+                                                fxFlex.gt-xs="50px" fxFlex="50px">
+                                                <img class="img-circle" src="{{item.photo}}" alt="User Image" width="50"
+                                                    height="50">
+                                            </div>
+                                            <div class="pad-wrap dash-content" fxFlex.gt-sm="calc(100% - 50px)"
+                                                fxFlex.gt-xs="calc(100% - 50px)" fxFlex="100">
+                                                <div class="border-rad-base">
+                                                    <span class="font-bold">{{item.name}}</span>
+                                                    <p class="margin-none">{{item.post}}</p>
+                                                </div>
+                                                <a class="gene-absolute black-text">
+                                                    <span class="font-bold">{{item.purchase}}</span>
+                                                </a>
+                                            </div>
+                                            <span fxFlex></span>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-md="33.33" fxFlex.gt-sm="33.33" fxFlex="100">
+        <mat-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Product Trending'}}</h4>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="gene-card-content">
+                <div class="quick-pay-wrap">
+                    <mat-tab-group>
+                        <mat-tab label="Buy">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">shopping_cart</mat-icon>
+                                Top 20
+                            </ng-template>
+                            <div class="gene-card-content msg-wrapper">
+                                <perfect-scrollbar class=" set-list-scroll">
+                                    <div *ngFor=" let item of team">
+                                        <div fxLayout="row" fxLayoutAlign="start start"
+                                            class="mrgn-b-md gene-relative msg-wrap-list">
+                                            <div class="dash-thumb gene-relative" fxFlex.gt-sm="50px"
+                                                fxFlex.gt-xs="50px" fxFlex="50px">
+                                                <img class="img-circle" src="{{item.photo}}" alt="User Image" width="50"
+                                                    height="50">
+                                            </div>
+                                            <div class="pad-wrap dash-content" fxFlex.gt-sm="calc(100% - 50px)"
+                                                fxFlex.gt-xs="calc(100% - 50px)" fxFlex="100">
+                                                <div class="border-rad-base">
+                                                    <span class="font-bold">{{item.name}}</span>
+                                                    <p class="margin-none">{{item.post}}</p>
+                                                </div>
+                                                <a class="gene-absolute black-text">
+                                                    <span class="font-bold">{{item.purchase}}</span>
+                                                </a>
+                                            </div>
+                                            <span fxFlex></span>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Sell">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="mrgn-r-sm">attach_money</mat-icon>
+                                Low Selling 20 Products
+                            </ng-template>
+                            <div class="gene-card-content msg-wrapper">
+                                <perfect-scrollbar class=" set-list-scroll">
+                                    <div *ngFor=" let item of team">
+                                        <div fxLayout="row" fxLayoutAlign="start start"
+                                            class="mrgn-b-md gene-relative msg-wrap-list">
+                                            <div class="dash-thumb gene-relative" fxFlex.gt-sm="50px"
+                                                fxFlex.gt-xs="50px" fxFlex="50px">
+                                                <img class="img-circle" src="{{item.photo}}" alt="User Image" width="50"
+                                                    height="50">
+                                            </div>
+                                            <div class="pad-wrap dash-content" fxFlex.gt-sm="calc(100% - 50px)"
+                                                fxFlex.gt-xs="calc(100% - 50px)" fxFlex="100">
+                                                <div class="border-rad-base">
+                                                    <span class="font-bold">{{item.name}}</span>
+                                                    <p class="margin-none">{{item.post}}</p>
+                                                </div>
+                                                <a class="gene-absolute black-text">
+                                                    <span class="font-bold">{{item.purchase}}</span>
+                                                </a>
+                                            </div>
+                                            <span fxFlex></span>
+                                        </div>
+                                    </div>
+                                </perfect-scrollbar>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex.gt-md="33.33%" fxFlex="100">
+        <mat-card class="card-full-height card-full-width">
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Start Accepting Orders'}}</h4>
+                    </div> <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="gene-card-content crm-progress-wrap">
+                <mat-vertical-stepper linear=true #stepper>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">1.Add Products</span>
+                                <p mat-line class="meta-post mrgn-b-none">Add products</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button class="cust_line_btn txt_blue mrgn-l-sm" matStepperNext>Add Products</button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">2.Get Set to Ship</span>
+                                <p mat-line class="meta-post mrgn-b-none">Accept Shipping</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button class="cust_line_btn txt_blue mrgn-l-sm" matStepperNext>Set Shipping</button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">3.Accept Cash on Delivery</span>
+                                <p mat-line class="meta-post mrgn-b-none">Accept Cash on Delivery</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button class="cust_line_btn txt_blue mrgn-l-sm" matStepperNext>Accept Payment</button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <div class="border-rad-base">
+                                <span class="font-bold">4.Set-up Your Tax Rate</span>
+                                <p mat-line class="meta-post mrgn-b-none">Set-up Your Tax Rate</p>
+                            </div>
+                        </ng-template>
+                        <div>
+                            <button class="cust_line_btn txt_blue mrgn-l-sm" (click)="stepper.reset()">Set
+                                Taxes</button>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start">
+    <div fxFlex.gt-sm="100" fxFlex="100">
+        <div class="trade-list table-list-wrap coins-list-table">
+            <mat-card>
+                <mat-tab-group class="table-tab-list" color="accent">
+                    <mat-tab label="{{'Transaction List'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="transactiion-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.transactionList">
+                                        <ng-container matColumnDef="transid">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Transaction Id
+                                            </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.transid}}</div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="date">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">{{element.date |
+                                                date:'mediumDate'}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="account">
+                                            <th mat-header-cell *matHeaderCellDef>Account</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.account}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="type">
+                                            <th mat-header-cell *matHeaderCellDef>Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <mat-chip-list>
+                                                    <mat-chip color="{{element.typeColor}}" selected>{{element.type}}
+                                                    </mat-chip>
+                                                </mat-chip-list>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="amount">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Amount</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.amount}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="debit">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Debit</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">{{element.debit}}
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="credit">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Credit</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.credit}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="balance">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Balance</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.balance}} </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedTransactionColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedTransactionColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{'Transfer Report'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="invoice-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.transferreport">
+                                        <ng-container matColumnDef="transid">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Transfer Id</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.transid}}</div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="date">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">{{element.date |
+                                                date:'mediumDate'}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="account">
+                                            <th mat-header-cell *matHeaderCellDef>Account</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.account}}</td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="type">
+                                            <th mat-header-cell *matHeaderCellDef>Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <mat-chip-list>
+                                                    <mat-chip color="{{element.typeColor}}" selected>{{element.type}}
+                                                    </mat-chip>
+                                                </mat-chip-list>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="amount">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Amount</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.amount}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="balance">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Balance</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.balance}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="status">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Status</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <mat-chip-list>
+                                                    <mat-chip color="{{element.statusColor}}" selected>
+                                                        {{element.status}}
+                                                    </mat-chip>
+                                                </mat-chip-list>
+                                            </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedTransferColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedTransferColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{'Expense Category'}}">
+                        <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="Expense-category-list table-list-wrap">
+                                <div class="table-responsive">
+                                    <table class="full-wid" mat-table [dataSource]="tableTabData.expenseCategory">
+                                        <ng-container matColumnDef="itmNo">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Item No</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <div>{{element.itmNo}}</div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="date">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Date</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">{{element.date |
+                                                date:'mediumDate'}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="type">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Type</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <mat-chip-list>
+                                                    <mat-chip color="{{element.typeColor}}" selected>{{element.type}}
+                                                    </mat-chip>
+                                                </mat-chip-list>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="description">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Description</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.description}}
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="amount">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Amount</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                {{element.amount}} </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="status">
+                                            <th class="text-nowrap" mat-header-cell *matHeaderCellDef>Status</th>
+                                            <td class="text-nowrap" mat-cell *matCellDef="let element">
+                                                <mat-chip-list>
+                                                    <mat-chip color="{{element.statusColor}}" selected>
+                                                        {{element.status}}
+                                                    </mat-chip>
+                                                </mat-chip-list>
+                                            </td>
+                                        </ng-container>
+                                        <tr mat-header-row *matHeaderRowDef="displayedExpenseColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedExpenseColumns"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch">
+    <div fxFlex.gt-sm="100%" fxFlex="100">
+        <mat-card class="card-full-height live-chat-card">
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4 class="mrgn-b-none">{{'Customer Review'}}</h4>
+                    </div> <span fxFlex></span>
+                    <button mat-icon-button>
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="options">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="gene-card-content">
+                <perfect-scrollbar class="chat-content-wrap">
+                    <div fxLayout="row" fxLayoutAlign="start start" class="{{livechat.classSendBy}} chat-list pad-y-sm"
+                        *ngFor="let livechat of liveChatSupport">
+                        <div class="chat-thumbnail" fxFlex.gt-md="65px" fxFlex.gt-xs="70px" fxFlex="70px">
+                            <img class="img-responsive img-circle" src="{{livechat.image}}" alt="User Image" width="64"
+                                height="64">
+                        </div>
+                        <div class="pad-wrap chat-content" fxFlex.gt-md="calc(80% - 75px)" fxFlex.gt-xs="80"
+                            fxFlex.sm="100">
+                            <div fxLayout="row wrap" class="title-wrap">
+                                <span class="chat-text font-bold inline-block">{{livechat.name}}</span>
+                                <p>
+                                    <bar-rating [rate]="livechat.rating" [max]="5" [readOnly]="true"
+                                        [theme]="'default'"></bar-rating>
+                                </p>
+                            </div>
+                            <div class="gene-chat-content">
+                                <p class="mrgn-b-none gene-msg-block">{{livechat.chat}}</p>
+                                <p class="mrgn-t-sm">
+                                    <mat-slide-toggle></mat-slide-toggle> ACTIVE
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+                <div class="gene-chat-form" fxLayoutAlign="center">
+                    <a>View All Review</a>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<mat-menu #options="matMenu" x-position="before">
+    <button mat-menu-item>
+        <mat-icon>settings</mat-icon> Settings
+    </button>
+    <button mat-menu-item>
+        <mat-icon>more</mat-icon> View More
+    </button>
+    <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon> Disable notifications
+    </button>
+    <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon> Remove Panel
+    </button>
+</mat-menu>

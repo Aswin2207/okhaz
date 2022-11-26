@@ -1,0 +1,59 @@
+<div id="basicInfo" class="mat-card" *ngIf="ShowAddCoupon">
+  <div class="gene-card-title">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h4>{{'Basic Information'}}</h4>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="gene-card-content">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+        <app-input [config]="productDetails[0]"></app-input>
+        <app-input [config]="productDetails[1]"></app-input>
+        <app-input [config]="productDetails[7]"></app-input>
+        <mat-radio-group [(ngModel)]="productDetails[2].fieldValue" #radioGroup="matRadioGroup">
+          <mat-radio-button *ngFor="let b of productDetails[2].options" [value]="b.value"> {{b.label}} </mat-radio-button>
+        </mat-radio-group>
+
+        <app-input [config]="productDetails[3]"></app-input>
+        <app-input [config]="productDetails[4]"></app-input>
+        <app-input [config]="productDetails[5]"></app-input>
+
+        <div class="add-check mrgn-b-md" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <mat-checkbox [(ngModel)]="productDetails[6].fieldValue" class="mrgn-r-md"></mat-checkbox>
+          {{productDetails[6].label}}
+        </div>
+        <div class="add-check mrgn-b-md" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <mat-checkbox [(ngModel)]="productDetails[7].fieldValue" class="mrgn-r-md"></mat-checkbox>
+          {{productDetails[7].label}}
+        </div>
+        <div class="add-check mrgn-b-md" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <mat-checkbox [(ngModel)]="productDetails[8].fieldValue" class="mrgn-r-md"></mat-checkbox>
+          {{productDetails[8].label}}
+        </div>
+        <div class="add-check mrgn-b-md" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <mat-checkbox [(ngModel)]="productDetails[9].fieldValue" class="mrgn-r-md"></mat-checkbox>
+          {{productDetails[9].label}}
+        </div>
+
+        <app-input [config]="productDetails[10]"></app-input>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <h5>Category</h5>
+  </div>
+  <perfect-scrollbar>
+    <div class="gene-card-content" style="max-height: 25rem;">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <app-product-categories [showTreeView]="true"></app-product-categories>
+        </div>
+      </div>
+    </div>
+  </perfect-scrollbar>
+</div>
+
+<div class="mat-card" *ngIf="!ShowAddCoupon">
+  <app-table [config]="CouponsList" (onAnyAction)="onAnyAction($event)" (deleteClick)="deleteCouponClicked($event)" (addClick)="addCouponClick($event)" (reloadData)="getCouponList($event)"></app-table>
+</div>

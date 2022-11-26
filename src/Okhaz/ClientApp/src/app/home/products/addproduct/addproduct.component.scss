@@ -1,0 +1,122 @@
+// products
+
+body {
+    .mat-card {
+       .mat-card-image {
+          max-width: inherit;
+          border-bottom: 1px solid #eee;
+       }     
+       &.product-card{
+          padding-top:1.5rem;
+          padding-bottom:1.5rem;
+       } 
+    }
+    .img-zoom-container{
+       position:relative !important;
+       #myresult {
+          display: none;
+       }
+    }     
+    .product-detail-page{
+       .mat-mini-fab{ 
+          height:2.5rem;
+          width:2.5rem;
+          i{
+             padding:0;
+             margin-right:0;
+             line-height:2.5rem;
+          }
+       }   
+    }   
+ }
+ .product-content,.product-item .content-wrap{
+    .category-wrap{
+       margin-bottom:0.5rem;
+    }
+    .text-line{
+       margin-right:0.625rem;
+    }
+ }
+ .m-icon {
+    position: absolute;
+    top: 55px;
+    right: 20px;
+    transition: all 0.3s ease-in;
+    i{
+       font-size:16px;
+       margin-right:0px;
+    }
+    .mat-fab{
+       width:30px;
+       height:30px;
+       line-height:30px;
+       .mat-button-wrapper{
+          padding:5px 0;
+          line-height:20px;
+       }   
+    }
+ }
+ .m-icon.shop-cart{
+    top:25px;
+    .mat-fab{
+       width:40px;
+       height:40px;
+       line-height:40px;   
+    }
+ }
+ .wishlist-icon{
+    position: absolute;
+    top: 15px;
+    right: 010px;
+    z-index: 99;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease-in 0s;
+    text-align: center;
+    line-height: 50px;
+    a {
+       color: rgba(0,0,0,0.4);
+       &:hover{
+          color:rgba(0, 0, 0, 0.7);
+       }
+    }
+   
+ }
+  
+ 
+ 
+ .wishlist-icon.wishlist-active a{
+   color:rgba(0,0,0,1);
+ }
+ 
+
+ //custom
+
+ .product-detail-page{
+     .prod_row {
+        flex-flow: row wrap;
+        box-sizing: border-box;
+        display: flex;
+        place-content: center;
+        align-items: center;
+        .prod_cont{
+            flex: 1 1 80%;
+            box-sizing: border-box;
+            max-width: 80%;
+        }
+     }
+     .mat-input-element{
+        font: inherit;
+        background: transparent;
+        color: currentColor;
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        vertical-align: bottom;
+        text-align: inherit;
+     }
+ }

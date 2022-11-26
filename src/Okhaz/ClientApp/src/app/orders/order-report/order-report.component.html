@@ -1,0 +1,91 @@
+<mat-dialog-content>
+  <mat-card>
+    <div fxLayout="column" fxFlex="100">
+      <div fxFlex="100">
+        <h1>Order Reports</h1>
+      </div>
+      <div fxFlex="100">
+        <app-select [config]="reportFields[2]" (change)="onReportTypeChange($event)"></app-select>
+      </div>
+      <div fxLayout="row wrap" fxFlex="100">
+        <mat-form-field fxFlex>
+          <input ngDefaultControl [(ngModel)]="fromDate" type="date" matInput placeholder="From Date"
+                 [max]="todayDate">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input ngDefaultControl [(ngModel)]="toDate" type="date" matInput placeholder="End Date"
+                 [max]="todayDate">
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" *ngIf="selectedReportType === 2">
+        <app-select [config]="reportFields[0]" (change)="onSupplierChange($event)"></app-select>
+      </div>
+      <div fxFlex="100" *ngIf="selectedReportType === 3">
+        <app-select [config]="reportFields[1]" (change)="onDeliveryManChange($event)"></app-select>
+      </div>
+    </div>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-card>
+  <mat-dialog-actions align="right">
+    <button mat-raised-button (click)="onCancel()" color="primary">CANCEL</button>
+    <button mat-raised-button (click)="onConfirm()" color="warn">GENERATE REPORT</button>
+  </mat-dialog-actions>
+</mat-card>
+
+<mat-dialog-content>
+  <div class="user-manage-list">
+    <div class="mat-card">
+      <div class="table-responsive">
+        <table class="mat-table">
+          <thead class="">
+            <tr class="mat-header-row" style="">
+              <ng-container *ngFor="let col of reportColumns">
+                <th class="mat-header-cell" *ngIf="skipFields.indexOf(col.key) == -1">
+                  {{columnsHead.hasOwnProperty(col.key) ? columnsHead[col.key] : col.key | titlecase}}
+                </th>
+              </ng-container>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mat-row " *ngFor="let x of reportList">
+              <ng-container *ngFor="let col of reportColumns">
+                <td class="mat-cell" *ngIf="displaySkipFields.indexOf(col.key) == -1 && amountFields.indexOf(col.key) == -1" style="text-align:center">
+                  <span class="">{{x[col.key]}}</span>
+                </td>
+                <td class="mat-cell" *ngIf="col.key == 'CustomerName'">
+                  <div _ngcontent-lub-c460="" fxlayoutalign="start center" ng-reflect-fx-layout-align="start center" style="place-content: center flex-start; align-items: center; flex-direction: row; box-sizing: border-box; display: flex;">
+                    <div _ngcontent-lub-c460="" class="mrgn-r-sm user-list-image">
+                      <img _ngcontent-lub-c460="" height="50" width="50" onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" class="img-circle" src="./assets/img/default_avatar.png">
+                    </div>
+                    <div _ngcontent-lub-c460="">
+                      <h5 _ngcontent-lub-c460="" class="mrgn-b-xs">{{x.CustomerName}} </h5>
+                      <mat-chip-list _ngcontent-lub-c460="" class="mat-chip-list" id="mat-chip-list-0" tabindex="-1" aria-disabled="false" aria-invalid="false" aria-multiselectable="false" aria-orientation="horizontal">
+                        <div class="mat-chip-list-wrapper">
+                          <div _ngcontent-lub-c460="" class="mat-text-muted ng-star-inserted"> ({{x.Mobile}}) </div>
+                        </div>
+                      </mat-chip-list>
+                    </div>
+                  </div>
+                </td>
+                <td class="mat-cell" *ngIf="col.key == 'OrderStatus'" style="text-align:center">
+                  <img width="30" height="30" onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';" class="img-circle" src="{{getOrderStatsImage(x.OrderStatus)}}">
+                </td>
+                <td class="mat-cell" *ngIf="col.key == 'OrderDate'" style="text-align:center">
+                  {{formatDate2(x.OrderDate)}}
+                </td>
+                <td class="mat-cell" *ngIf="amountFields.indexOf(col.key) != -1" style="text-align:center">
+                  {{formatAmount(x[col.key])}}
+                </td>
+              </ng-container>
+            </tr>
+            <tr class="mat-row " *ngIf="reportList.length < 1">
+              <td class="mat-cell" style="text-align:center" colspan="8">No more records found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

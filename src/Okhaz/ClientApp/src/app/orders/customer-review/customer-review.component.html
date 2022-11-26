@@ -1,0 +1,191 @@
+<div class="feedback-wrapper">
+	<div>
+		<mat-card class="pad-all-lg mrgn-b-lg">
+			<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+				<div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
+					<div class="pad-r-md">
+						<h4>
+							<mat-slide-toggle [(ngModel)]="allActive" (change)="toggle($event,true)"></mat-slide-toggle>
+							ACTIVE
+						</h4>
+					</div>
+				</div>
+				<div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="70" fxFlex.xl="70">
+					<div fxLayout="row wrap">
+						<div class="form-group pad-r-md" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(100% - 120px)"
+							fxFlex.lg="calc(100% - 120px)" fxFlex.xl="calc(100% - 120px)">
+							<mat-form-field class="full-wid" floatLabel="never">
+								<input matInput placeholder="Search Review">
+							</mat-form-field>
+						</div>
+						<div class="contact-btn" fxLayoutAlign="start center" fxFlex.xs="100" fxFlex.sm="100"
+							fxFlex.md="120px" fxFlex.lg="120px" fxFlex.xl="120px">
+							<button class="mrgn-r-sm mrgn-b-sm" mat-raised-button color="primary">Search</button>
+							<mat-icon class="mrgn-r-sm mrgn-b-sm mat-icon-grey cursor-pointer">loop</mat-icon>
+						</div>
+					</div>
+				</div>
+			</div>
+		</mat-card>
+	</div>
+	<div fxLayout="row wrap">
+		<div class="app-card" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+			<mat-card>
+				<div>
+					<mat-tab-group (selectedTabChange)="setTab($event)">
+						<mat-tab label="Customer Review ({{feedbackList.length}})">
+							<div class="okhaz-card-content">
+								<div class="tab-content pad-y-sm" fxLayoutAlign="space-between start"
+									*ngFor="let list of feedbackList">
+									<div class="content" fxLayout="row wrap">
+										<div fxFlex.xl="76px" fxFlex.lg="76px" fxFlex.md="76px" fxFlex.sm="76px"
+											fxFlex.xs="100">
+											<div class="tab-image mrgn-b-sm mrgn-r-md">
+												<img class="img-circle" alt="tab image" src="{{list.image}}" width="60"
+													height="60">
+											</div>
+										</div>
+										<div fxFlex.xl="calc(100% - 80px)" fxFlex.lg="calc(100% - 80px)"
+											fxFlex.md="calc(100% - 80px)" fxFlex.sm="calc(100% - 80px)" fxFlex.xs="100">
+											<p class="mrgn-b-md">
+												<a class="chat-text font-bold inline-block primary-text"
+													href="javascript:void(0)">
+													{{list.name}}
+												</a>
+												<span class="rvw-wrap">
+													<bar-rating [rate]="list.rating" [max]="5" [readOnly]="true"
+														[theme]="'default'"></bar-rating>
+												</span>
+											</p>
+											<a [routerLink]="['/orders/view/detail']" href="javascript:void(0)"
+												routerLinkActive="active-link">{{list.feedback}}</a>
+											<span
+												class="mrgn-t-sm mrgn-b-sm mat-icon-grey okhaz-block">{{list.comment}}</span>
+											<p class="mrgn-t-md mat-icon-grey okhaz-block">
+												<mat-slide-toggle (change)="toggle($event,false,list)"
+													[(ngModel)]="list.isActive"></mat-slide-toggle> ACTIVE
+											</p>
+										</div>
+									</div>
+									<div class="icon" fxLayoutAlign="start start">
+										<span class="mrgn-b-sm mrgn-t-md mat-icon-grey okhaz-block">{{list.time}}</span>
+										<button class="mrgn-t-sm" mat-icon-button [matMenuTriggerFor]="menu">
+											<mat-icon class="mat-icon-grey okhaz-text-xl pointer">more_vert</mat-icon>
+										</button>
+									</div>
+								</div>
+							</div>
+						</mat-tab>
+
+						<mat-tab label="Supplier Review ({{ideaCount}})">
+							<ng-container *ngFor="let list of feedbackList">
+								<div class="tab-content okhaz-card-content" fxLayoutAlign="space-between start"
+									*ngIf="list.type == 'idea'">
+									<div class="content" fxLayout="row wrap">
+										<div fxFlex.xl="76px" fxFlex.lg="76px" fxFlex.md="76px" fxFlex.sm="76px"
+											fxFlex.xs="100">
+											<div class="tab-image mrgn-b-sm mrgn-r-md">
+												<img class="img-circle" alt="tab image" src="{{list.image}}" width="60"
+													height="60">
+											</div>
+										</div>
+										<div fxFlex.xl="calc(100% - 80px)" fxFlex.lg="calc(100% - 80px)"
+											fxFlex.md="calc(100% - 80px)" fxFlex.sm="calc(100% - 80px)" fxFlex.xs="100">
+											<p class="mrgn-b-md">
+												<a class="chat-text font-bold inline-block primary-text"
+													href="javascript:void(0)">
+													{{list.name}}
+												</a>
+												<span class="rvw-wrap">
+													<bar-rating [rate]="list.rating" [max]="5" [readOnly]="true"
+														[theme]="'default'"></bar-rating>
+												</span>
+											</p>
+											<a [routerLink]="['/orders/view/detail']" href="javascript:void(0)"
+												routerLinkActive="active-link">{{list.feedback}}</a>
+											<span
+												class="mrgn-t-sm mrgn-b-sm mat-icon-grey okhaz-block">{{list.comment}}</span>
+											<p class="mrgn-t-md mat-icon-grey okhaz-block">
+												<mat-slide-toggle (change)="toggle($event,false,list)"
+													[(ngModel)]="list.isActive"></mat-slide-toggle> ACTIVE
+											</p>
+										</div>
+									</div>
+									<div class="icon" fxLayoutAlign="start start">
+										<span class="mrgn-b-sm mrgn-t-md mat-icon-grey okhaz-block">{{list.time}}</span>
+										<button class="mrgn-t-sm" mat-icon-button [matMenuTriggerFor]="menu">
+											<mat-icon class="mat-icon-grey okhaz-text-xl pointer">more_vert</mat-icon>
+										</button>
+									</div>
+								</div>
+							</ng-container>
+						</mat-tab>
+
+						<mat-tab label="Delivery Man Review ({{commentCount}})">
+							<ng-container *ngFor="let list of feedbackList">
+								<div class="tab-content okhaz-card-content" fxLayoutAlign="space-between start"
+									*ngIf="list.type == 'comment'">
+									<div class="content" fxLayout="row wrap">
+										<div fxFlex.xl="76px" fxFlex.lg="76px" fxFlex.md="76px" fxFlex.sm="76px"
+											fxFlex.xs="100">
+											<div class="tab-image mrgn-b-sm mrgn-r-md">
+												<img class="img-circle" alt="tab image" src="{{list.image}}" width="60"
+													height="60">
+											</div>
+										</div>
+										<div fxFlex.xl="calc(100% - 80px)" fxFlex.lg="calc(100% - 80px)"
+											fxFlex.md="calc(100% - 80px)" fxFlex.sm="calc(100% - 80px)" fxFlex.xs="100">
+											<p class="mrgn-b-md">
+												<a class="chat-text font-bold inline-block primary-text"
+													href="javascript:void(0)">
+													{{list.name}}
+												</a>
+												<span class="rvw-wrap">
+													<bar-rating [rate]="list.rating" [max]="5" [readOnly]="true"
+														[theme]="'default'"></bar-rating>
+												</span>
+											</p>
+											<a [routerLink]="['/orders/view/detail']" href="javascript:void(0)"
+												routerLinkActive="active-link">{{list.feedback}}</a>
+											<span
+												class="mrgn-t-sm mrgn-b-sm mat-icon-grey okhaz-block">{{list.comment}}</span>
+											<p class="mrgn-t-md mat-icon-grey okhaz-block">
+												<mat-slide-toggle (change)="toggle($event,false,list)"
+													[(ngModel)]="list.isActive"></mat-slide-toggle> ACTIVE
+											</p>
+										</div>
+									</div>
+									<div class="icon" fxLayoutAlign="start start">
+										<span class="mrgn-b-sm mrgn-t-md mat-icon-grey okhaz-block">{{list.time}}</span>
+										<button class="mrgn-t-sm" mat-icon-button [matMenuTriggerFor]="menu">
+											<mat-icon class="mat-icon-grey okhaz-text-xl pointer">more_vert</mat-icon>
+										</button>
+									</div>
+								</div>
+							</ng-container>
+						</mat-tab>
+					</mat-tab-group>
+				</div>
+				<div class="pagination">
+					<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+					</mat-paginator>
+				</div>
+			</mat-card>
+		</div>
+	</div>
+</div>
+
+<mat-menu #menu="matMenu" x-position="before">
+	<button (click)="actionBtnClick('viewDetails')" mat-menu-item>
+		<mat-icon>more</mat-icon>
+		View
+	</button>
+	<button (click)="actionBtnClick('editRow')" mat-menu-item>
+		<mat-icon>edit</mat-icon>
+		Edit
+	</button>
+	<button (click)="actionBtnClick('deleteRow')" mat-menu-item>
+		<mat-icon>delete</mat-icon>
+		Delete
+	</button>
+</mat-menu>

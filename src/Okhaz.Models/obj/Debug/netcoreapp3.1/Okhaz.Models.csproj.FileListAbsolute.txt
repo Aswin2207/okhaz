@@ -1,0 +1,20 @@
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\bin\Debug\netcoreapp3.1\Okhaz.Models.deps.json
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\bin\Debug\netcoreapp3.1\Okhaz.Models.dll
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\bin\Debug\netcoreapp3.1\Okhaz.Models.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.AssemblyInfoInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.AssemblyInfo.cs
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.csproj.CoreCompileInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.dll
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\bin\Debug\netcoreapp3.1\Okhaz.Models.deps.json
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\bin\Debug\netcoreapp3.1\Okhaz.Models.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\bin\Debug\netcoreapp3.1\Okhaz.Models.pdb
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.AssemblyInfo.cs
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.dll
+C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.Models\obj\Debug\netcoreapp3.1\Okhaz.Models.pdb

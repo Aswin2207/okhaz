@@ -1,0 +1,281 @@
+<div class="user-profile-v2">
+    <mat-card class="mat-pad-none">
+        <div class="pad-all-md" fxLayout="row wrap">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="70" fxFlex.xl="70">
+                <div fxLayout="row wrap" class="profile-content">
+                    <div fxFlex.xl="200px" fxFlex.lg="200px" fxFlex.md="200px" fxFlex.sm="150px" fxFlex.xs="100" style="position:relative">
+                        <div class="profile-image mrgn-r-lg mrgn-b-md center">
+                            <img class="profile-image" alt="profile image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" width="200" height="200">
+                        </div>
+                        <div class="profile-edit">
+                            <mat-icon>edit</mat-icon>
+                        </div>
+                        <!-- <div class="profile-image mrgn-r-lg mrgn-b-md center">
+                            <img alt="profile image" src="{{row?.user?.image}}" width="200" height="200">
+                        </div> -->
+                      
+                    </div>
+                    <div fxFlex.xl="calc(100% - 200px)" fxFlex.lg="calc(100% - 200px)" fxFlex.md="calc(100% - 200px)"
+                        fxFlex.sm="calc(100% - 150px)" fxFlex.xs="100" class="user-contact-info">
+                        <div class="mrgn-b-md">
+                            <ul>
+                                <li>
+                                    <h2 class="mrgn-b-md displayName">{{row?.user?.displayName}}({{row?.user?.id}})</h2>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-envelope primary-text"
+                                            aria-hidden="true"></i> <strong>E-mail</strong></div>
+                                    <a class="contact-list-output" [href]="row?.user?.email">: {{row?.user?.email}}</a>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-phone primary-text"
+                                            aria-hidden="true"></i> <strong>Phone</strong></div>
+                                    <a class="contact-list-output" [href]="row?.user?.email">: +{{row?.user?.id}}</a>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa fa-map primary-text"
+                                            aria-hidden="true"></i> <strong>City</strong></div>
+                                    <span class="contact-list-output">: {{row?.user?.city}}</span>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa fa-globe primary-text"
+                                            aria-hidden="true"></i> <strong>Country</strong></div>
+                                    <span class="contact-list-output">: {{row?.user?.country}}</span>
+                                </li>
+                                <li>
+                                    <div class="contact-list"><i class="fa fa-map-marker primary-text"
+                                            aria-hidden="true"></i> <strong> Address</strong></div>
+                                    <span class="contact-list-output">: {{row?.user?.address}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="user-socail-stats">
+                            <ul>
+                                <li>
+                                    <a><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-google-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="publication" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="30">
+                <div class="content-block" fxLayout="row wrap" fxLayoutAlign="end center">
+                    <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card">
+                            <div class="joining-card-part1">
+                                <span class="margin-none joining-card-part1-joining">Joining Date</span>
+                                <b class="okhaz-block mat-text-muted joining-card-part1-date">16-11-2022</b>
+                            </div>
+                            <div class="joining-card-icon">
+                                <mat-icon>date_range_outlined</mat-icon>
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card">
+                            <div class="joining-card-part1">
+                                <span class="margin-none joining-card-part1-joining">Rating</span>
+                                <span class="flx content-center joining-card-part1-date">
+                                    <div>
+                                        <bar-rating [rate]="row ? row.qty : '5'" [max]="5" [readOnly]="true" [theme]="'default'">
+                                        </bar-rating>
+                                    </div>
+                                </span>
+                              
+                            </div>
+                           
+                        </mat-card>
+                    </div>
+                    <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card">
+                            <div class="joining-card-part1">
+                                <span class="okhaz-block mat-text-muted joining-card-part1-joining">Device Used</span>
+                                <b class="margin-none joining-card-part1-date">Android</b>
+                            </div>
+                            <div class="joining-card-icon">
+                                <mat-icon>devices_outlined</mat-icon>
+                            </div>
+                           
+                        </mat-card>
+                    </div>
+                    <div class="text-center pad-all-xs" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md joining-card">
+                            <div class="joining-card-part1">
+                                <span class="okhaz-block mat-text-muted joining-card-part1-joining">Active</span>
+                                <mat-slide-toggle></mat-slide-toggle>
+                            </div>
+                            <div class="joining-card-icon">
+                                <mat-icon>devices_outlined</mat-icon>
+                            </div>
+                        </mat-card>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+    <div fxLayout="row wrap">
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="65" fxFlex.lg="65" fxFlex.xl="65">
+            <div fxLayout="row wrap" fxLayoutAlign="start stretch" class="crm-stats-cards"
+                *ngIf="progress && isDeliveryMan">
+                <div class="crm-stats" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                    <div fxLayout="row wrap" fxLayoutAlign="start start">
+                        <div fxFlex.gt-md="25" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100"
+                            *ngFor="let cards of progress">
+                            <mat-card class="{{cards.card_color}} mat-card">
+                                <div mat-card-widget fxLayout="row" fxLayoutAlign="center center">
+                                    <h3 class="inline-block">{{cards.values}}</h3>
+                                </div>
+                                <div class="chart-wrap center">
+                                    <div class="line-wrap">
+                                        {{cards.name}}
+                                    </div>
+                                </div>
+                                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                                    <span class="inline-block">
+                                        <i class="fa fa-user-plus mrgn-r-xs" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="inline-block reverse-icon">
+                                        <i class="fa fa-reply mrgn-r-xs" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mrgn-all-md">
+                <mat-accordion>
+                    <mat-expansion-panel *ngIf="isDeliveryMan" [expanded]="!step" (opened)="setStep(0)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Order Details (3)'|translate}}
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-table [showCard]="show" [config]="OrderDetailsConfig"></app-table>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="step == 1" (opened)="setStep(1)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'File Upload'|translate}}
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="okhaz-card-content" class="okhaz-file-upload">
+                            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                    <app-select [config]="uploadDetails[1]"></app-select>
+                                </div>
+                                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                    <app-input [config]="uploadDetails[0]"></app-input>
+                                </div>
+                                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                    <input type="file" ng2FileSelect [uploader]="uploader"
+                                        (onFileSelected)="onFileSelected($event)" />
+                                    <span>OR</span>
+                                </div>
+                                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                    <h6>Select files</h6>
+                                    <div class="file-type" ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                                        (onFileDrop)="onFileSelected($event)" (fileOver)="fileOverBase($event)"
+                                        [uploader]="uploader">Base drop zone
+                                    </div>
+                                </div>
+                                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                    <mat-form-field>
+                                        <mat-label>Issue Date</mat-label>
+                                        <input matInput [matDatepicker]="ipicker">
+                                        <mat-datepicker-toggle matSuffix [for]="ipicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #ipicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                                    <mat-form-field>
+                                        <mat-label>Expiry Date</mat-label>
+                                        <input matInput [matDatepicker]="epicker">
+                                        <mat-datepicker-toggle matSuffix [for]="epicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #epicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-card-actions class="mat-pad-none margin-none mrgn-b-md">
+                            <button mat-raised-button mat-button-sm color="primary"
+                                (click)="CreateClicked()">ADD</button>
+                            <button mat-raised-button mat-button-sm color="warn" (click)="clear()">Delete</button>
+                        </mat-card-actions>
+                        <app-table [showCard]="show" [config]="FileUploadConfig"></app-table>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="step == 2" (opened)="setStep(2)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <h4 class="mrgn-b-none">
+                                    <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                                    {{'Payment'|translate}}
+                                </h4>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <mat-label>Date</mat-label>
+                            <input matInput type="number" min="1">
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="35" fxFlex.xl="35">
+            <mat-card *ngIf="isDeliveryMan">
+                <div class="card-title">
+                    <h4 class="mrgn-b-none">
+                        <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                        {{'Assign Role'|translate}}</h4>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="okhaz-card-content mrgn-t-md">
+                    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <app-select [config]="roleFields[0]"></app-select>
+                        </div>
+                        <div fxFlex.gt-sm="49" fxFlex.gt-xs="49" fxFlex="100">
+                            <button mat-raised-button mat-button-sm color="primary">Update Role</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card>
+                <div class="card-title">
+                    <h4 class="mrgn-b-none">
+                        <span class="fa fa-money primary-text mrgn-r-sm" aria-hidden="true"></span>
+                        {{'Order Details'|translate}}</h4>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="mrgn-t-md" fxLayoutAlign="space-between center">
+                    <div fxLayoutAlign="start center">
+                        <h5>SALARY</h5>
+                    </div>
+                    <div fxLayoutAlign="start center">
+                        <h5>AED 120</h5>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>

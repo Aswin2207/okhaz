@@ -1,0 +1,10 @@
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\bin\Debug\netcoreapp3.1\Okhaz.Middleware.deps.json
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\bin\Debug\netcoreapp3.1\Okhaz.Middleware.dll
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\bin\Debug\netcoreapp3.1\Okhaz.Middleware.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.GeneratedMSBuildEditorConfig.editorconfig
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.AssemblyInfoInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.AssemblyInfo.cs
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.csproj.CoreCompileInputs.cache
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.dll
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.pdb
+D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.Middleware\obj\Debug\netcoreapp3.1\Okhaz.Middleware.csproj.AssemblyReference.cache

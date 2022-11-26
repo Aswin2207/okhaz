@@ -1,0 +1,4 @@
+<app-table *ngIf="!http.detailPageData" (onAnyAction)="onAnyAction($event)" (addClick)="addOrderClick($event)"
+    (deleteClick)="deleteOrderClicked($event)" (reloadData)="getDatFromServer($event)" [config]="OrdersTableConfig"
+    showBackgroundImage=true cardType="user"></app-table>
+<router-outlet></router-outlet>

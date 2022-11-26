@@ -1,0 +1,291 @@
+<div fxLayout="row wrap" fxLayoutAlign="start">
+   <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex="100">
+      <div class="user-content">
+         <mat-card>
+            <div class="pad-y-sm">
+               <div fxLayout="row wrap" fxLayoutAlign="start" class="user-profile">
+                  <div fxFlex.xl="300px" fxFlex.lg="300px" fxFlex.md="300px" fxFlex.sm="250px" fxFlex.xs="100">
+                     <div class="mrgn-b-md">
+                        <mat-icon class="img-edit pointer">mode_edit</mat-icon>
+                        <img class="img-responsive  display-ib" src="assets/img/user-pro.jpg" alt="user profile image"
+                           width="300" height="300">
+                     </div>
+                  </div>
+                  <div fxFlex.xl="calc(100% - 600px)" fxFlex.lg="calc(100% - 600px)" fxFlex.md="calc(100% - 600px)"
+                     fxFlex.sm="calc(100% - 550px)" fxFlex.xs="100" class="user-contact-info">
+                     <ul>
+                        <li>
+                           <h4 *ngIf="userInfo?.userType==='Supplier'">{{userDetails?.suppName}}</h4>
+                           <h4 *ngIf="userInfo?.userType!=='Supplier'">{{userInfo?.userName}}</h4>
+                           <p>{{userInfo?.userType}}</p>
+                        </li>
+                        <li>
+                           <div class="contact-list"><i class="fa fa-envelope primary-text" aria-hidden="true"></i>
+                              <strong>E-mail</strong>
+                           </div>
+                           <a class="okhaz-block" href="mailto:{{userInfo?.emailId}}">: {{userInfo?.emailId}}</a>
+                        </li>
+                        <li>
+                           <div class="contact-list"><i class="fa fa-phone primary-text" aria-hidden="true"></i>
+                              <strong>Phone</strong>
+                           </div>
+                           <a class="okhaz-block">: {{userDetails?.suppTele}}</a>
+                        </li>
+                        <li>
+                           <div class="contact-list"><i class="fa fa fa-map primary-text" aria-hidden="true"></i>
+                              <strong>Address 1</strong>
+                           </div>
+                           <span>: {{userDetails?.suppAdd1}}</span>
+                        </li>
+                        <li>
+                           <div class="contact-list"><i class="fa fa fa-globe primary-text" aria-hidden="true"></i>
+                              <strong>Address 2</strong>
+                           </div>
+                           <span>: {{userDetails?.suppAdd2}}</span>
+                        </li>
+                        <!-- <li>
+                           <div class="contact-list"><i class="fa fa-map-marker primary-text" aria-hidden="true"></i>
+                              <strong> Address</strong>
+                           </div>
+                           <span class="okhaz-block">: E-112,Auston Street, New York ,USA</span>
+                        </li> -->
+                     </ul>
+                     <div class="user-socail-stats">
+                        <ul>
+                           <li>
+                              <a><i class="fa fa-facebook"></i></a>
+                           </li>
+                           <li>
+                              <a><i class="fa fa-twitter"></i></a>
+                           </li>
+                           <li>
+                              <a><i class="fa fa-google-plus"></i></a>
+                           </li>
+                           <li>
+                              <a><i class="fa fa-linkedin"></i></a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div fxLayoutAlign="center" fxFlex.xl="300px" fxFlex.lg="300px" fxFlex.md="300px" fxFlex.sm="250px"
+                     fxFlex.xs="100">
+                     <div class="pad-all-xs text-center" fxFlex.xs="50" fxFlex.sm="25" fxFlex.md="40" fxFlex.lg="40"
+                        fxFlex.xl="40">
+                        <mat-card class="margin-none pad-all-md card-wrap">
+                           <mat-icon class="pointer" (click)="openModel(editProfile)">mode_edit</mat-icon>
+                           <span class="okhaz-block mat-text-muted">Edit</span>
+                        </mat-card>
+                     </div>
+                  </div>
+               </div>
+               <div class="mrgn-t-sm">
+                  <h4>Summary <mat-icon class="mrgn-l-sm pointer">mode_edit</mat-icon>
+                  </h4>
+                  <p>
+                     Hi, This is Lisa arnold. I am feeling glad for what I have achieved here. But I think life is more
+                     about helping people rather than commanding them. I feel life is also full of variations in
+                     designs. In terms of design, nature creates beautiful graphs and sets lot of colors in our personal
+                     life.
+                  </p>
+                  <p class="mrgn-b-none">
+                     So yes I get ideas from nature. The way it designs hills, oceans and fills colors into them. I feel
+                     lucky for having this life and capable of identifying hidden treasures beneath a wonderful design.
+                  </p>
+               </div>
+            </div>
+         </mat-card>
+      </div>
+   </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="start stretch">
+   <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex="100">
+      <mat-card>
+         <div class="okhaz-card-title">
+            <div fxLayout="row" fxLayoutAlign="start center">
+               <div fxLayout="column">
+                  <h4 class="mrgn-b-none">{{'Settings'}}</h4>
+               </div>
+            </div>
+            <mat-divider></mat-divider>
+         </div>
+         <div class="okhaz-card-content">
+            <p>Recommended : Change the password once in a 90days</p>
+            <div class="quick-pay-wrap">
+               <mat-tab-group>
+                  <mat-tab label="Buy">
+                     <ng-template mat-tab-label>
+                        Change Password
+                     </ng-template>
+                     <div class="ookhaz-card-content msg-wrapper">
+                        <form [formGroup]="passwordChangeForm" fxLayoutAlign="center start">
+                           <div fxLayout="column" fxFlex.xs="100" fxFlex.sm="80" fxFlex.md="80" fxFlex.lg="70"
+                              fxFlex.xl="70" fxLayoutAlign="start">
+                              <mat-form-field class="full-wid mrgn-b-md mrgn-t-xl">
+                                 <input class="mrgn-t-none" matInput placeholder="Old Password" type="password" formControlName="oldPassword"
+                                    name="password" required>
+                                 <span matSuffix><i class="material-icons">vpn_key</i></span>
+                              </mat-form-field>
+                              <mat-form-field class="full-wid mrgn-b-md">
+                                 <input class="mrgn-t-none" matInput placeholder="New Password" type="password" formControlName="newPassword"
+                                    name="password" required>
+                                 <span matSuffix><i class="material-icons">vpn_key</i></span>
+                              </mat-form-field>
+                              <mat-form-field class="full-wid mrgn-b-md">
+                                 <input class="mrgn-t-none" matInput placeholder="Confirm Password" type="password" formControlName="confirmPassword"
+                                    name="password" required>
+                                 <span matSuffix><i class="material-icons">vpn_key</i></span>
+                              </mat-form-field>
+                              <div fxLayoutAlign="center start" class=" mrgn-b-lg">
+                                 <button mat-button mat-raised-button type="button" color="primary" (click)="updatePassword()">Update</button>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </mat-tab>
+                  <mat-tab label="Sell">
+                     <ng-template mat-tab-label>
+                        Change Email ID
+                     </ng-template>
+                     <div class="okhaz-card-content msg-wrapper">
+                        <form [formGroup]="mailChangeForm" fxLayoutAlign="center start">
+                           <div fxLayout="column" fxFlex.xs="100" fxFlex.sm="80" fxFlex.md="80" fxFlex.lg="70"
+                              fxFlex.xl="70" fxLayoutAlign="start">
+                              <mat-form-field class="full-wid mrgn-b-md mrgn-t-xl">
+                                 <input class="mrgn-t-none" matInput placeholder="Old E-Mail" type="text" name="email" formControlName="oldEmail"
+                                    required>
+                                 <span matSuffix><i class="material-icons">verified_user</i></span>
+                              </mat-form-field>
+                              <mat-form-field class="full-wid mrgn-b-md">
+                                 <input class="mrgn-t-none" matInput placeholder="New E-Mail" type="text" name="email" formControlName="newEmail"
+                                    required>
+                                 <span matSuffix><i class="material-icons">verified_user</i></span>
+                              </mat-form-field>
+                              <mat-form-field class="full-wid mrgn-b-md">
+                                 <input class="mrgn-t-none" matInput placeholder="Confirm E-Mail" type="text" name="email" formControlName="confirmEmail"
+                                    required>
+                                 <span matSuffix><i class="material-icons">verified_user</i></span>
+                              </mat-form-field>
+                              <div fxLayoutAlign="center start" class=" mrgn-b-lg">
+                                 <button mat-button mat-raised-button type="button" [disabled]="mailChangeForm.invalid" color="primary" (click)="updateEmail()">Update</button>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </mat-tab>
+               </mat-tab-group>
+            </div>
+         </div>
+      </mat-card>
+   </div>
+</div>
+
+<ng-template #editProfile let-d="dismiss">
+   <div class="mrgn-b-xs cont" id="wheel">
+      <h2 mat-dialog-title>Edit Profile</h2>
+      <button mat-fab-button mat-button-sm color="warn" class="close" (click)="closeModel()">x</button>
+   </div>
+   <mat-dialog-content>
+      <form [formGroup]="billingForm">
+         <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap.gt-sm="30px">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(50% -30px)" fxFlex.lg="calc(50% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">person</i>
+                  <input matInput type="text" formControlName="name" class="form-control" placeholder="First Name">
+               </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">person</i>
+                  <input matInput type="text" formControlName="lastName"  class="form-control" placeholder="Last Name">
+               </mat-form-field>
+            </div>
+         </div>
+         <!-- <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap.gt-sm="30px">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(50% -30px)" fxFlex.lg="calc(50% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">mail</i>
+                  <input matInput type="email" class="form-control" placeholder="Email">
+               </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">phone</i>
+                  <input matInput type="text" class="form-control" placeholder="Mobile No">
+               </mat-form-field>
+            </div>
+         </div> -->
+         <div>
+            <div>
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">home</i>
+                  <input matInput type="text" formControlName="address1"  class="form-control" placeholder="Address 1">
+               </mat-form-field>
+            </div>
+         </div>
+         <div>
+            <div>
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">home</i>
+                  <input matInput type="text" formControlName="address2"  class="form-control" placeholder="Address 2">
+               </mat-form-field>
+            </div>
+         </div>
+         <!-- <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap.gt-sm="30px" class="mrgn-b-md">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(33% -30px)" fxFlex.lg="calc(33% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">public</i>
+                  <mat-select formControlName="country" class="form-control">
+                     <mat-option value="" disabled selected hidden>Country</mat-option>
+                     <mat-option value="country" *ngFor="let country of countries">{{country.country}}</mat-option>
+                  </mat-select>
+               </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(33% -30px)" fxFlex.lg="calc(33% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">location_city</i>
+                  <input matInput type="text" placeholder="State" formControlName="state">
+               </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(33% -30px)" fxFlex.lg="calc(33% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="material-icons">domain</i>
+                  <input matInput type="text" placeholder="City" formControlName="city">
+               </mat-form-field>
+            </div>
+         </div>
+         <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap.gt-sm="30px">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(50% -30px)" fxFlex.lg="calc(50% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="fa fa-facebook" aria-hidden="true"></i>
+                  <input matInput type="text" class="form-control" placeholder="FaceBook Link">
+               </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="fa fa-twitter" aria-hidden="true"></i>
+                  <input matInput type="text" class="form-control" placeholder="Twitter Link">
+               </mat-form-field>
+            </div>
+         </div>
+         <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap.gt-sm="30px">
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="calc(50% -30px)" fxFlex.lg="calc(50% -30px)">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="fa fa-google-plus" aria-hidden="true"></i>
+                  <input matInput type="email" class="form-control" placeholder="Google Link">
+               </mat-form-field>
+            </div>
+            <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50">
+               <mat-form-field class="full-wid mrgn-b-sm">
+                  <i matPrefix class="fa fa-linkedin" aria-hidden="true"></i>
+                  <input matInput type="text" class="form-control" placeholder="LinkedIn Link">
+               </mat-form-field>
+            </div>
+         </div> -->
+      </form>
+   </mat-dialog-content>
+   <mat-dialog-actions fxLayoutAlign="center" class="mrgn-b-xs pad-b-none mrgn-t-md center">
+      <button mat-raised-button (click)="closeModel()" color="warn">Cancel</button>
+      <button mat-raised-button color="primary" (click)="updateProfile()">Update</button>
+   </mat-dialog-actions>
+</ng-template>

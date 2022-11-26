@@ -1,0 +1,154 @@
+// .addOrder_cont{
+//     display: flex;
+//     width:100%;
+//     height: calc(100% - 70px);
+//     overflow: auto;
+//     .displayAddress{
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: flex-start;
+//         padding:0.25rem;
+//         align-items: center;
+//         .tit{
+//            font-weight: 600; 
+//            text-align: right;
+//            width: 15%;
+//            padding-right: 2rem;
+//         }
+//         .val{
+//             font-size: 14px;
+//         }
+//     }
+//     .okhaz-form-wizard {
+//         .mat-tab-label-active{
+//             background: #ecf1f3 !important;
+//             color: #000!important;
+//             .mat-tab-label-content::first-letter {
+//                 font-size: 200% !important;
+//                 color: #8A2BE2 !important;
+//               }
+//         }
+//         .wizard_num{
+//             background-color:#1565c0;
+//             width:1rem;
+//             height:1rem;
+//             border-radius: 20px;
+//             color:#fff;
+//         }
+//     }
+// }
+
+// .mat-tab-body-content{
+//     height: calc(100% - 118px) !important;
+// }
+// .mat-form-field-infix {
+//   border-top: 0em solid transparent !important;
+// }
+
+// .mrgn-b-xl, .mrgn-y-xl {
+//   margin: 2rem 0 6rem 0 !important;
+//   text-align: center;
+//   button {
+//       margin: 0 0.5rem;
+//   }
+// }
+
+// [mat-raised-button],[mat-button] {
+//     margin: 0 0.5rem;
+// }
+// .mat-form-field {
+//   width: 45% !important;
+//   margin: 0 1rem !important;
+// }
+// .mat-checkbox{
+//     margin-left: 1rem;
+// }
+// .mrgn-md {
+//     margin:1rem;
+// }
+// .mat-browse {
+//   margin-top: 1rem;
+// }
+// .mat-radio-button {
+//   margin: 0 0.6rem;
+// }
+
+
+$backround-color:#eeeeee;
+$btn-border:1px solid rgba(0,0,0,0.2);
+$active-tab-bg:#1565C0;
+$btn-bg-color:#1565C0;
+$btn-color:#fff;
+.okhaz-form-wizard {
+   .mat-tab-header {
+      background-color: $backround-color;
+      margin-bottom: 3rem;
+   }
+   .mat-tab-label-container .mat-tab-label-active {
+      background-color: $active-tab-bg;
+      opacity: 1;
+      border: none;
+   }
+   .mat-tab-nav-bar,
+   .mat-tab-header {
+      border: none;
+   }
+   .mat-input-container {
+      margin-bottom: 2rem;
+   }
+   .mat-button{
+      border:$btn-border;
+      margin: 0.3rem;
+   }
+  .custom-pad {
+    padding-bottom: 4.4rem;
+    padding-top: 4.4rem;
+}
+    .mat-tab-label-container{
+        margin-bottom: 0;
+    }
+}
+
+body .okhaz-form-wizard .mat-input-container {
+   font-size: 1rem;
+}
+
+.okhaz-form-wizard .mat-raised-button,.okhaz-form-wizard .mat-fab,.okhaz-form-wizard .mat-mini-fab,.okhaz-form-wizard .mat-tab-label-container .mat-tab-label-active{
+  //  background-color: $btn-bg-color;
+   color: $btn-color;
+}
+
+.app-dark .okhaz-form-wizard .mat-tab-header{
+    background-color: transparent;
+}
+
+.user-contact-info {
+  ul {
+      list-style: none;
+      padding-left: 0rem;
+      margin: 0;
+      li {
+          margin-bottom: 1rem;
+      }
+  }
+}
+
+.contact-list {
+  min-width: 120px;
+  float: left;
+}
+
+@media(max-width:599px) {
+  .user-contact-info ul {
+      padding-left: 0;
+  }
+  .contact-list {
+     min-width: 90px;
+  }
+}
+.center{
+  text-align: center;
+}
+.d-none {
+  display: none !important;
+ }
