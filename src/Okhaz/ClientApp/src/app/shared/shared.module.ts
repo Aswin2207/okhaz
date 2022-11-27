@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuToggleModule } from './menu/menu-toggle.module';
+import { MenuToggleModule } from '../../app/core/menu/menu-toggle.module';
 import { SharedComponent } from './shared.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -101,6 +101,7 @@ import { QuillModule } from 'ngx-quill';
 	TreeviewComponent,
 	EditorComponent,
 	WheelComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule { }

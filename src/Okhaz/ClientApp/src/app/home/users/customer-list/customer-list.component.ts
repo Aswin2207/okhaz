@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GridModel } from 'src/app/models/grid.model';
-import { AppconstantsService } from 'src/app/service/appconstants.service';
-import { HttpUtilityService } from 'src/app/service/httputility.service';
+import { GridModel } from '../../../models/grid.model';
+import { AppconstantsService } from '../../../service/core/appconstants.service';
+import { HttpUtilityService } from '../../../service/core/httputility.service';
 
 @Component({
   selector: 'app-customer-list',

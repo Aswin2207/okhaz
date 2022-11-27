@@ -323,8 +323,12 @@ body .mat-card {
       color:#FFC107;
       margin-right: 5px;
     }
-    &-tick{
+    &-tick-active{
       color:#4CAF50;
+      margin-right: 5px;
+    }
+    &-tick-deactive{
+      color:red;
       margin-right: 5px;
     }
     &-id{
@@ -350,6 +354,14 @@ body .mat-card {
     &-status-active{
       font-size: 6px;
       background: #4CAF50;
+      color: #ffffff;
+      padding: 2px 6px 2px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+    &-status-deactive{
+      font-size: 6px;
+      background: red;
       color: #ffffff;
       padding: 2px 6px 2px;
       border-radius: 3px;

@@ -288,7 +288,7 @@ ngx-loading-bar div {
         font-weight: 400;
         font-variant: normal;
         text-transform: none;
-        speak: none;
+        // speak: none;
         -webkit-font-smoothing: antialiased;
         color: #999;
       }
@@ -403,9 +403,9 @@ ngx-loading-bar div {
     color: #aeadb3;
     font-size: 1.5rem;
   }
-  .mat-icon:hover {
-    // color: #37474f;
-  }
+  // .mat-icon:hover {
+  //   // color: #37474f;
+  // }
 }
 /* You can add global styles to this file, and also import other style files */
 

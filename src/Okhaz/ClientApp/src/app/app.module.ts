@@ -2,6 +2,7 @@ import {
   NgModule,
   CUSTOM_ELEMENTS_SCHEMA,
   APP_INITIALIZER,
+  NO_ERRORS_SCHEMA,
 } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -176,7 +177,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       multi: true,
     },
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],
 })
 export class OkhazAppModule {}
 export function appInitializerFn(configService: ConfigService) {

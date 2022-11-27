@@ -46,6 +46,6 @@ import { ResponsiveTableComponent}  from './table-responsive/table-responsive.co
 		MatDividerModule,
 		FlexLayoutModule,
 		TranslateModule
-	]
+	],
 })
 export class TablesModule { }

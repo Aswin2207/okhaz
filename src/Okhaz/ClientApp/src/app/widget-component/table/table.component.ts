@@ -238,8 +238,10 @@ export class TableComponent implements OnInit, AfterContentInit {
 
   selectRow(i: any, row: any) {
     this.selectedRowId = i;
+    row.isHovered=true;
     this.selectedRow = row;
-    this.onAnyAction.emit({ row: row, action: 'rowSelected', index: i });
+    console.log(row)
+    // this.onAnyAction.emit({ row: row, action: 'rowSelected', index: i });
   }
 
   printLog(d: any) {

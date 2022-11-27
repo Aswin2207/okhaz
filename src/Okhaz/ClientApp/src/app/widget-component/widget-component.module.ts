@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -180,7 +181,7 @@ import { ReportComponent } from './pop-up/report/report.component';
 		SelectComponent,
 		TextareaComponent,
 		ConfirmDialogComponent,
-  ReportComponent,
+		ReportComponent,
 	],
 	imports: [
 		RouterModule,
@@ -210,6 +211,7 @@ import { ReportComponent } from './pop-up/report/report.component';
 		ReactiveFormsModule,
 		TextMaskModule,
 		ChartsModule,
+		MatTooltipModule,
 		MatSnackBarModule,
 		SlickCarouselModule,
 		TranslateModule,
@@ -292,7 +294,7 @@ import { ReportComponent } from './pop-up/report/report.component';
 		AddNewClientComponent,
 		EditNewClientComponent
 	],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA]
+	schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 
 export class WidgetComponentModule { }

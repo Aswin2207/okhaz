@@ -25,6 +25,7 @@ export class EmployeeDetailComponent implements OnInit, OnDestroy {
   expiryDate: Date = new Date();
   minDate: Date = new Date();
   isDeliveryMan: boolean = false;
+  show:any;
   progress: any[] = [
     {
       icon: "BTC-alt",

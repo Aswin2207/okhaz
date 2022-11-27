@@ -22,6 +22,7 @@ import { Subscription } from "rxjs";
 export class SupplierDetailComponent implements OnInit, OnDestroy {
   step = 0;
   row: any;
+  show:any;
   expiryCount: number = 150;
   expiryDate: Date = new Date();
   minDate: Date = new Date();

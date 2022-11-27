@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, EventEmitter } from '@angular/core';
-import { GridModel } from 'src/app/models/grid.model';
-import { AppconstantsService } from 'src/app/service/appconstants.service';
-import { HttpUtilityService } from 'src/app/service/httputility.service';
-import { HelperService } from 'src/app/service/helper.service';
+import { GridModel } from '../../../../models/GridModel';
+import { AppconstantsService } from '../../../../service/core/appconstants.service';
+import { HttpUtilityService } from '../../../../service/core/httputility.service';
+import { HelperService } from '../../../../../../src/app/service/helper.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -12,7 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CustomerDetailComponent implements OnInit {
   step = 0;
-  @Input('currentOrder') row: {};
+  @Input('currentOrder') row:any= {};
   expiryCount: number = 150;
   expiryDate: Date = new Date();
   minDate: Date = new Date();

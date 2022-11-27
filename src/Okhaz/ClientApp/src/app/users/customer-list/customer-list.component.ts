@@ -174,11 +174,11 @@ export class CustomerListComponent implements OnInit {
         id: 'stringStatus',
         sortable: true,
       },
-      {
-        name: 'Action',
-        type: 'orderAction',
-        id: 'action'
-      }
+      // {
+      //   name: 'Action',
+      //   type: 'orderAction',
+      //   id: 'action'
+      // }
     ],
     data: [],
     currentPageSize: 20,
@@ -228,7 +228,11 @@ export class CustomerListComponent implements OnInit {
           phone: element.cusMob,
           status:element.CustStatus,
           isSupplier:element.isSupplier,
-          deviceUsed: element.DeviceName
+          deviceUsed: element.DeviceName,
+          isHover:false,
+          isSupplierIcon:element.isSupplier?"Active":"DeActive",
+          isSupplierClass:element.isSupplier?"status-active":"status-deactive",
+          isSupplierTickClass:element.isSupplier?"tick-active":"tick-deactive",
         });
       });
       this.setTableData(updatedData, gridModel);

@@ -176,8 +176,8 @@
                     <div class="card-content-row-col1">
                       <span class="card-content-row-col1-email">Is Supplier</span>
                       <div class="row-one-sub">
-                        <mat-icon class="row-one-sub-tick">task_alt_outlined</mat-icon><span
-                          class="row-one-sub-status-active">ACTIVE</span>
+                        <mat-icon class="row-one-sub-{{row?.isSupplierTickClass}}">task_alt_outlined</mat-icon><span
+                          class="row-one-sub-{{row?.isSupplierClass}}">{{row?.isSupplierIcon}}</span>
                       </div>
                     </div>
                   </div>
@@ -209,7 +209,7 @@
                     <img class="img-circle" src="{{row.statusIcon}}" width="30" height="30"
                       onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
                     <span
-                      style="background-color:{{ row.statusColor }};color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{row.status}}</span>
+                      style="background-color:'{{ row.statusColor }}';color:#fff';padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{row.status}}</span>
                   </div>
                 </mat-card-header>
                 <mat-card-content class="card-content">
@@ -260,7 +260,7 @@
 
         </div>
       </div>
-      <div *ngIf="!config.data || config.data.length == 0" style="text-align:center;padding:10px">
+      <div *ngIf="!config.data || config.data.length == 0;" style="text-align:center;">
         No Data Available
       </div>
     </div>
@@ -401,8 +401,8 @@
           <!-- <td mat-cell *matCellDef="let element"> {{element.isSupplier?'Yes':'No'}} </td> -->
           <td mat-cell *matCellDef="let element">
             <div class="row-one-sub">
-              <mat-icon class="row-one-sub-tick">task_alt_outlined</mat-icon><span
-                class="row-one-sub-status-active">ACTIVE</span>
+              <mat-icon class="row-one-sub-{{element?.isSupplierTickClass}}">task_alt_outlined</mat-icon><span
+                class="row-one-sub-{{element?.isSupplierClass}}">{{element?.isSupplierIcon}}</span>
             </div>
           </td>
         </ng-container>
@@ -601,8 +601,34 @@
           <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
         </ng-container>
         <ng-container matColumnDef="stringStatus">
+          
           <th mat-header-cell *matHeaderCellDef>Status</th>
-          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          <td mat-cell *matCellDef="let element">
+            <div class="row-one-sub" *ngIf="!element?.isHover" >
+              <mat-icon class="row-one-sub-tick-active">task_alt_outlined</mat-icon>
+              <span
+                class="row-one-sub-status-active">{{element.status}}</span>
+            </div>
+            <ng-container *ngIf="element?.isHover" >
+              <button  mat-icon-button matTooltip="Edit" (click)="setActionRow(element,columnHeader,i,'edit')">
+                <mat-icon class="mat-icon-grey okhaz-text-lg">edit</mat-icon>
+              </button>
+              <button mat-icon-button  matTooltip="Print" >
+                <mat-icon class="mat-icon-grey okhaz-text-lg" (click)="setActionRow(element,columnHeader,i,'print')">
+                  print
+                </mat-icon>
+              </button>
+              <button mat-icon-button  matTooltip="View" >
+                <mat-icon class="mat-icon-grey okhaz-text-lg"
+                  (click)="setActionRow(element,columnHeader,i,'change_status')">
+                  remove_red_eye
+                </mat-icon>
+              </button>
+              <button mat-icon-button  matTooltip="Delete"  (click)="setActionRow(element,columnHeader,i,'delete')">
+                <mat-icon style="color:red" class="mat-icon-grey okhaz-text-lg">delete</mat-icon>
+              </button>
+            </ng-container>
+          </td>
         </ng-container>
         <ng-container matColumnDef="BrandName">
           <th mat-header-cell *matHeaderCellDef>Brand Title</th>
@@ -622,7 +648,7 @@
               <img class="img-circle" src="{{element.statusIcon}}" width="30" height="30"
                 onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
               <span
-                style="background-color:{{ element.statusColor }};color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{element.status}}</span>
+                style="background-color:'{{ element.statusColor }}';color:#fff;padding:3px;margin-left:3px;border-radius:4px;font-size: 10px;">{{element.status}}</span>
             </div>
             <div class="action_grid">
               <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'edit')">
@@ -654,7 +680,7 @@
               onerror="this.src='./assets/img/noImg_placeholder.jpeg';this.onerror='';">
           </td>
         </ng-container>
-        <ng-container matColumnDef="action">
+        <!-- <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>Action</th>
           <td mat-cell *matCellDef="let element">
             <button mat-icon-button (click)="setActionRow(element,columnHeader,i,'edit')">
@@ -675,7 +701,7 @@
               <mat-icon style="color:red" class="mat-icon-grey okhaz-text-lg">delete</mat-icon>
             </button>
           </td>
-        </ng-container>
+        </ng-container> -->
         <ng-container matColumnDef="categoryAction">
           <th mat-header-cell *matHeaderCellDef>categoryAction</th>
           <td mat-cell *matCellDef="let element">
@@ -707,7 +733,7 @@
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index" (click)="selectRow(i,row)"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index" (mouseenter)="row.isHover=true" (mouseleave)="row.isHover=false"></tr>
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
@@ -7,7 +7,6 @@ import { SupplierDetailComponent } from './supplier-list/supplier-detail/supplie
 import { CustomerDetailComponent } from './customer-list/customer-detail/customer-detail.component';
 import { EmployeeDetailComponent } from './employee-list/employee-detail/employee-detail.component';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BarRatingModule } from "ngx-bar-rating";
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -76,6 +76,7 @@ import { BarRatingModule } from "ngx-bar-rating";
         MatDatepickerModule,
         FileUploadModule,
         BarRatingModule
-    ]
+    ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class UsersModule { }

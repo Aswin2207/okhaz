@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -37,15 +37,15 @@ import { WidgetComponentModule } from '../widget-component/widget-component.modu
 import { UserRoutes } from './users.routing';
 
 @NgModule({
-declarations: 
-	[
-		SupplierListComponent,
-        CustomerListComponent,
-        EmployeeListComponent,
-        SupplierDetailComponent,
-        CustomerDetailComponent,
-        EmployeeDetailComponent
-   ],
+	declarations:
+		[
+			SupplierListComponent,
+			CustomerListComponent,
+			EmployeeListComponent,
+			SupplierDetailComponent,
+			CustomerDetailComponent,
+			EmployeeDetailComponent
+		],
 	imports: [
 		CommonModule,
 		FlexLayoutModule,
@@ -74,6 +74,7 @@ declarations:
 		WidgetComponentModule,
 		BarRatingModule,
 		TranslateModule
-	]
+	],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class UsersModule { }

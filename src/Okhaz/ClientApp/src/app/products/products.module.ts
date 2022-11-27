@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -43,7 +43,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     AddProductComponent,
     ImportProductComponent,
     ExportProductComponent,
-    ProductCategoriesComponent,
+    // ProductCategoriesComponent,
     ProductReviewComponent,
     BrandsComponent,
     AddProductDetailsComponent,
@@ -75,6 +75,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     QuillModule.forRoot(),
     MatButtonModule,
     FileUploadModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProductsModule { }

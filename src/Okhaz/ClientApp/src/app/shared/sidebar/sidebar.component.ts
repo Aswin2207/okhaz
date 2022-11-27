@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItems } from '../menu/menu-items/menu-items';
+import { MenuItems } from '../../../app/core/menu/menu-items/menu-items';
 
 @Component({
   selector: 'ms-side-bar',
