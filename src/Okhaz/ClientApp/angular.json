@@ -56,7 +56,7 @@
               "echarts"
             ],
             "sourceMap": false,
-            "outputPath": "dist",
+            "outputPath": "../wwwroot",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",

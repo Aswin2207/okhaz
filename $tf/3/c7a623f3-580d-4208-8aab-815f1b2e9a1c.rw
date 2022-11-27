@@ -1,1 +1,0 @@
-<canvas (click)="startSpin()" [height]="height" [width]="width" id="canvas"></canvas>

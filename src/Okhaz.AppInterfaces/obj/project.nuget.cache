@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "0rJKXL7JkI/grKI9Apmtjeg0ovMzNn+yrV99kqyp6wOxTNFdIfXSpOg+RhPRL11Abk7ESeGI4hZWt4oO86z0aA==",
+  "dgSpecHash": "0iSa1sn9wqOEpNMrUTqGtMpLIf9GDpd5AY+ac2VxXFVf5lnSBeqXkCCCxQj9Tk1BbPnwDcrCNvF8LozkYGnSeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.AppInterfaces\\Okhaz.AppInterfaces.csproj",
+  "projectFilePath": "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/Okhaz.AppInterfaces.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
-    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
-    "C:\\Users\\ADMIN\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
-    "C:\\Users\\ADMIN\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    "/Users/jeganathpv/.nuget/packages/microsoft.aspnetcore.http.features/5.0.17/microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "/Users/jeganathpv/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "/Users/jeganathpv/.nuget/packages/microsoft.extensions.primitives/5.0.1/microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "/Users/jeganathpv/.nuget/packages/system.io.pipelines/5.0.2/system.io.pipelines.5.0.2.nupkg.sha512",
+    "/Users/jeganathpv/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

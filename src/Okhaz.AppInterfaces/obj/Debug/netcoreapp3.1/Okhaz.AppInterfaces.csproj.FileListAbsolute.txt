@@ -1,26 +1,39 @@
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.AppInterfaces.deps.json
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.AppInterfaces.dll
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.AppInterfaces.pdb
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.csproj.AssemblyReference.cache
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.GeneratedMSBuildEditorConfig.editorconfig
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.AssemblyInfoInputs.cache
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.AssemblyInfo.cs
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.csproj.CoreCompileInputs.cache
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.dll
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.pdb
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.Models.dll
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.Models.pdb
-D:\vyukshathriya technologis\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.csproj.CopyComplete
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.AppInterfaces.deps.json
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.AppInterfaces.dll
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.AppInterfaces.pdb
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.Models.dll
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\bin\Debug\netcoreapp3.1\Okhaz.Models.pdb
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.csproj.AssemblyReference.cache
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.AssemblyInfoInputs.cache
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.AssemblyInfo.cs
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.csproj.CopyComplete
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.dll
-C:\Users\ADMIN\Downloads\ezyZip\Source\okhaz-in\src\Okhaz.AppInterfaces\obj\Debug\netcoreapp3.1\Okhaz.AppInterfaces.pdb
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.deps.json
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.dll
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.pdb
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.AssemblyReference.cache
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.AssemblyInfoInputs.cache
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.AssemblyInfo.cs
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.CoreCompileInputs.cache
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.dll
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.pdb
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.Models.dll
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.Models.pdb
+D:/vyukshathriya technologis/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.CopyComplete
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.deps.json
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.dll
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.pdb
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.Models.dll
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.Models.pdb
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.AssemblyReference.cache
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.AssemblyInfoInputs.cache
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.AssemblyInfo.cs
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.CoreCompileInputs.cache
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.CopyComplete
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.dll
+C:/Users/ADMIN/Downloads/ezyZip/Source/okhaz-in/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.pdb
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.deps.json
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.dll
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.AppInterfaces.pdb
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.Models.dll
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/bin/Debug/netcoreapp3.1/Okhaz.Models.pdb
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.AssemblyReference.cache
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.AssemblyInfoInputs.cache
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.AssemblyInfo.cs
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.CoreCompileInputs.cache
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.csproj.CopyComplete
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.dll
+/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/obj/Debug/netcoreapp3.1/Okhaz.AppInterfaces.pdb

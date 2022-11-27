@@ -1,0 +1,622 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Okhaz</name>
+    </assembly>
+    <members>
+        <member name="M:Okhaz.Controllers.Customer.CustomerController.AddCustomer(DataAccess.DataModel.customer_master)">
+            <summary>
+            takes login model, which should contain user name and password with base 64 encrypted
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetCategoryCountbyBranchCode">
+            <summary>
+            Get Category Count by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetCustNameCountbyBranchCode">
+            <summary>
+            Get CustName Count by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetCustomerFeedBackFetchbyBranchCode">
+            <summary>
+            Get Customer FeedBack Fetch by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetItemNameCountbyBranchCode">
+            <summary>
+            Get ItemName Count by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderCancelledFetchbyBranchCode">
+            <summary>
+            Get Order Cancelled Fetch by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderCountsbyBranchCode">
+            <summary>
+            Get Order Counts by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderCountswithDatebyBranchCode">
+            <summary>
+            Get Order Counts with Date by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderDeliveredFetchbyBranchCode">
+            <summary>
+            Get Order Delivered Fetch by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderPendingCountsbyBranchCode">
+            <summary>
+            Get Order Pending Counts by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderPendingFetchbyBranchCode">
+            <summary>
+            Get Order Pending Fetch by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderPlacedCountsbyBranchCode">
+            <summary>
+            Get Order Placed Counts by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderPlacedFetchbyBranchCode">
+            <summary>
+            Get Order Placed Fetch by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderProgressCountsbyBranchCode">
+            <summary>
+            Get Order Progress Counts by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderRevenueswithDatebyBranchCode">
+            <summary>
+            Get Order Revenue with Date by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetOrderTotalbyBranchCode">
+            <summary>
+            Get Order Total by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetSubCategoryCountbyBranchCode">
+            <summary>
+            Get Category Count by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetSupplierReviewFetchbyBranchCode">
+            <summary>
+            Get Supplier Review Fetch by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetSupplierReviewFetchbyBranchCode(System.Int32)">
+            <summary>
+            Get Order Status Name by Order ID
+            </summary>
+            <param name="OrderID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Dashboard.DashboardController.GetSuppNameCountbyBranchCode">
+            <summary>
+            Get SuppName Count by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Marketting.CouponController.AddCoupon(Okhaz.Models.CouponDetails)">
+            <summary>
+            takes login model, which should contain user name and password with base 64 encrypted
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.AddOrder(DataAccess.DataModel.OnlineOrder)">
+            <summary>
+            takes login model, which should contain user name and password with base 64 encrypted
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.CreateEmployeeDetails(DataAccess.Models.EmployeeMaster)">
+            <summary>
+            Creating EmployeeDetails
+            </summary>
+            <param name="objEmployeeMaster"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.CustomerOrderWidget(System.String)">
+            <summary>
+            Widget Customer Orders
+            </summary>
+            <param name="CustID"></param>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.DeleteEmployeeDetails(System.Int32)">
+            <summary>
+            Delete Employee Details Details by wGlID
+            </summary>
+            <param name="custID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.DeleteSupplierDetails(System.String)">
+            <summary>
+            Delete Supplier Details Details by SuppID
+            </summary>
+            <param name="suppID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.DeleteSupplierDetails(System.Int32)">
+            <summary>
+            Delete Customer Details Details by wGlID
+            </summary>
+            <param name="custID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GeDeliveryManDetails">
+            <summary>
+            Getting Delivery Man Details
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetCustomerDetails(System.Int32)">
+            <summary>
+            Getting Customer Details
+            </summary>
+            <param name="suppID"></param>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetCustomerDetailsbyBranchID">
+            <summary>
+            Getting Customer Details By Branch
+            </summary>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetEmployeeDetails(System.String)">
+            <summary>
+            Getting Employee Details
+            </summary>
+            <param name="ID"></param>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetEmployeeDetailsbyBranch">
+            <summary>
+            Getting Employee Details By Branch
+            </summary>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderDetailsbyCustId(System.String)">
+            <summary>
+            Getting Order Details By CustomerID
+            </summary>
+            <param name="CustId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderDetailsbyPON(System.Int32)">
+            <summary>
+            Getting Order Details By POM
+            </summary>
+            <param name="OrderID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderDetailsbySupllierID(System.String)">
+            <summary>
+            Getting Order Details By Supllier ID
+            </summary>
+            <param name="SupllierID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderDetailWithSupplierInfo(System.String)">
+            <summary>
+            Getting Order Details along with Supplier Information
+            </summary>
+            <param name="itemId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderlistAsc(System.String)">
+            <summary>
+            Getting Order List
+            </summary>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderlistDesc(System.String)">
+            <summary>
+            Getting Order List
+            </summary>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetOrderStatus">
+            <summary>
+            Getting Order Status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetSubscriptionDetailsbySupllierID(System.String)">
+            <summary>
+            Getting Order Details By Supllier ID
+            </summary>
+            <param name="SupllierID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetSupplierDetails(System.String)">
+            <summary>
+            Getting Supplier Details
+            </summary>
+            <param name="suppID"></param>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetSupplierDetailsbybranchCode(System.String)">
+            <summary>
+            Getting Supplier Details By Branch
+            </summary>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.GetTransactionList(System.String)">
+            <summary>
+            Getting Transaction List by Order Id
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.SupplierOrderWidget(System.String)">
+            <summary>
+            Widget Supplier Orders
+            </summary>
+            <param name="suppID"></param>
+            <param name="branchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.SupplierUpdateDetails(DataAccess.Models.SupplierUpdate)">
+            <summary>
+            Updating SupplierUpdateDetails
+            </summary>
+            <param name="objSupplierUpdate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.TopOrdersbyCustomer(System.String)">
+            <summary>
+            Getting Top 10 Orders by Customer
+            </summary>
+            <param name="CustId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.TopPurchasedItembyCustomer(System.String)">
+            <summary>
+            Getting Top 10 Purchased Item by Customer
+            </summary>
+            <param name="CustId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.TotalPurchasedAmtbyCustomer(System.String)">
+            <summary>
+            Getting Total Purchased Amt by Customer
+            </summary>
+            <param name="CustId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.UpdateCustomerStatus(System.String,System.String)">
+            <summary>
+            Updating Customer Status
+            </summary>
+            <param name="CustId"></param>
+            <param name="branchCode"></param>
+            <param name="suppStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.UpdateEmployeeDetails(DataAccess.Models.EmployeeMaster)">
+            <summary>
+            Updating EmployeeDetails
+            </summary>
+            <param name="objEmployeeMaster"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.UpdateOnlineOrderDeliveryMan(System.Int32,System.String)">
+            <summary>
+            Updating Online Order Status Update
+            </summary>
+            <param name="orderId"></param>
+            <param name="deliveryManId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.UpdateOnlineOrderStatus(System.Int32,System.Int32)">
+            <summary>
+            Updating Online Order Status Update
+            </summary>
+            <param name="orderId"></param>
+            <param name="orderStatusId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Orders.OrderController.UpdateSupplierStatus(System.String,System.String)">
+            <summary>
+            Updating Supplier Status
+            </summary>
+            <param name="suppID"></param>
+            <param name="branchCode"></param>
+            <param name="suppStatus"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Product.CategoryController.AddSubCategory(DataAccess.DataModel.subcategory_master)">
+            <summary>
+            takes login model, which should contain user name and password with base 64 encrypted
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Product.ProductController.AddProduct(Okhaz.Models.ProductDetails[])">
+            <summary>
+            takes login model, which should contain user name and password with base 64 encrypted
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Profile.ProfileController.GetUserDetailsbyBranchID">
+            <summary>
+            Getting User Details By Branch
+            </summary>
+            <param name="branchID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Profile.ProfileController.GetUserDetailsByBranchuserID(System.Int32)">
+            <summary>
+            Getting User Details By Branch and UserID
+            </summary>
+            <param name="UserID"></param>
+            <param name="branchID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Profile.ProfileController.UpdateEmail_UserManager(System.String,System.String)">
+            <summary>
+            Update User Manager Email
+            </summary>
+            <param name="ID"></param>
+            <param name="branchID"></param>
+            <param name="emailId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Profile.ProfileController.UpdatePassword_UserManager(System.String,System.String)">
+            <summary>
+            Update User Manager Password
+            </summary>
+            <param name="ID"></param>
+            <param name="branchID"></param>
+            <param name="passWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.CreateReel(DataAccess.Models.ReelCU)">
+            <summary>
+            Reel Create
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.CreateReelDetail(DataAccess.Repositories.ReelDetailsC)">
+            <summary>
+            Reel Detail Create
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.DelReelByReelID(System.Int32)">
+            <summary>
+            Delete Reel by ReelID
+            </summary>
+            <param name="ReelID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.GetReelByBranchCode">
+            <summary>
+            Get Reel By Branch Code
+            </summary>
+            <returns></returns>
+            <param name="BranchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.GetReelByReelID(System.Int32)">
+            <summary>
+            Get Reel By Reel ID
+            </summary>
+            <returns></returns>
+            <param name="BranchCode"></param>
+            <param name="ReelID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.GetReelDetailsByBranchCode">
+            <summary>
+            Get Reel Details By Branch Code
+            </summary>
+            <returns></returns>
+            <param name="BranchCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.GetReelDetailsByReelDetailID(System.Int32)">
+            <summary>
+            Get Reel Details By Reel Detail ID
+            </summary>
+            <returns></returns>
+            <param name="BranchCode"></param>
+            <param name="ReelDetailID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.GetReelDetailsByReelID(System.Int32)">
+            <summary>
+            Get Reel Details By Reel ID
+            </summary>
+            <returns></returns>
+            <param name="BranchCode"></param>
+            <param name="ReelID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reels.ReelsController.UpdateReel(DataAccess.Models.ReelUPD)">
+            <summary>
+            Reel Update
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reports.ReportsController.GetLowRevItembyBranch">
+            <summary>
+            Get Online Sales Low Revenue Item by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reports.ReportsController.GetTopRevItembyBranch">
+            <summary>
+            Get Online Sales Top Revenue Item by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reports.ReportsController.GetTopSoldItembyBranch">
+            <summary>
+            Get Online Sales Top Sold Item by BranchCode
+            </summary>
+            <param name="branchid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reports.ReportsController.OnlineSalesReportByBranch(System.String,System.String)">
+            <summary>
+            Online Sales Report Join Deliveryman Name By Branch, Order By Ordered Date ASC
+            </summary>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <param name="branchID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.Reports.ReportsController.OnlineSalesReportByCustomerSale(System.String,System.String)">
+            <summary>
+            Online Sales Report Customer Top Sales By Branch, Order By Total Sale of Customer ASC
+            </summary>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <param name="branchID"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Okhaz.Controllers.Reports.ReportsController.OnlineSalesReportByDeliverManID(System.String,System.String,System.String)" -->
+        <member name="M:Okhaz.Controllers.Reports.ReportsController.OnlineSalesReportByProductCount(System.String,System.String)">
+            <summary>
+            Online Sales Report By Branch - Top Selling Product Count by Supplier Name and Item Name
+            with Quanity * Price
+            </summary>
+            <param name="FromDate"></param>
+            <param name="ToDate"></param>
+            <param name="branchID"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Okhaz.Controllers.Reports.ReportsController.OnlineSalesReportBySuppID(System.String,System.String,System.String)" -->
+        <member name="M:Okhaz.Controllers.SessionController.LoginController.ValidateLogin(Okhaz.Models.LoginModel)">
+            <summary>
+            takes login model, which should contain user name and password with base 64 encrypted
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.CloneWheelGameMaster(System.Int32)">
+            <summary>
+            Get Wheel game Master Details by wGlID
+            </summary>
+            <param name="wGlID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.CreateWheelGameSlice(DataAccess.Models.WheelGameSlice)">
+            <summary>
+            Creating Wheel game Slice Details
+            </summary>
+            <param name="wGlID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.DeleteWheelGameMaster(System.Int32)">
+            <summary>
+            Delete Wheel game Mastter Details by wGlID
+            </summary>
+            <param name="wGlID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.GetWheelGameMasterByUserId">
+            <summary>
+            Get Wheel game Master Details by User Id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.GetWheelGameMasterByWGlID(System.Int32)">
+            <summary>
+            Get Wheel game Master Details by wGlID
+            </summary>
+            <param name="wGlID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.GetWheelSliceByWGlID(System.Int32)">
+            <summary>
+            Get Wheel game Slice Details by wGlID
+            </summary>
+            <param name="wGlID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.UpdateWheelGameMaster(DataAccess.Models.WheelGameMaster)">
+            <summary>
+            Updating Wheel game Master Details
+            </summary>
+            <param name="wGlID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.UpdateWheelGameSlice(DataAccess.Models.WheelGameSlice)">
+            <summary>
+            Updating Wheel game Slice Details
+            </summary>
+            <param name="WGSID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Okhaz.Controllers.WheelGame.WheelGameController.WheelGameMasterCreate(DataAccess.Models.WheelGameCreate)">
+            <summary>
+            Create Wheel Game Master
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,3 +1,0 @@
-@using Okhaz
-@namespace Okhaz.Pages
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

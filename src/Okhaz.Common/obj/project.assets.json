@@ -5291,42 +5291,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/jeganathpv/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.Common\\Okhaz.Common.csproj",
+      "projectUniqueName": "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.Common/Okhaz.Common.csproj",
       "projectName": "Okhaz.Common",
-      "projectPath": "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.Common\\Okhaz.Common.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.Common\\obj\\",
+      "projectPath": "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.Common/Okhaz.Common.csproj",
+      "packagesPath": "/Users/jeganathpv/.nuget/packages/",
+      "outputPath": "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.Common/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/jeganathpv/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.AppInterfaces\\Okhaz.AppInterfaces.csproj": {
-              "projectPath": "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.AppInterfaces\\Okhaz.AppInterfaces.csproj"
+            "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/Okhaz.AppInterfaces.csproj": {
+              "projectPath": "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.AppInterfaces/Okhaz.AppInterfaces.csproj"
             },
-            "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.Models\\Okhaz.Models.csproj": {
-              "projectPath": "C:\\Users\\ADMIN\\Downloads\\ezyZip\\Source\\okhaz-in\\src\\Okhaz.Models\\Okhaz.Models.csproj"
+            "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.Models/Okhaz.Models.csproj": {
+              "projectPath": "/Users/jeganathpv/Workspace/okhaz/src/Okhaz.Models/Okhaz.Models.csproj"
             }
           }
         }
@@ -5372,8 +5365,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -5382,7 +5374,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }
