@@ -10,6 +10,7 @@ namespace Okhaz
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://localhost:54342");
                 });
 
         public static void Main(string[] args)

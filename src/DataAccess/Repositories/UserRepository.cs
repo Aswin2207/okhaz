@@ -32,7 +32,7 @@ namespace DataAccess.Repositories
 
         public user_manager ValidateLogin(string userName, string password)
         {
-            var userResult = repo.dbSet.FirstOrDefault(u => ( u.userName == userName | u.emailId == userName) & u.passWord == password);
+            var userResult = repo.dbSet.FirstOrDefault(u => ( u.userName == userName || u.emailId == userName) & u.passWord == password);
             return userResult;
         }
 
